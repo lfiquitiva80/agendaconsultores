@@ -4,6 +4,14 @@ namespace App\Http\Controllers;
 
 use App\compromisos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+use App\User;
+use App\perfil;
+use Alert;
 
 class compromisosController extends Controller
 {
@@ -12,9 +20,15 @@ class compromisosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $compromisos = compromisos::Search($request->nombre)->orderBy('descripcion_compromisos', 'asc')->paginate(10);
+         $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
+         //dd($perfil);
+
+        //$cliente = DB::table('cliente')->paginate(15);
+        //dd($cliente);
+   return view('compromisos.index',compact('compromisos','usuarios'));
     }
 
     /**
@@ -35,7 +49,10 @@ class compromisosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $compromisos =  new compromisos($request-> all());
+        $compromisos->save();
+        \Alert::success('', 'El compromisos ha sido registrado con exito !')->persistent('Close');
+         return redirect()->route('compromisos.index');
     }
 
     /**
@@ -67,9 +84,13 @@ class compromisosController extends Controller
      * @param  \App\compromisos  $compromisos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, compromisos $compromisos)
+    public function update(Request $request, compromisos $id)
     {
-        //
+         $compromisos = compromisos::findOrFail($request->id);
+         $compromisos->update($request->all());
+
+      Alert::success('', 'El compromisos ha sido editado con exito !')->persistent('Close');
+      return redirect()->route('compromisos.index');
     }
 
     /**
@@ -78,8 +99,11 @@ class compromisosController extends Controller
      * @param  \App\compromisos  $compromisos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(compromisos $compromisos)
+    public function destroy($id)
     {
-        //
+        $compromisos = compromisos::find($id);
+        $compromisos->delete();
+        \Alert::success('', 'El compromisos ha sido sido borrado de forma exita!')->persistent('Close');
+        return redirect()->route('compromisos.index');
     }
 }

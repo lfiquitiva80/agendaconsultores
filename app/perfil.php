@@ -13,4 +13,9 @@ class perfil extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function scopeSearch($query, $nombre)
+   {
+   return $query ->where('descripcion_perfil','LIKE' ,  "%$nombre%");
+   }
 }

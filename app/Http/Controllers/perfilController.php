@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\estado_cita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -13,7 +12,8 @@ use App\User;
 use App\perfil;
 use Alert;
 
-class estado_citaController extends Controller
+
+class perfilController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,13 +22,13 @@ class estado_citaController extends Controller
      */
     public function index(Request $request)
     {
-        $estado_cita = estado_cita::Search($request->nombre)->orderBy('Estado', 'asc')->paginate(10);
+$perfil = perfil::Search($request->nombre)->orderBy('descripcion_perfil', 'asc')->paginate(10);
          $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
          //dd($perfil);
 
         //$cliente = DB::table('cliente')->paginate(15);
         //dd($cliente);
-   return view('estado_cita.index',compact('estado_cita','usuarios'));
+   return view('perfil.index',compact('perfil','usuarios'));
     }
 
     /**
@@ -49,19 +49,19 @@ class estado_citaController extends Controller
      */
     public function store(Request $request)
     {
-        $estado_cita =  new estado_cita($request-> all());
-        $estado_cita->save();
-        \Alert::success('', 'El estado_cita ha sido registrado con exito !')->persistent('Close');
-         return redirect()->route('estado_cita.index');
+           $perfil =  new perfil($request-> all());
+        $perfil->save();
+        \Alert::success('', 'El Perfil ha sido registrado con exito !')->persistent('Close');
+         return redirect()->route('perfil.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\estado_cita  $estado_cita
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(estado_cita $estado_cita)
+    public function show($id)
     {
         //
     }
@@ -69,10 +69,10 @@ class estado_citaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\estado_cita  $estado_cita
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(estado_cita $estado_cita)
+    public function edit($id)
     {
         //
     }
@@ -81,29 +81,29 @@ class estado_citaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\estado_cita  $estado_cita
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, estado_cita $id)
+    public function update(Request $request, $id)
     {
-         $estado_cita = estado_cita::findOrFail($request->id);
-         $estado_cita->update($request->all());
+        $perfil = perfil::findOrFail($request->id);
+         $perfil->update($request->all());
 
-      Alert::success('', 'El estado_cita ha sido editado con exito !')->persistent('Close');
-      return redirect()->route('estado_cita.index');
+      Alert::success('', 'El perfil ha sido editado con exito !')->persistent('Close');
+      return redirect()->route('perfil.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\estado_cita  $estado_cita
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $estado_cita = estado_cita::find($id);
-        $estado_cita->delete();
-        \Alert::success('', 'El estado_cita ha sido sido borrado de forma exita!')->persistent('Close');
-        return redirect()->route('estado_cita.index');
+        $perfil = perfil::find($id);
+        $perfil->delete();
+        \Alert::success('', 'El cliente ha sido sido borrado de forma exita!')->persistent('Close');
+        return redirect()->route('perfil.index');
     }
 }

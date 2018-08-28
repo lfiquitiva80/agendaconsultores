@@ -4,6 +4,14 @@ namespace App\Http\Controllers;
 
 use App\cargo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+use App\User;
+use App\perfil;
+use Alert;
 
 class cargoController extends Controller
 {
@@ -12,9 +20,15 @@ class cargoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $cargo = cargo::Search($request->nombre)->orderBy('descripcion_cargo', 'asc')->paginate(10);
+         $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
+         //dd($perfil);
+
+        //$cliente = DB::table('cliente')->paginate(15);
+        //dd($cliente);
+   return view('cargo.index',compact('cargo','usuarios'));
     }
 
     /**
@@ -35,7 +49,10 @@ class cargoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cargo =  new cargo($request-> all());
+        $cargo->save();
+        \Alert::success('', 'El cargo ha sido registrado con exito !')->persistent('Close');
+         return redirect()->route('cargo.index');
     }
 
     /**
@@ -67,9 +84,13 @@ class cargoController extends Controller
      * @param  \App\cargo  $cargo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, cargo $cargo)
+    public function update(Request $request, cargo $id)
     {
-        //
+         $cargo = cargo::findOrFail($request->id);
+         $cargo->update($request->all());
+
+      Alert::success('', 'El cargo ha sido editado con exito !')->persistent('Close');
+      return redirect()->route('cargo.index');
     }
 
     /**
@@ -78,8 +99,11 @@ class cargoController extends Controller
      * @param  \App\cargo  $cargo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(cargo $cargo)
+    public function destroy($id)
     {
-        //
+        $cargo = cargo::find($id);
+        $cargo->delete();
+        \Alert::success('', 'El cargo ha sido sido borrado de forma exita!')->persistent('Close');
+        return redirect()->route('cargo.index');
     }
 }

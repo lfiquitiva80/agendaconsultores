@@ -38,10 +38,16 @@
             <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-tachometer" aria-hidden="true"></i></i> <span> Dashboard</span></a></li>
             <li><a href="{{ route('usuario.index') }}"><i class="fa fa-user-circle" aria-hidden="true"></i> <span> Usuarios</span></a></li>
             <li><a href="{{ route('clientes.index') }}"><i class="fa fa-users" aria-hidden="true"></i> <span> Clientes</span></a></li>
-            <li><a href="#"><i class="fa fa-address-card" aria-hidden="true"></i><span> Perfil</span></a></li>
+            <li><a href="{{ route('perfil.index') }}"><i class="fa fa-address-card" aria-hidden="true"></i><span> Perfil</span></a></li>
             <li><a href="#"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> <span> Citas</span></a></li>
-            <li><a href="#"><i class="fa fa-id-badge" aria-hidden="true"></i> <span> Cargos</span></a></li>
-            <li><a href="#"><i class="fa fa-globe" aria-hidden="true"></i> <span> Lugares</span></a></li>
+            <li><a href="{{ route('cargo.index') }}"><i class="fa fa-id-badge" aria-hidden="true"></i> <span> Cargos</span></a></li>
+            <li><a href="{{ route('actividad.index') }}"><i class="fa fa-globe" aria-hidden="true"></i> <span> Actividad</span></a></li>
+            <li><a href="{{ route('compromisos.index') }}"><i class="fa fa-commenting-o" aria-hidden="true"></i> <span> Compromisos</span></a></li>
+            <li><a href="{{ route('estado_cita.index') }}"><i class="fa fa-hourglass-start" aria-hidden="true"></i> <span> Estado Cita</span></a></li>
+            <li><a href="{{ route('lugar.index') }}"><i class="fa fa-map-marker" aria-hidden="true"></i> <span> Lugar</span></a></li>
+
+
+            
             <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> <span> Calendario Tributario</span></a></li>
             <li><a href="/logs"><i class="fa fa-sun-o" aria-hidden="true"></i> <span> Logs de Sistema</span></a></li>
 
