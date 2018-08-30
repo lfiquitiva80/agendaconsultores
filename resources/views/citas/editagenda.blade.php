@@ -1,5 +1,5 @@
 
-<div class="modal modal-success fade" id="editar_citas">
+<div class="modal modal-success fade" id="editar_citas_agenda">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -21,9 +21,8 @@
 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
    <div class="form-group" >
         <label for="id">fecha_citas</label>
-        {!! Form::date('fecha_citas', \Carbon\Carbon::now(),['class' => 'form-control', 'placeholder' => 'fecha_citas','name'=>'fecha_citas' ,'id'=>'fecha_citas']) !!}
-        
-    </div>
+        {!! Form::date('fecha_citas', \Carbon\Carbon::now(),['class' => 'form-control', 'placeholder' => 'fecha_citas','name'=>'fecha_citas' ,'id'=>'fecha_citas_agenda']) !!}
+       </div>
 
 </div>
 
@@ -68,7 +67,7 @@
 
 <div class="form-group">
                 <label for="id">asistio_citas</label>
-                {!! Form::select('asistio_citas',['1'=>'Si', '0' =>'No'],null,['class'=> 'form-control','id' => 'asistio_citas','name'=>'asistio_citas','id'=>'asistio_citas'] )!!}
+                {!! Form::select('asistio_citas',['1'=>'Si', '0' =>'No'],null,['class'=> 'form-control','id' => 'asistio_citas','name'=>'asistio_citas','id'=>'asistio_citas_agenda'] )!!}
 </div>
 
 <div class="form-group">

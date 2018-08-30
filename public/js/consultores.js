@@ -152,3 +152,38 @@ var modal = $(this)
 modal.find('.modal-body #id').val(id);
 modal.find('.modal-body #descripcion_lugar').val(descripcion_lugar);
 })
+
+
+$('#editar_citas').on('show.bs.modal', function (event) {
+var button = $(event.relatedTarget)
+var id= button.data('id')
+var fecha_citas= button.data('fecha_citas')
+var lugar_citas= button.data('lugar_citas')
+var observacion_citas= button.data('observacion_citas')
+var empresa_citas= button.data('empresa_citas')
+var hora_citas= button.data('hora_citas')
+var asistio_citas= button.data('asistio_citas')
+var usuario_citas= button.data('usuario_citas')
+var hora_final_citas= button.data('hora_final_citas')
+var jornada_citas= button.data('jornada_citas')
+var actividad_citas= button.data('actividad_citas')
+var estado_citas= button.data('estado_citas')
+
+// Extract info from data-* attributes
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.modal-body #id').val(id);
+modal.find('.modal-body #fecha_citas').val(fecha_citas);
+modal.find('.modal-body #lugar_citas').val(lugar_citas);
+modal.find('.modal-body #observacion_citas').val(observacion_citas);
+modal.find('.modal-body #empresa_citas').val(empresa_citas);
+modal.find('.modal-body #hora_citas').val(hora_citas);
+modal.find('.modal-body #asistio_citas').val(asistio_citas);
+modal.find('.modal-body #usuario_citas').val(usuario_citas);
+modal.find('.modal-body #hora_final_citas').val(hora_final_citas);
+modal.find('.modal-body #jornada_citas').val(jornada_citas);
+modal.find('.modal-body #actividad_citas').val(actividad_citas);
+modal.find('.modal-body #estado_citas').val(estado_citas);
+
+})

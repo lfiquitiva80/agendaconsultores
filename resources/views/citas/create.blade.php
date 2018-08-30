@@ -1,114 +1,95 @@
-<div class="modal fade" id="crear_cliente">
+<div class="modal modal-primary" id="crear_citas" class="btn btn-info">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">CREAR CLIENTE</h4>
+                <h4 class="modal-title">CREAR CITAS</h4>
             </div>
             <div class="modal-body">
 
 
 
 
-{!! Form::open(['route' => 'clientes.store', 'method'=>'POST','id'=>'CreateFormCliente']) !!}
+{!! Form::open(['route' => 'citas.store', 'method'=>'POST','id'=>'CreateFormCliente']) !!}
 
-
-<div class="form-group" >
-        <label for="id">nit</label>
-        {!! Form::text('nit', null,['class' => 'form-control', 'placeholder' => 'nit','name'=>'nit']) !!}
+<div class="row">
+<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+   <div class="form-group" >
+        <label for="id">fecha_citas</label>
+        {!! Form::date('fecha_citas', \Carbon\Carbon::now(),['class' => 'form-control', 'placeholder' => 'fecha_citas','name'=>'fecha_citas','id'=>'fecha_citas']) !!}
     </div>
 
-<div class="form-group" >
-        <label for="id">nombre_cliente</label>
-        {!! Form::text('nombre_cliente', null,['class' => 'form-control', 'placeholder' => 'nombre_cliente','name'=>'nombre_cliente']) !!}
-    </div>
+</div>
+
+<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+ <div class="form-group" >
+    <label for="id">Hora_citas</label>
+    {{ Form::time('Hora_citas', Carbon\Carbon::now()->format('H:i'),['class' => 'form-control', 'placeholder' => 'Hora_citas','name'=>'Hora_citas']) }}
+
+</div>
+
+
+</div>
+
+<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+ <div class="form-group" >
+    <label for="id">hora_final_citas</label>
+    {{ Form::time('hora_final_citas', Carbon\Carbon::now()->format('H:i'),['class' => 'form-control', 'placeholder' => 'hora_final_citas','name'=>'hora_final_citas']) }}
+
+</div>
+
+
+</div>
+
+</div>
 
 <div class="form-group">
-        <label for="id">direccion_cliente</label>
-        {!! Form::text('direccion_cliente', null,['class' => 'form-control', 'placeholder' => 'direccion_cliente completo','name'=>'direccion_cliente']) !!}
-    </div>
-    <div class="form-group">
-            <label for="id">telefono_cliente</label>
-            {!! Form::text('telefono_cliente', null,['class' => 'form-control', 'placeholder' => 'telefono_cliente','name'=>'telefono_cliente']) !!}
-        </div>
-        <div class="form-group">
-                <label for="id">celular_cliente</label>
-                {!! Form::text('celular_cliente', null,['class' => 'form-control', 'placeholder' => 'celular_cliente','name'=>'celular_cliente']) !!}
-
-            </div>
-      <div class="form-group">
-                    <label for="id">notas_cliente</label>
-                    {!! Form::text('text', null,['class' => 'form-control', 'placeholder' => 'notas_cliente','name'=>'notas_cliente']) !!}
-
-                </div>
-      <div class="form-group">
-                        <label for="id">gran_contribuyente_cliente</label>
-                        {!! Form::text('gran_contribuyente_cliente', null,['class' => 'form-control', 'placeholder' => 'gran_contribuyente_cliente','name'=>'gran_contribuyente_cliente']) !!}
-                    </div>
+    <label for="id">lugar_citas</label>
+    {!! Form::select('lugar_citas', $lugar, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el lugar... ','name'=>'lugar_citas']) !!} 
     
-      <div class="form-group">
-                                <label for="id">correo_cliente</label>
-                                {!! Form::text('email', null,['class' => 'form-control', 'placeholder' => 'correo_cliente','name'=>'correo_cliente']) !!}
-                            </div>
- <div class="form-group">
- <label for="id">ciudad_cliente</label>
- {!! Form::text('ciudad_cliente', null,['class' => 'form-control', 'placeholder' => 'ciudad_cliente','name'=>'ciudad_cliente']) !!}
- </div>
+</div>
 
 <div class="form-group">
- <label for="id">pais_cliente</label>
- {!! Form::text('pais_cliente', null,['class' => 'form-control', 'placeholder' => 'ciudad_cliente','name'=>'pais_cliente']) !!}
- </div>
+    <label for="id">observacion_citas</label>
+   {!! Form::textarea('observacion_citas', null, ['class' => 'form-control', 'placeholder' => 'Digite una Observación','name'=>'observacion_citas']) !!}
+</div>
 
- <div class="form-group">
- <label for="id">contacto_cliente</label>
- {!! Form::text('contacto_cliente', null,['class' => 'form-control', 'placeholder' => 'contacto_cliente','name'=>'contacto_cliente']) !!}
- </div>
- <div class="form-group">
- <label for="id">clave_ingreso_DIAN_cliente</label>
- {!! Form::text('clave_ingreso_DIAN_cliente', null,['class' => 'form-control', 'placeholder' => 'clave_ingreso_DIAN_cliente','name'=>'clave_ingreso_DIAN_cliente']) !!}
- </div>
- <div class="form-group">
- <label for="id">clave_firma_DIAN_cliente</label>
- {!! Form::text('clave_firma_DIAN_cliente', null,['class' => 'form-control', 'placeholder' => 'clave_firma_DIAN_cliente','name'=>'clave_firma_DIAN_cliente']) !!}
- </div>
- <div class="form-group">
- <label for="id">clave_CC_cliente</label>
- {!! Form::text('clave_CC_cliente', null,['class' => 'form-control', 'placeholder' => 'clave_CC_cliente','name'=>'clave_CC_cliente']) !!}
- </div>
 <div class="form-group">
- <label for="id">responsable_cliente</label>
- {!! Form::text('responsable_cliente', null,['class' => 'form-control', 'placeholder' => 'responsable_cliente','name'=>'responsable_cliente']) !!}
- </div>
+    <label for="id">empresa_citas</label>
+    {!! Form::select('empresa_citas', $clientes, null, ['class' => 'form-control', 'placeholder' => 'Seleccione la Empresa... ','name'=>'empresa_citas']) !!} 
+    
+</div>
 
- <div class="form-group">
- <label for="id">ultimo_digito_cliente</label>
- {!! Form::text('ultimo_digito_cliente', null,['class' => 'form-control', 'placeholder' => 'ultimo_digito_cliente','name'=>'ultimo_digito_cliente']) !!}
- </div>
-
-  <div class="form-group">
- <label for="id">ultimos_digitos_cliente</label>
- {!! Form::text('ultimos_digitos_cliente', null,['class' => 'form-control', 'placeholder' => 'ultimos_digitos_cliente','name'=>'ultimos_digitos_cliente']) !!}
- </div>
 <div class="form-group">
- <label for="id">activo_cliente</label>
- {!! Form::text('activo_cliente', null,['class' => 'form-control', 'placeholder' => 'activo_cliente','name'=>'activo_cliente']) !!}
- </div>
+                <label for="id">asistio_citas</label>
+                {!! Form::select('asistio_citas',['1'=>'Si', '0' =>'No'],null,['class'=> 'form-control','id' => 'asistio_citas','name'=>'asistio_citas'] )!!}
+</div>
 
- <div class="form-group">
- <label for="id">tipo_cliente</label>
- {!! Form::text('tipo_cliente', null,['class' => 'form-control', 'placeholder' => 'tipo_cliente','name'=>'tipo_cliente']) !!}
- </div>
+<div class="form-group">
+    <label for="id">usuario_citas</label>
+    {!! Form::select('usuario_citas', $usuarios, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el usuario... ','name'=>'usuario_citas']) !!} 
+    
+</div>
 
- <div class="form-group">
- <label for="id">representante_legal_cliente</label>
- {!! Form::text('representante_legal_cliente', null,['class' => 'form-control', 'placeholder' => 'tipo_cliente','name'=>'representante_legal_cliente']) !!}
- </div>
+<div class="form-group">
+    <label for="id">jornada_citas</label>
+    
+    {!! Form::select('jornada_citas', $jornada, null, ['class' => 'form-control', 'placeholder' => 'Seleccione la actividad... ','name'=>'jornada_citas']) !!} 
+    
+</div>
 
- <div class="form-group">
- <label for="id">nombre_representante_legal_cliente</label>
- {!! Form::text('nombre_representante_legal_cliente', null,['class' => 'form-control', 'placeholder' => 'nombre_representante_legal_cliente','name'=>'nombre_representante_legal_cliente']) !!}
- </div>
+<div class="form-group">
+    <label for="id">actividad_citas</label>
+    {!! Form::select('actividad_citas', $actividad_citas, null, ['class' => 'form-control', 'placeholder' => 'Seleccione la actividad... ','name'=>'actividad_citas']) !!} 
+    
+</div>
+
+<div class="form-group">
+    <label for="id">estado_citas</label>
+    {!! Form::select('estado_citas', $estado_citas, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el estado... ','name'=>'estado_citas']) !!} 
+    
+</div>    
+
 
 
     <center><button type="submit" class="btn btn-primary" >Enviar</button>

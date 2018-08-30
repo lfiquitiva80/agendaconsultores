@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">CREAR compromisos</h4>
+                <h4 class="modal-title">CREAR COMPROMISOS</h4>
             </div>
             <div class="modal-body">
 
@@ -15,7 +15,8 @@
 
 <div class="form-group" >
         <label for="id">descripcion_compromisos</label>
-        {!! Form::text('descripcion_compromisos', null,['class' => 'form-control', 'placeholder' => 'descripcion_compromisos','name'=>'descripcion_compromisos']) !!}
+        {!! Form::text('descripcion_compromisos', null,['class' => 'form-control', 'placeholder' => 'descripcion_compromisos','name'=>'descripcion_compromisos', 'required']) !!}
+       
     </div>
 
     <center><button type="submit" class="btn btn-primary" >Enviar</button>

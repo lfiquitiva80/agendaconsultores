@@ -13,6 +13,7 @@
 <script src='{{ url (asset('/js/fullcalendar/lib/jquery.min.js')) }}'></script>
 <script src='{{ url (asset('/js/fullcalendar/lib/moment.min.js')) }}'></script>
 <script src='{{ url (asset('/js/fullcalendar/fullcalendar.js')) }}'></script>
+<script src='{{ url (asset('/js/fullcalendar/locale-all.js')) }}'></script>
 <script src='{{ url (asset('/js/sweetalert.min.js')) }}'></script>
 
 

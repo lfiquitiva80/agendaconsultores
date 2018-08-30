@@ -91,6 +91,9 @@ Route::resource('perfil','perfilController');
 Route::resource('periodo','periodoController');
 Route::resource('usuario','usuarioController');
 
+Route::get('citas_agenda','citasController@get_events')->name('citas_agenda');
+Route::get('citas_all','citasController@citasall')->name('citas_all');
+
 
 
 //log del sistema

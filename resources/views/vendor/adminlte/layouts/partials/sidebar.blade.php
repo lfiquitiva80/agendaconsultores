@@ -39,7 +39,7 @@
             <li><a href="{{ route('usuario.index') }}"><i class="fa fa-user-circle" aria-hidden="true"></i> <span> Usuarios</span></a></li>
             <li><a href="{{ route('clientes.index') }}"><i class="fa fa-users" aria-hidden="true"></i> <span> Clientes</span></a></li>
             <li><a href="{{ route('perfil.index') }}"><i class="fa fa-address-card" aria-hidden="true"></i><span> Perfil</span></a></li>
-            <li><a href="#"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> <span> Citas</span></a></li>
+            <li><a href="{{ route('citas.index') }}"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> <span> Citas</span></a></li>
             <li><a href="{{ route('cargo.index') }}"><i class="fa fa-id-badge" aria-hidden="true"></i> <span> Cargos</span></a></li>
             <li><a href="{{ route('actividad.index') }}"><i class="fa fa-globe" aria-hidden="true"></i> <span> Actividad</span></a></li>
             <li><a href="{{ route('compromisos.index') }}"><i class="fa fa-commenting-o" aria-hidden="true"></i> <span> Compromisos</span></a></li>
