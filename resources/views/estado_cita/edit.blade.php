@@ -10,7 +10,7 @@
 
                 
 
-<form class="" action="{{route('estado_cita.update', 'id' )}}"   method="post" id="reg_form3">
+<form class="" action="{{route('estado_cita.update', 'id' )}}"   method="post" id="FromEditEstadoCita">
 
   {{method_field('patch')}}
   {{csrf_field()}}
@@ -20,6 +20,12 @@
 <div class="form-group" >
         <label for="id">Estado</label>
         {!! Form::text('Estado', null,['class' => 'form-control', 'placeholder' => 'Estado','name'=>'Estado','id'=>'Estado']) !!}
+    </div>
+
+
+    <div class="form-group" >
+        <label for="id">Color Agenda</label>
+        {!! Form::color('color_agenda', null,['class' => 'form-control', 'placeholder' => 'color_agenda','name'=>'color_agenda','id'=>'color_agenda']) !!}
     </div>
 
 

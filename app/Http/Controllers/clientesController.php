@@ -7,6 +7,16 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Alert;
 use App\User;
+use App\compromisos;
+use App\compromisos_cliente;
+use Illuminate\Support\Facades\Auth;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+
+//use App\clientes;
+use App\periodo;
+
 class clientesController extends Controller
 {
     /**
@@ -18,11 +28,15 @@ class clientesController extends Controller
     {
          $cliente = clientes::Search($request->nombre)->orderBy('nombre_cliente', 'asc')->paginate(10);
          $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
-         //dd($usuarios);
+         $clientes = clientes::pluck('nombre_cliente', 'id');
+        $compromisos = compromisos::pluck('descripcion_compromisos', 'id');
+        $periodo = periodo::pluck('descripcion_periodo', 'id');
+        $compromisos_clientes = compromisos_cliente::all();
+         //dd($compromisos_clientes );
 
         //$cliente = DB::table('cliente')->paginate(15);
         //dd($cliente);
-   return view('cliente.index',compact('cliente','usuarios'));
+   return view('cliente.index',compact('cliente','usuarios','clientes','compromisos','periodo','compromisos_clientes'));
 
     }
 

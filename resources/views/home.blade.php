@@ -69,10 +69,22 @@
                    $('#observacion_citas').val(val.observacion_citas);
                    $('#empresa_citas').val(val.empresa_citas);
                    console.log($('#asistio_citas_agenda').val(val.asistio_citas));
-                   $('#usuario_citas').val(val.usuario_citas);
+                   $('#usuario_citas2').val(val.usuario_citas);
                    $('#jornada_citas').val(val.jornada_citas);
-                   $('#actividad_citas').val(val.actividad_citas);
+                   $('#compromiso_citas').val(val.compromiso_citas);
+                   //$('#actividad_citas').val(val.actividad_citas);
                    $('#estado_citas').val(val.estado_citas);
+
+                   var json = JSON.parse(val.actividad_citas);
+                   $('#actividad_citas').val(json);
+
+                   // for (var i = 0; i < json.length; i++) {
+                   //   //alert(json[i]);
+                   //   $('#actividad_citas').val(json[i]);
+                   // }
+                      
+                
+                  
 
                 } else {
 
@@ -92,7 +104,9 @@
         
 
 
-  },     
+  },
+
+       
 
   events:'{{ route('citas_agenda') }}',
 

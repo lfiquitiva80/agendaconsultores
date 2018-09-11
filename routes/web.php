@@ -63,6 +63,7 @@ Route::resource('calendario_tributario','calendario_tributarioController');
 Route::resource('cargo','cargoController');
 Route::resource('citas','citasController');
 Route::resource('compromisos','compromisosController');
+Route::resource('compromisoscliente','compromisosclientesController');
 Route::resource('conf_dev_iva','conf_dev_ivaController');
 Route::resource('conf_imp_ica','conf_imp_icaController');
 Route::resource('conf_imp_iva','conf_imp_ivaController');

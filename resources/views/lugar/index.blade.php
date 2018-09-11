@@ -24,7 +24,7 @@
   <button type="submit" class="btn btn-default">Submit</button>
 {!! Form::close() !!}
 <div class="panel panel-default">
-<h4><b><center>REGISTROS DE lugarS/h4></b></center>
+<h4><b><center>REGISTROS DE LUGAR</h4></b></center>
 <a class="btn btn-info" data-toggle="modal" href='#crear_lugar'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear lugar</a>
 
   @include('lugar.create')

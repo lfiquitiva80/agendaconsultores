@@ -18,6 +18,7 @@ use App\clientes;
 use App\actividad;
 use App\estado_cita;
 use App\jornada;
+use App\compromisos;
 
 /**
  * Class HomeController
@@ -49,7 +50,8 @@ class HomeController extends Controller
          $actividad_citas = actividad::pluck('descripcion_actividad', 'id');
          $estado_citas = estado_cita::pluck('Estado', 'id');
          $jornada = jornada::pluck('descripcion_jornada', 'id');
+         $compromisos = compromisos::pluck('descripcion_compromisos', 'id');
         
-        return view('home',compact('citas','lugar','clientes','usuarios','actividad_citas','estado_citas','jornada'));
+        return view('home',compact('citas','lugar','clientes','usuarios','actividad_citas','estado_citas','jornada','compromisos'));
     }
 }

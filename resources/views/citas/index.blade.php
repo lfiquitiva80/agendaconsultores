@@ -49,7 +49,6 @@
     <td>  usuario_citas </td>
     <td>  hora_final_citas  </td>
     <td>  jornada_citas </td>
-    <td>  actividad_citas </td>
     <td>  estado_citas  </td>
     <td>  Acción </td>
 
@@ -79,7 +78,7 @@
           <td>{{$row->usuarios->name}}</td>
           <td>{{$row->hora_final_citas}}</td>
           <td>{{$row->jornada->descripcion_jornada}}</td>
-          <td>{{$row->actividad->descripcion_actividad}}</td>
+         
           <td>{{$row->estado->Estado}}</td>
 
 
@@ -95,6 +94,7 @@
               data-jornada_citas ="{{$row->jornada_citas}}"
               data-actividad_citas ="{{$row->actividad_citas}}"
               data-estado_citas ="{{$row->estado_citas}}"
+              data-compromiso_citas ="{{$row->compromiso_citas}}"
 
             class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 

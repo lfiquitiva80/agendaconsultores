@@ -10,7 +10,7 @@
 
 
 
-                {!! Form::open(['route' => 'clientes.store', 'method'=>'POST','id'=>'CreateFormCliente']) !!}
+                {!! Form::open(['route' => 'clientes.store', 'method'=>'POST','id'=>'FormClienteCreate']) !!}
 
 
                 <div class="form-group" >
@@ -125,6 +125,9 @@
 
 
                 </div>
+
+               
+
             </div>
 
         </div>

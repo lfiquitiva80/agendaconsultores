@@ -10,7 +10,7 @@
 <!--  -->
 
 
-{!! Form::open(['route' => 'usuario.store', 'method'=>'POST','id'=>'reg_form7']) !!}
+{!! Form::open(['route' => 'usuario.store', 'method'=>'POST','id'=>'formUserCreate']) !!}
 
 
 
@@ -33,6 +33,16 @@
                                 <label  for="password-confirm">Confirmar Contraseña</label>
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirmar Contraseña">
                             </div>
+     <div class="form-group">
+            <label for="id">Cargo del Usuario</label>
+
+            {!! Form::select('cargo', $cargo,null, ['class' => 'form-control','name'=>'cargo','id'=>'cargo' ]) !!}             
+
+          </div>
+            <div class="form-group">
+                            <label for="id">Activo</label>
+                            {!! Form::select('activo',[ '1'=>'Activo', '0' =>'Inactivo'],null,['class'=> 'form-control','id' => 'activo','name'=>'activo'] )!!}
+                </div>
 
     <center><button type="submit" class="btn btn-primary" >Enviar</button>
     <button type="reset" class="btn btn-danger">Borrar</button></center><p>

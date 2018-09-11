@@ -45,6 +45,8 @@
       <td>  Nombre</td>
       <td>  email</td>
       <td>  Perfil Usuario</td>
+      <td>  Cargo Usuario</td>
+      <td>  Activo</td>
       <td>  Acción </td>
 
 
@@ -60,9 +62,16 @@
           <td>{{$row->name}}</td>
           <td>{{$row->email}}</td>
           <td>{{$row->perfil->descripcion_perfil}}</td>
+          <td>{{$row->cargos->descripcion_cargo}}</td>
+          <td><span class="label label-success"><?php if ($row->activo==1) {
+            echo "Si";
+          } else {
+            echo "No";
+          }
+           ?></span></td>
 
 
-          <td><a    data-toggle="modal" data-target="#editar_usuario"   data-name="{{$row->name}}"   data-perfil_usuario ="{{$row->perfil_usuario}}" data-email="{{$row->email}}"  data-id="{{$row->id}}" data-type="{{$row->type}}"data-password="{{$row->password}}" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"> Edición</i></a></td> <td>@include('usuario.destroy')</td>
+          <td><a    data-toggle="modal" data-target="#editar_usuario"   data-name="{{$row->name}}"   data-perfil_usuario ="{{$row->perfil_usuario}}" data-email="{{$row->email}}"  data-id="{{$row->id}}" data-type="{{$row->type}}"data-password="{{$row->password}}" data-cargo="{{$row->cargo}}" data-activo="{{$row->activo}}"  class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"> Edición</i></a></td> <td>@include('usuario.destroy')</td>
 
     </tr>
   </tbody>

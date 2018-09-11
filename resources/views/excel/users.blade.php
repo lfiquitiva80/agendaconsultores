@@ -6,6 +6,8 @@
         <th>    email   </th>
         <th>    password    </th>
         <th>    perfil_usuario  </th>
+        <th>    Cargo usuario  </th>
+        <th>    Activo  </th>
         <th>    remember_token  </th>
         <th>    created_at  </th>
         <th>    updated_at  </th>
@@ -20,6 +22,8 @@
         <td>{{ $user->email   }}</td>
         <td>{{ $user->password    }}</td>
         <td>{{ $user->perfil->descripcion_perfil  }}</td>
+        <td>{{ $user->cargos->descripcion_cargo  }}</td>
+        <td>{{ $user->activo  }}</td>
         <td>{{ $user->remember_token  }}</td>
         <td>{{ $user->created_at  }}</td>
         <td>{{ $user->updated_at  }}</td>

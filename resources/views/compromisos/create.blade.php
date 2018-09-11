@@ -10,7 +10,7 @@
 
 
 
-{!! Form::open(['route' => 'compromisos.store', 'method'=>'POST','id'=>'CreateFormCliente']) !!}
+{!! Form::open(['route' => 'compromisos.store', 'method'=>'POST','id'=>'FormCreateCompromisos']) !!}
 
 
 <div class="form-group" >

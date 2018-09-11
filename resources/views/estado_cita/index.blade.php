@@ -41,6 +41,7 @@
     <tr>
       <td>id_estado_cita</td>
       <td>descripcion_estado_cita</td>
+      <td>Color</td>
        <td>  Acción </td>
 
 
@@ -56,10 +57,12 @@
 
           <td>{{$row->id}}</td>
           <td>{{$row->Estado}}</td>
+          <td><input type="color" value="{{$row->color_agenda}}"></td>
          
 
           <td><a   data-toggle="modal" data-target="#editar_estado_cita" data-id="{{$row->id}}"
             data-Estado="{{$row->Estado}}"
+            data-color_agenda="{{$row->color_agenda}}"
             class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
             <td>@include('estado_cita.destroy')</td>

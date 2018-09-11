@@ -10,7 +10,7 @@
 
 
 
-{!! Form::open(['route' => 'perfil.store', 'method'=>'POST','id'=>'CreateFormCliente']) !!}
+{!! Form::open(['route' => 'perfil.store', 'method'=>'POST','id'=>'FormCreatePerfil']) !!}
 
 
 <div class="form-group" >

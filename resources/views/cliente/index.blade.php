@@ -31,6 +31,8 @@
 
   @include('cliente.edit')
 
+  @include('compromisoscliente.create')
+
 
 
 
@@ -98,7 +100,8 @@
           <td>{{$row->representante_legal_cliente}}</td>
           <td>{{$row->nombre_representante_legal_cliente}}</td> -->
 
-
+            <td><a   data-toggle="modal" data-target="#crear_compromisos_cliente" data-id="{{$row->id}}"
+            class="btn btn-primary"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Compromisos</i></a></td>
 
           <td><a   data-toggle="modal" data-target="#editar_clientes" data-id="{{$row->id}}"
             data-nit="{{$row->nit}}"

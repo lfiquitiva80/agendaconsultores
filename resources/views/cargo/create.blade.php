@@ -10,7 +10,7 @@
 
 
 
-{!! Form::open(['route' => 'cargo.store', 'method'=>'POST','id'=>'CreateFormCliente']) !!}
+{!! Form::open(['route' => 'cargo.store', 'method'=>'POST','id'=>'FormCreateCargos']) !!}
 
 
 <div class="form-group" >

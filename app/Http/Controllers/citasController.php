@@ -16,6 +16,7 @@ use App\lugar;
 use App\clientes;
 use App\actividad;
 use App\estado_cita;
+use App\compromisos;
 use App\jornada;
 use Alert;
 
@@ -35,11 +36,12 @@ class citasController extends Controller
          $actividad_citas = actividad::pluck('descripcion_actividad', 'id');
          $estado_citas = estado_cita::pluck('Estado', 'id');
          $jornada = jornada::pluck('descripcion_jornada', 'id');
+         $compromisos = compromisos::pluck('descripcion_compromisos', 'id');
          //dd($perfil);
 
         //$cliente = DB::table('cliente')->paginate(15);
         //dd($cliente);
-   return view('citas.index',compact('citas','lugar','clientes','usuarios','actividad_citas','estado_citas','jornada'));
+   return view('citas.index',compact('citas','lugar','clientes','usuarios','actividad_citas','estado_citas','jornada','compromisos'));
     }
 
     /**
@@ -60,8 +62,34 @@ class citasController extends Controller
      */
     public function store(Request $request)
     {
-        $citas =  new citas($request-> all());
+        
+        //dd($request-> all());
+        $json = json_encode($request->input('actividad_citas'), true);
+        //dd($json);
+        // $citas =  new citas($request-> all());
+        // $citas->actividad_citas=$json;
+        // $citas->save();
+
+        $citas = new citas;
+        $citas->fecha_citas=$request->input('fecha_citas');
+        $citas->lugar_citas=$request->input('lugar_citas');
+        $citas->observacion_citas=$request->input('observacion_citas');
+        $citas->empresa_citas=$request->input('empresa_citas');
+        $citas->jornada_citas=$request->input('jornada_citas');
+        $citas->hora_citas=$request->input('hora_citas');
+        $citas->usuario_citas=$request->input('usuario_citas');
+        $citas->hora_final_citas=$request->input('hora_final_citas');
+        $citas->hora_citas=$request->input('hora_citas');
+        $citas->actividad_citas=$json;
+        $citas->estado_citas=$request->input('estado_citas');
+        $citas->compromiso_citas=$request->input('compromiso_citas');
+        // ...
+
         $citas->save();
+
+
+
+
         \Alert::success('', 'El citas ha sido registrado con exito !')->persistent('Close');
          //return redirect()->route('citas.index');
          return back();
@@ -98,8 +126,25 @@ class citasController extends Controller
      */
     public function update(Request $request, citas $id)
     {
-         $citas = citas::findOrFail($request->id);
-         $citas->update($request->all());
+         // $citas = citas::findOrFail($request->id);
+         // $citas->update($request->all());
+         $json = json_encode($request->input('actividad_citas'), true);
+        $citas = citas::findOrFail($request->id);
+        $citas->fecha_citas=$request->input('fecha_citas');
+        $citas->lugar_citas=$request->input('lugar_citas');
+        $citas->observacion_citas=$request->input('observacion_citas');
+        $citas->empresa_citas=$request->input('empresa_citas');
+        $citas->jornada_citas=$request->input('jornada_citas');
+        $citas->hora_citas=$request->input('hora_citas');
+        $citas->usuario_citas=$request->input('usuario_citas');
+        $citas->hora_final_citas=$request->input('hora_final_citas');
+        $citas->hora_citas=$request->input('hora_citas');
+        $citas->actividad_citas=$json;
+        $citas->estado_citas=$request->input('estado_citas');
+        $citas->compromiso_citas=$request->input('compromiso_citas');
+        // ...
+
+        $citas->save();
 
       Alert::success('', 'El citas ha sido editado con exito !')->persistent('Close');
       //return redirect()->route('citas.index');
@@ -127,11 +172,25 @@ class citasController extends Controller
     //                 //->select("ordenesdeservicio.Escolta_asignado as id","ordenesdeservicio.Escolta_asignado as resourceId")
     // ->select("ordenesdeservicio.Escolta_asignado as id",DB::raw("CONCAT(vehiculo.placa,'  .Detalle Del Servicio:',ordenesdeservicio.detalle_del_servicio,'  .Nombre Cliente:',cliente.nombre) as title"),"ordenesdeservicio.Escolta_asignado as resourceId","fecha_inicio_servicio as start","color_agenda as color")
     //                 ->get();
-        $data=\DB::table('citas')
+        if (Auth::user()->perfil_usuario == 1) {
+            $data=\DB::table('citas')
             ->join('cliente','cliente.id','=','citas.empresa_citas')
-            ->select("citas.id as id","cliente.nombre_cliente as title","fecha_citas as start")
+            ->join('estado_cita','estado_cita.id','=','citas.estado_citas')
+            ->select("citas.id as id","cliente.nombre_cliente as title","fecha_citas as start","estado_cita.color_agenda as color")
             ->get();
 
+        } else {
+
+            $data=\DB::table('citas')
+            ->join('cliente','cliente.id','=','citas.empresa_citas')
+            ->join('estado_cita','estado_cita.id','=','citas.estado_citas')
+            ->select("citas.id as id","cliente.nombre_cliente as title","fecha_citas as start","estado_cita.color_agenda as color")
+            ->where('usuario_citas',Auth::user()->id)
+            ->get();
+
+        }
+        
+        
 
       //$data = citas::select("id","observacion_citas as title","fecha_citas as start" )->get();
       return response()->json($data);

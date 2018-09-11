@@ -10,7 +10,7 @@
 
                 
 
-<form class="" action="{{route('perfil.update', 'id' )}}"   method="post" id="reg_form3">
+<form class="" action="{{route('perfil.update', 'id' )}}"   method="post" id="FormEditPerfil">
 
   {{method_field('patch')}}
   {{csrf_field()}}

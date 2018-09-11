@@ -1,5 +1,5 @@
 $('#editar_clientes').on('show.bs.modal', function (event) {
-  
+
   var button = $(event.relatedTarget) // Button triggered the modal
   var id = button.data('id')	
   var nit = button.data('nit')
@@ -48,18 +48,20 @@ $('#editar_clientes').on('show.bs.modal', function (event) {
   modal.find('.modal-body #tipo_cliente').val(tipo_cliente)
   modal.find('.modal-body #representante_legal_cliente').val(representante_legal_cliente)
   modal.find('.modal-body #nombre_representante_legal_cliente').val(nombre_representante_legal_cliente)
- 
+
 })
 
 
 $('#editar_usuario').on('show.bs.modal', function (event) {
-var button = $(event.relatedTarget)
-var id = button.data('id')
-var name = button.data('name')
-var type = button.data('type')
-var password = button.data('password')
-var perfil_usuario = button.data('perfil_usuario')
-var email = button.data('email')
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var name = button.data('name')
+  var type = button.data('type')
+  var password = button.data('password')
+  var perfil_usuario = button.data('perfil_usuario')
+  var email = button.data('email')
+  var cargo = button.data('cargo')
+  var activo = button.data('activo')
 // Extract info from data-* attributes
 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
@@ -70,13 +72,15 @@ modal.find('.modal-body #password').val(password);
 modal.find('.modal-body #email').val(email);
 modal.find('.modal-body #id').val(id);
 modal.find('.modal-body #perfil_usuario').val(perfil_usuario);
+modal.find('.modal-body #cargo').val(cargo);
+modal.find('.modal-body #activo').val(activo);
 })
 
 
 $('#editar_perfil').on('show.bs.modal', function (event) {
-var button = $(event.relatedTarget)
-var id = button.data('id')
-var descripcion_perfil = button.data('descripcion_perfil')
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var descripcion_perfil = button.data('descripcion_perfil')
 // Extract info from data-* attributes
 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
@@ -87,9 +91,9 @@ modal.find('.modal-body #descripcion_perfil').val(descripcion_perfil);
 
 
 $('#editar_cargo').on('show.bs.modal', function (event) {
-var button = $(event.relatedTarget)
-var id = button.data('id')
-var descripcion_cargo = button.data('descripcion_cargo')
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var descripcion_cargo = button.data('descripcion_cargo')
 // Extract info from data-* attributes
 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
@@ -100,10 +104,10 @@ modal.find('.modal-body #descripcion_cargo').val(descripcion_cargo);
 
 
 $('#editar_actividad').on('show.bs.modal', function (event) {
-var button = $(event.relatedTarget)
-var id = button.data('id')
-var descripcion_actividad = button.data('descripcion_actividad')
-var modo_actividad = button.data('modo_actividad')
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var descripcion_actividad = button.data('descripcion_actividad')
+  var modo_actividad = button.data('modo_actividad')
 // Extract info from data-* attributes
 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
@@ -115,9 +119,9 @@ modal.find('.modal-body #modo_actividad').val(modo_actividad);
 
 
 $('#editar_compromisos').on('show.bs.modal', function (event) {
-var button = $(event.relatedTarget)
-var id = button.data('id')
-var descripcion_compromisos = button.data('descripcion_compromisos')
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var descripcion_compromisos = button.data('descripcion_compromisos')
 // Extract info from data-* attributes
 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
@@ -126,25 +130,45 @@ modal.find('.modal-body #id').val(id);
 modal.find('.modal-body #descripcion_compromisos').val(descripcion_compromisos);
 })
 
+
+$('#editar_compromisos_cliente').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var id_empresa = button.data('id_empresa')
+  var id_compromiso = button.data('id_compromiso')
+  var id_periodo = button.data('id_periodo')
+// Extract info from data-* attributes
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.modal-body #id').val(id);
+modal.find('.modal-body #id_empresa').val(id_empresa);
+modal.find('.modal-body #id_compromiso').val(id_compromiso);
+modal.find('.modal-body #id_periodo').val(id_periodo);
+})
+
+
 $('#editar_estado_cita').on('show.bs.modal', function (event) {
-var button = $(event.relatedTarget)
-var id = button.data('id')
-var Estado = button.data('estado')
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var Estado = button.data('estado')
+  var color_agenda = button.data('color_agenda')
 // Extract info from data-* attributes
 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 var modal = $(this)
 modal.find('.modal-body #id').val(id);
 modal.find('.modal-body #Estado').val(Estado);
+modal.find('.modal-body #color_agenda').val(color_agenda);
 })
 
 
 
 
 $('#editar_lugar').on('show.bs.modal', function (event) {
-var button = $(event.relatedTarget)
-var id = button.data('id')
-var descripcion_lugar = button.data('descripcion_lugar')
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var descripcion_lugar = button.data('descripcion_lugar')
 // Extract info from data-* attributes
 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
@@ -155,19 +179,20 @@ modal.find('.modal-body #descripcion_lugar').val(descripcion_lugar);
 
 
 $('#editar_citas').on('show.bs.modal', function (event) {
-var button = $(event.relatedTarget)
-var id= button.data('id')
-var fecha_citas= button.data('fecha_citas')
-var lugar_citas= button.data('lugar_citas')
-var observacion_citas= button.data('observacion_citas')
-var empresa_citas= button.data('empresa_citas')
-var hora_citas= button.data('hora_citas')
-var asistio_citas= button.data('asistio_citas')
-var usuario_citas= button.data('usuario_citas')
-var hora_final_citas= button.data('hora_final_citas')
-var jornada_citas= button.data('jornada_citas')
-var actividad_citas= button.data('actividad_citas')
-var estado_citas= button.data('estado_citas')
+  var button = $(event.relatedTarget)
+  var id= button.data('id')
+  var fecha_citas= button.data('fecha_citas')
+  var lugar_citas= button.data('lugar_citas')
+  var observacion_citas= button.data('observacion_citas')
+  var empresa_citas= button.data('empresa_citas')
+  var hora_citas= button.data('hora_citas')
+  var asistio_citas= button.data('asistio_citas')
+  var usuario_citas= button.data('usuario_citas')
+  var hora_final_citas= button.data('hora_final_citas')
+  var jornada_citas= button.data('jornada_citas')
+  var actividad_citas= button.data('actividad_citas')
+  var estado_citas= button.data('estado_citas')
+  var compromiso_citas= button.data('compromiso_citas')
 
 // Extract info from data-* attributes
 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -185,5 +210,1238 @@ modal.find('.modal-body #hora_final_citas').val(hora_final_citas);
 modal.find('.modal-body #jornada_citas').val(jornada_citas);
 modal.find('.modal-body #actividad_citas').val(actividad_citas);
 modal.find('.modal-body #estado_citas').val(estado_citas);
+modal.find('.modal-body #compromiso_citas').val(compromiso_citas);
 
 })
+
+
+
+
+
+
+$(document).ready(function() {
+  $('#CreateFormCliente').bootstrapValidator({
+    message: 'This value is not valid',
+    feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+      lugar_citas: {
+        message: 'El Lugar no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El lugar es requerido'
+          },
+          stringLength: {
+            min: 1  ,
+            max: 30,
+            message: 'The username must be more than 6 and less than 30 characters long'
+          },
+          regexp: {
+            regexp: /^[a-zA-Z0-9_]+$/,
+            message: 'The username can only consist of alphabetical, number and underscore'
+          }
+        }
+      },
+      observacion_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo de Observacion de Citas no puede estar vacio!'
+          },
+
+
+        }
+      },
+
+      empresa_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo empresa citas es  obligatorio!'
+          },
+
+        }
+        },
+
+      asistio_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo asitio a citas es  obligatorio!'
+          },
+
+
+        }
+      },
+
+      usuario_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo Usuario citas es  obligatorio!'
+          },
+
+
+        }
+      },
+
+      jornada_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo Jornada citas es  obligatorio!'
+          },
+
+
+        }
+      },
+
+      
+      estado_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo estado citas es  obligatorio!'
+          },
+
+
+        }
+      },
+
+
+      fecha_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo Fecha citas es  obligatorio!'
+          },
+
+
+        }
+      },
+
+      hora_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo Hora citas es  obligatorio!'
+          },
+
+
+        }
+      },
+
+      hora_final_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo Hora final citas es  obligatorio!'
+          },
+
+
+        }
+      },
+
+
+
+
+    }
+  });
+});
+
+
+$(document).ready(function() {
+  $('#EditFormCitas').bootstrapValidator({
+    message: 'This value is not valid',
+    feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+      lugar_citas: {
+        message: 'El Lugar no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El lugar es requerido'
+          },
+          stringLength: {
+            min: 1  ,
+            max: 30,
+            message: 'The username must be more than 6 and less than 30 characters long'
+          },
+          regexp: {
+            regexp: /^[a-zA-Z0-9_]+$/,
+            message: 'The username can only consist of alphabetical, number and underscore'
+          }
+        }
+      },
+      observacion_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo de Observacion de Citas no puede estar vacio!'
+          },
+
+
+        }
+      },
+
+      empresa_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo empresa citas es  obligatorio!'
+          },
+
+
+        }
+      },
+
+      asistio_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo asitio a citas es  obligatorio!'
+          },
+
+
+        }
+      },
+
+      usuario_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo Usuario citas es  obligatorio!'
+          },
+
+
+        }
+      },
+
+      jornada_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo Jornada citas es  obligatorio!'
+          },
+
+
+        }
+      },
+
+      actividad_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo Actividad citas es  obligatorio!'
+          },
+
+
+        }
+      },
+
+      estado_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo estado citas es  obligatorio!'
+          },
+
+
+        }
+      },
+
+
+      fecha_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo Fecha citas es  obligatorio!'
+          },
+
+
+        }
+      },
+
+      hora_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo Hora citas es  obligatorio!'
+          },
+
+
+        }
+      },
+
+      hora_final_citas: {
+        validators: {
+          notEmpty: {
+            message: 'El campo Hora final citas es  obligatorio!'
+          },
+
+
+        }
+      },
+
+
+
+
+    }
+  });
+});
+
+
+
+
+
+$(document).ready(function() {
+  $('#formUserCreate').bootstrapValidator({
+    message: 'This value is not valid',
+    feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+      name: {
+        message: 'El campo name no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo de Nombre es requerido!'
+          },
+          stringLength: {
+            min: 6,
+            max: 30,
+            message: 'El campo debe llevar minimo 6 Caracteres y Maximno 30 Caracteres'
+          },
+
+        }
+      },
+      email: {
+        validators: {
+          notEmpty: {
+            message: 'El email es requerido y no puede ir vacio!'
+          },
+          emailAddress: {
+            message: 'La dirección de correo no es valida!'
+          }
+        }
+      },
+
+      password: {
+        message: 'El campo name no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo de contraseña es requerido!'
+          },
+          stringLength: {
+            min: 6,
+            max: 30,
+            message: 'El campo debe llevar minimo 6 Caracteres y Maximno 30 Caracteres'
+          },
+
+        }
+      },
+
+
+      password_confirmation: {
+        message: 'El campo name no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo de contraseña es requerido!'
+          },
+          stringLength: {
+            min: 6,
+            max: 30,
+            message: 'El campo debe llevar minimo 6 Caracteres y Maximno 30 Caracteres'
+          },
+
+        }
+      },
+
+      cargo: {
+        message: 'El campo name no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo Cargo es requerido!'
+          },
+
+        }
+      },
+
+      activo: {
+        message: 'El campo Activo no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo Activo es requerido!'
+          },
+
+        }
+      },
+
+
+    }
+  });
+});
+
+
+
+
+
+$(document).ready(function() {
+  $('#formUserEdit').bootstrapValidator({
+    message: 'This value is not valid',
+    feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+      name: {
+        message: 'El campo name no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo de Nombre es requerido!'
+          },
+          stringLength: {
+            min: 6,
+            max: 30,
+            message: 'El campo debe llevar minimo 6 Caracteres y Maximno 30 Caracteres'
+          },
+
+        }
+      },
+      email: {
+        validators: {
+          notEmpty: {
+            message: 'El email es requerido y no puede ir vacio!'
+          },
+          emailAddress: {
+            message: 'La dirección de correo no es valida!'
+          }
+        }
+      },
+
+      password: {
+        message: 'El campo name no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo de contraseña es requerido!'
+          },
+          stringLength: {
+            min: 6,
+            max: 30,
+            message: 'El campo debe llevar minimo 6 Caracteres y Maximno 30 Caracteres'
+          },
+
+        }
+      },
+
+
+      password_confirmation: {
+        message: 'El campo name no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo de contraseña es requerido!'
+          },
+          stringLength: {
+            min: 6,
+            max: 30,
+            message: 'El campo debe llevar minimo 6 Caracteres y Maximno 30 Caracteres'
+          },
+
+        }
+      },
+
+      cargo: {
+        message: 'El campo name no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo Cargo es requerido!'
+          },
+
+        }
+      },
+
+      activo: {
+        message: 'El campo Activo no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo Activo es requerido!'
+          },
+
+        }
+      },
+
+
+      perfil_usuario: {
+        message: 'El campo Perfil no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo Perfil es requerido!'
+          },
+
+        }
+      },
+
+
+    }
+  });
+});
+
+
+$(document).ready(function() {
+  $('#FormClienteCreate').bootstrapValidator({
+    message: 'This value is not valid',
+    feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+
+      nit:{
+        validators:{
+          notEmpty:{
+            message:'El campo nit es obligatorio!'
+          },
+
+
+        }
+      },
+      nombre_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo nombre_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      direccion_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo direccion_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      telefono_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo telefono_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      celular_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo celular_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      notas_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo notas_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      gran_contribuyente_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo gran_contribuyente_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      correo_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo correo_cliente es obligatorio!'
+          },
+
+          emailAddress: {
+                        message: 'No es valido la dirección correos.'
+                    }
+
+
+        }
+      },
+      ciudad_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo ciudad_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      pais_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo pais_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      contacto_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo contacto_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      clave_ingreso_DIAN_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo clave_ingreso_DIAN_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      clave_firma_DIAN_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo clave_firma_DIAN_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      clave_CC_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo clave_CC_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      responsable_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo responsable_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      ultimo_digito_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo ultimo_digito_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      ultimos_digitos_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo ultimos_digitos_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      activo_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo activo_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      tipo_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo tipo_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      representante_legal_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo representante_legal_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      nombre_representante_legal_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo nombre_representante_legal_cliente es obligatorio!'
+          },
+
+
+        }
+      },      
+
+
+
+    }
+  });
+});
+
+
+$(document).ready(function() {
+  $('#FormClienteEdit').bootstrapValidator({
+    message: 'This value is not valid',
+    feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+
+      nit:{
+        validators:{
+          notEmpty:{
+            message:'El campo nit es obligatorio!'
+          },
+
+
+        }
+      },
+      nombre_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo nombre_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      direccion_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo direccion_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      telefono_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo telefono_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      celular_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo celular_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      notas_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo notas_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      gran_contribuyente_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo gran_contribuyente_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      correo_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo correo_cliente es obligatorio!'
+          },
+
+          emailAddress: {
+                        message: 'No es valido la dirección correos.'
+                    }
+
+
+        }
+      },
+      ciudad_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo ciudad_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      pais_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo pais_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      contacto_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo contacto_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      clave_ingreso_DIAN_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo clave_ingreso_DIAN_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      clave_firma_DIAN_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo clave_firma_DIAN_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      clave_CC_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo clave_CC_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      responsable_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo responsable_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      ultimo_digito_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo ultimo_digito_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      ultimos_digitos_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo ultimos_digitos_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      activo_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo activo_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      tipo_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo tipo_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      representante_legal_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo representante_legal_cliente es obligatorio!'
+          },
+
+
+        }
+      },
+      nombre_representante_legal_cliente:{
+        validators:{
+          notEmpty:{
+            message:'El campo nombre_representante_legal_cliente es obligatorio!'
+          },
+
+
+        }
+      },      
+
+
+
+    }
+  });
+});
+
+
+
+$(document).ready(function () {
+        $('#FormCreatePerfil')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            descripcion_perfil: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo descripcion_perfil es requerido'
+                    }
+                }
+            }
+        }
+    })
+    })
+
+
+$(document).ready(function () {
+        $('#FormEditPerfil')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            descripcion_perfil: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo descripcion_perfil es requerido'
+                    }
+                }
+            }
+        }
+    })
+    })
+
+
+
+
+$(document).ready(function () {
+        $('#FormCreateCargos')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            descripcion_cargo: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo descripcion_Cargo es requerido'
+                    }
+                }
+            }
+        }
+    })
+    })
+
+
+$(document).ready(function () {
+        $('#FormEditCargos')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            descripcion_cargo: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo descripcion_Cargo es requerido'
+                    }
+                }
+            }
+        }
+    })
+    })
+
+
+
+$(document).ready(function () {
+        $('#FormCreateActividad')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            descripcion_actividad: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo descripcion_Cargo es requerido'
+                    }
+                }
+            }
+            ,
+            modo_actividad: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo modo_actividad es requerido'
+                    }
+                }
+            }
+        }
+    })
+    })
+
+
+$(document).ready(function () {
+        $('#FormEditActividad')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            descripcion_actividad: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo descripcion_Cargo es requerido'
+                    }
+                }
+            },
+            modo_actividad: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo modo_actividad es requerido'
+                    }
+                }
+            }
+        }
+    })
+    })
+
+
+
+$(document).ready(function () {
+        $('#FormCreateCompromisos')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            descripcion_compromisos: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo descripcion_compromisos es requerido'
+                    }
+                }
+            }
+          
+        }
+    })
+    })
+
+
+$(document).ready(function () {
+        $('#FormEditCompromisos')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            descripcion_compromisos: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo descripcion_compromisos requerido'
+                    }
+                }
+            }
+        }
+    })
+    })
+
+
+$(document).ready(function () {
+        $('#FromCreateEstadoCita')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            Estado: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo Estado es requerido'
+                    }
+                }
+            }
+          
+        }
+    })
+    })
+
+
+$(document).ready(function () {
+        $('#FromEditEstadoCita')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            Estado: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo Estado requerido'
+                    }
+                }
+            }
+        }
+    })
+    })
+
+
+$(document).ready(function () {
+        $('#FormCreateLugar')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            descripcion_lugar: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo descripcion_lugar es requerido'
+                    }
+                }
+            }
+          
+        }
+    })
+    })
+
+
+$(document).ready(function () {
+        $('#FormEditLugar')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            descripcion_lugar: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo descripcion_lugar requerido'
+                    }
+                }
+            }
+        }
+    })
+    })
+
+$(document).ready(function () {
+        $('#FormCreatecompromisos_cliente')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            id_empresa: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo empresa es requerido'
+                    }
+                }
+            },
+            id_compromiso: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo compromisio es requerido'
+                    }
+                }
+            },
+            id_periodo: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo periodo es requerido'
+                    }
+                }
+            }
+          
+        }//termina
+    })
+    })
+
+
+$(document).ready(function () {
+        $('#FormEditcompromisos_cliente')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            id_empresa: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo empresa es requerido'
+                    }
+                }
+            },
+            id_compromiso: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo compromisio es requerido'
+                    }
+                }
+            },
+            id_periodo: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo periodo es requerido'
+                    }
+                }
+            }
+        }
+    })
+    })
+
+

@@ -10,12 +10,18 @@
 
 
 
-{!! Form::open(['route' => 'estado_cita.store', 'method'=>'POST','id'=>'CreateFormCliente']) !!}
+{!! Form::open(['route' => 'estado_cita.store', 'method'=>'POST','id'=>'FromCreateEstadoCita']) !!}
 
 
 <div class="form-group" >
         <label for="id">Estado</label>
         {!! Form::text('Estado', null,['class' => 'form-control', 'placeholder' => 'Estado','name'=>'Estado']) !!}
+    </div>
+
+
+    <div class="form-group" >
+        <label for="id">Color Agenda</label>
+        {!! Form::color('color_agenda', null,['class' => 'form-control', 'placeholder' => 'color_agenda','name'=>'color_agenda']) !!}
     </div>
 
     <center><button type="submit" class="btn btn-primary" >Enviar</button>

@@ -24,7 +24,7 @@
   <button type="submit" class="btn btn-default">Submit</button>
 {!! Form::close() !!}
 <div class="panel panel-default">
-<h4><b><center>REGISTROS DE compromisosS/h4></b></center>
+<h4><b><center>REGISTROS DE COMPROMISO</h4></b></center>
 <a class="btn btn-info" data-toggle="modal" href='#crear_compromisos'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear compromisos</a>
 
   @include('compromisos.create')

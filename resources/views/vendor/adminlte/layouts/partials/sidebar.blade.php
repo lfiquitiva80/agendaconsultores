@@ -43,6 +43,7 @@
             <li><a href="{{ route('cargo.index') }}"><i class="fa fa-id-badge" aria-hidden="true"></i> <span> Cargos</span></a></li>
             <li><a href="{{ route('actividad.index') }}"><i class="fa fa-globe" aria-hidden="true"></i> <span> Actividad</span></a></li>
             <li><a href="{{ route('compromisos.index') }}"><i class="fa fa-commenting-o" aria-hidden="true"></i> <span> Compromisos</span></a></li>
+            <li><a href="{{ route('compromisoscliente.index') }}"><i class="fa fa-fort-awesome" aria-hidden="true"></i> <span> Compromisos Clientes</span></a></li>
             <li><a href="{{ route('estado_cita.index') }}"><i class="fa fa-hourglass-start" aria-hidden="true"></i> <span> Estado Cita</span></a></li>
             <li><a href="{{ route('lugar.index') }}"><i class="fa fa-map-marker" aria-hidden="true"></i> <span> Lugar</span></a></li>
 

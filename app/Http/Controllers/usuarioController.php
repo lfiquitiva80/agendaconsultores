@@ -9,6 +9,7 @@ use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\cargo;
 use App\perfil;
 use Alert;
 
@@ -25,10 +26,11 @@ class usuarioController extends Controller
         $usuario =User::search($request->name)->orderBy('id', 'asc')->paginate(10);
 
         $perfil = perfil::pluck('descripcion_perfil','id');
+        $cargo = cargo::pluck('descripcion_cargo','id');
       
 
        
-         return view('usuario.index',compact('usuario','perfil'));
+         return view('usuario.index',compact('usuario','perfil','cargo'));
 
 
     }
@@ -51,6 +53,8 @@ class usuarioController extends Controller
      */
     public function store(Request $request)
     {
+          
+
           $this->validate($request,[
             'name'     => 'required|max:255',
             'username' => 'sometimes|required|max:255|unique:users',
@@ -63,10 +67,13 @@ class usuarioController extends Controller
             'name'     => $request['name'],
             'email'    => $request['email'],
             'password' => bcrypt($request['password']),
+             'cargo'    => $request['cargo'],
+             'activo'    => $request['activo'],
             ];
-            //$leonidas = $faker->password;
+            
         
         $createuser=User::create($input);
+        //dd($createuser);
         Alert::success('', 'el usuario ha sido registrado con exito !')->persistent('Close');
         return redirect()->route('usuario.index');
     }
@@ -110,6 +117,8 @@ class usuarioController extends Controller
             'email'    => $request['email'],
             'password' => bcrypt($request['password']),
              'perfil_usuario'    => $request['perfil_usuario'],
+             'cargo'    => $request['cargo'],
+             'activo'    => $request['activo'],
             ];
 
            // dd($request->all());
