@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 use App\User;
 use App\perfil;
 use Alert;
@@ -30,11 +31,13 @@ class compromisosclientesController extends Controller
          $clientes = clientes::pluck('nombre_cliente', 'id');
         $compromisos = compromisos::pluck('descripcion_compromisos', 'id');
         $periodo = periodo::pluck('descripcion_periodo', 'id');
+        $id=null;
          //dd($perfil);
 
         //$cliente = DB::table('cliente')->paginate(15);
         //dd($cliente);
-   return view('compromisoscliente.index',compact('compromisos_clientes','usuarios','clientes','compromisos','periodo'));
+   return view('compromisoscliente.index',compact('compromisos_clientes','usuarios','clientes','compromisos','periodo', 'id'));
+
     }
 
     /**
@@ -67,7 +70,8 @@ class compromisosclientesController extends Controller
         // $compromisos_cliente =  new compromisos_cliente($request-> all());
         // $compromisos_cliente->save();
         \Alert::success('', 'El compromisos_cliente ha sido registrado con exito !')->persistent('Close');
-         return redirect()->route('compromisoscliente.index');
+         //return redirect()->route('compromisoscliente.index');
+         return back();
     }
 
     /**
@@ -87,9 +91,18 @@ class compromisosclientesController extends Controller
      * @param  \App\compromisos_cliente  $compromisos_cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit(compromisos_cliente $compromisos_cliente)
+    public function edit($id)
     {
-        //
+         $compromisos_clientes= compromisos_cliente::where('id_empresa',$id)->get();
+
+         $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
+         $clientes = clientes::pluck('nombre_cliente', 'id');
+        $compromisos = compromisos::pluck('descripcion_compromisos', 'id');
+        $periodo = periodo::pluck('descripcion_periodo', 'id');
+         
+         Log::info('El usuario '. \Auth::user()->name .' ingreso a compromisos cliente');
+        //dd($eventosg);
+        return view('compromisoscliente.compromiso', compact('compromisos_clientes','usuarios','clientes','compromisos','periodo','id'));
     }
 
     /**
@@ -102,10 +115,10 @@ class compromisosclientesController extends Controller
     public function update(Request $request, compromisos_cliente $id)
     {
          
-            $json = json_encode($request->input('id_empresa'), true);
+            //$json = json_encode($request->input('id_empresa'), true);
         //dd($json);
         $compromisos = compromisos_cliente::findOrFail($request->id);
-        $compromisos->id_empresa=$json;
+        $compromisos->id_empresa=$request->input('id_empresa');
         $compromisos->id_compromiso=$request->input('id_compromiso');
         $compromisos->id_periodo=$request->input('id_periodo');
         $compromisos->save();

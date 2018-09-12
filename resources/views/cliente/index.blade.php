@@ -35,7 +35,6 @@
 
 
 
-
 <p>
 <div class="table-responsive">
 <table class="table table-hover" >
@@ -44,6 +43,7 @@
       <td>id_cliente</td>
       <td>nit</td>
       <td>nombre_cliente</td>
+      <td>Activo?</td>
 <!--       <td>direccion_cliente</td>
       <td>telefono_cliente</td>
       <td>celular_cliente</td>
@@ -80,6 +80,13 @@
           <td>{{$row->id}}</td>
           <td>{{$row->nit}}</td>
           <td>{{$row->nombre_cliente}}</td>
+          <td>@if ($row->activo_cliente==1)
+    
+              <span class="badge bg-light-blue">Si</span>     
+              @else
+              <span class="badge bg-red">No</span>
+              @endif
+          </td>
          <!--  <td>{{$row->direccion_cliente}}</td>
           <td>{{$row->telefono_cliente}}</td>
           <td>{{$row->celular_cliente}}</td>
@@ -100,8 +107,7 @@
           <td>{{$row->representante_legal_cliente}}</td>
           <td>{{$row->nombre_representante_legal_cliente}}</td> -->
 
-            <td><a   data-toggle="modal" data-target="#crear_compromisos_cliente" data-id="{{$row->id}}"
-            class="btn btn-primary"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Compromisos</i></a></td>
+         <td><a href="{{ $url = route('compromisoscliente.edit', $row->id) }}" class="btn btn-primary"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Compromisos</a></td>
 
           <td><a   data-toggle="modal" data-target="#editar_clientes" data-id="{{$row->id}}"
             data-nit="{{$row->nit}}"
@@ -127,6 +133,7 @@
             data-nombre_representante_legal_cliente="{{$row->nombre_representante_legal_cliente}}"     class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
             <td>@include('cliente.destroy')</td>
+
           
     </tr>
   </tbody>

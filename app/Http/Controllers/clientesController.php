@@ -26,17 +26,18 @@ class clientesController extends Controller
      */
     public function index(Request $request)
     {
-         $cliente = clientes::Search($request->nombre)->orderBy('nombre_cliente', 'asc')->paginate(10);
+$cliente = clientes::Search($request->nombre)->orderBy('activo_cliente', 'desc')->orderBy('nombre_cliente', 'asc')->paginate(10);
          $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
          $clientes = clientes::pluck('nombre_cliente', 'id');
         $compromisos = compromisos::pluck('descripcion_compromisos', 'id');
         $periodo = periodo::pluck('descripcion_periodo', 'id');
         $compromisos_clientes = compromisos_cliente::all();
+        $id=null;
          //dd($compromisos_clientes );
 
         //$cliente = DB::table('cliente')->paginate(15);
         //dd($cliente);
-   return view('cliente.index',compact('cliente','usuarios','clientes','compromisos','periodo','compromisos_clientes'));
+   return view('cliente.index',compact('cliente','usuarios','clientes','compromisos','periodo','compromisos_clientes','id'));
 
     }
 

@@ -29,13 +29,8 @@
         right: 'month,agendaWeek,agendaDay,listWeek'
       },
 
-      dayClick: function(date) {
-            jQuery.noConflict(); 
-            $('#crear_citas').modal();
-        // var fecha=$(this).val();
-            $('#fecha_citas').val(date.format());
-        },
-   eventClick: function(calEvent, jsEvent, view) {
+      
+      eventClick: function(calEvent, jsEvent, view) {
 
                 $('#editar_citas_agenda').modal(); 
 
@@ -105,6 +100,13 @@
 
 
   },
+
+  dayClick: function(date) {
+            jQuery.noConflict(); 
+            $('#crear_citas').modal();
+        // var fecha=$(this).val();
+            $('#fecha_citas').val(date.format());
+        },
 
        
 

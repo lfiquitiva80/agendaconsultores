@@ -49,6 +49,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
 Route::group(['middleware' => 'auth'], function () {
     //    Route::get('/link1', function ()    {
 //        // Uses Auth Middleware
@@ -56,6 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     #adminlte_routes
+  
 Route::resource('clientes','clientesController');
 Route::resource('dashboard','dashboardController');
 Route::resource('actividad','actividadController');
@@ -64,27 +68,26 @@ Route::resource('cargo','cargoController');
 Route::resource('citas','citasController');
 Route::resource('compromisos','compromisosController');
 Route::resource('compromisoscliente','compromisosclientesController');
-Route::resource('conf_dev_iva','conf_dev_ivaController');
-Route::resource('conf_imp_ica','conf_imp_icaController');
-Route::resource('conf_imp_iva','conf_imp_ivaController');
-Route::resource('conf_imp_renta','conf_imp_rentaController');
-Route::resource('conf_imp_reteica','conf_imp_reteicaController');
-Route::resource('conf_imp_retencion','conf_imp_retencionController');
-Route::resource('conf_informe','conf_informeController');
-Route::resource('detalle_dev_iva','detalle_dev_ivaController');
-Route::resource('detalle_imp_ica','detalle_imp_icaController');
-Route::resource('detalle_imp_iva','detalle_imp_ivaController');
-Route::resource('detalle_imp_renta','detalle_imp_rentaController');
-Route::resource('detalle_imp_reteica','detalle_imp_reteicaController');
-Route::resource('detalle_imp_retencion','detalle_imp_retencionController');
-Route::resource('detalle_informe','detalle_informeController');
-Route::resource('encabezado_dev_iva','encabezado_dev_ivaController');
-Route::resource('encabezado_imp_ica','encabezado_imp_icaController');
-Route::resource('encabezado_imp_iva','encabezado_imp_ivaController');
-Route::resource('encabezado_imp_renta','encabezado_imp_rentaController');
-Route::resource('encabezado_imp_reteica','encabezado_imp_reteicaController');
-Route::resource('encabezado_imp_retencion','encabezado_imp_retencionController');
-Route::resource('encabezado_informe','encabezado_informeController');
+//Route::resource('conf_dev_iva','conf_dev_ivaController');
+//Route::resource('conf_imp_ica','conf_imp_icaController');
+//Route::resource('conf_imp_iva','conf_imp_ivaController');
+//Route::resource('conf_imp_renta','conf_imp_rentaController');
+//Route::resource('conf_imp_reteica','conf_imp_reteicaController');
+//Route::resource('conf_imp_retencion','conf_imp_retencionController');
+//Route::resource('conf_informe','conf_informeController');
+//Route::resource('detalle_dev_iva','detalle_dev_ivaController');
+//Route::resource('detalle_imp_ica','detalle_imp_icaController');
+//Route::resource('detalle_imp_iva','detalle_imp_ivaController');
+//Route::resource('detalle_imp_renta','detalle_imp_rentaController');
+//Route::resource('detalle_imp_reteica','detalle_imp_reteicaController');
+//Route::resource('detalle_imp_retencion','detalle_imp_retencionController');
+//Route::resource('detalle_informe','detalle_informeController');
+//Route::resource('encabezado_dev_iva','encabezado_dev_ivaController');
+//Route::resource('encabezado_imp_ica','encabezado_imp_icaController');
+//Route::resource('encabezado_imp_iva','encabezado_imp_ivaController');
+//Route::resource('encabezado_imp_renta','encabezado_imp_rentaController');
+//Route::resource('encabezado_imp_retencion','encabezado_imp_retencionController');
+//Route::resource('encabezado_informe','encabezado_informeController');
 Route::resource('estado_cita','estado_citaController');
 Route::resource('lugar','lugarController');
 Route::resource('migrations','migrationsController');

@@ -19,7 +19,7 @@
 
 <div class="form-group">
     <label for="id">empresa</label>
-    {!! Form::select('id_empresa', $clientes, null, ['class' => 'form-control', 'name'=>'id_empresa[]','id'=>'id_empresa', 'multiple' => 'multiple']) !!} 
+    {!! Form::select('id_empresa', $clientes, null, ['class' => 'form-control', 'name'=>'id_empresa','id'=>'id_empresa']) !!} 
     
 </div>
 <div class="form-group">

@@ -23,7 +23,7 @@ class usuarioController extends Controller
      */
     public function index(Request $request)
     {
-        $usuario =User::search($request->name)->orderBy('id', 'asc')->paginate(10);
+        $usuario =User::search($request->name)->orderBy('name', 'asc')->orderBy('activo', 'asc')->paginate(10);
 
         $perfil = perfil::pluck('descripcion_perfil','id');
         $cargo = cargo::pluck('descripcion_cargo','id');
