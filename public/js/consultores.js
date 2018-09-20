@@ -23,6 +23,7 @@ $('#editar_clientes').on('show.bs.modal', function (event) {
   var tipo_cliente = button.data('tipo_cliente')
   var representante_legal_cliente = button.data('representante_legal_cliente')
   var nombre_representante_legal_cliente = button.data('nombre_representante_legal_cliente')
+  var valor = button.data('valor')
 
   var modal = $(this)
 
@@ -48,7 +49,7 @@ $('#editar_clientes').on('show.bs.modal', function (event) {
   modal.find('.modal-body #tipo_cliente').val(tipo_cliente)
   modal.find('.modal-body #representante_legal_cliente').val(representante_legal_cliente)
   modal.find('.modal-body #nombre_representante_legal_cliente').val(nombre_representante_legal_cliente)
-
+  modal.find('.modal-body #valor').val(valor)
 })
 
 
@@ -62,6 +63,8 @@ $('#editar_usuario').on('show.bs.modal', function (event) {
   var email = button.data('email')
   var cargo = button.data('cargo')
   var activo = button.data('activo')
+  var valor = button.data('valor')
+  var horas = button.data('horas')
 // Extract info from data-* attributes
 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
@@ -74,6 +77,61 @@ modal.find('.modal-body #id').val(id);
 modal.find('.modal-body #perfil_usuario').val(perfil_usuario);
 modal.find('.modal-body #cargo').val(cargo);
 modal.find('.modal-body #activo').val(activo);
+modal.find('.modal-body #valor').val(valor);
+modal.find('.modal-body #horas').val(horas);
+})
+
+
+$('#editar_detalle_dev_iva').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var cns_detalle = button.data('cns_detalle')
+  var codigo = button.data('codigo')
+  var descripcion = button.data('descripcion')
+  var ressi = button.data('ressi')
+  var resno = button.data('resno')
+  var resna = button.data('resna')
+  var audsi = button.data('audsi')
+  var audno = button.data('audno')
+  var audna = button.data('audna')
+
+// Extract info from data-* attributes
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.modal-body #id').val(id);
+modal.find('.modal-body #cns_detalle').val(cns_detalle);
+modal.find('.modal-body #codigo').val(codigo);
+modal.find('.modal-body #descripcion').val(descripcion);
+modal.find('.modal-body #ressi').val(ressi);
+modal.find('.modal-body #resno').val(resno);
+modal.find('.modal-body #resna').val(resna);
+modal.find('.modal-body #audsi').val(audsi);
+modal.find('.modal-body #audno').val(audno);
+modal.find('.modal-body #audna').val(audna);
+})
+
+
+
+$('#editarchecklist').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var descripcion = button.data('descripcion')
+  var filtro_plantilla = button.data('filtro_plantilla')
+  var tabla_encabezado = button.data('tabla_encabezado')
+  var tabla_detalle = button.data('tabla_detalle')
+  
+
+// Extract info from data-* attributes
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.modal-body #id').val(id);
+modal.find('.modal-body #descripcion').val(descripcion);
+modal.find('.modal-body #filtro_plantilla').val(filtro_plantilla);
+modal.find('.modal-body #tabla_encabezado').val(tabla_encabezado);
+modal.find('.modal-body #tabla_detalle').val(tabla_detalle);
+
 })
 
 
@@ -232,6 +290,49 @@ modal.find('.modal-body #estado_citas').val(estado_citas);
 modal.find('.modal-body #compromiso_citas').val(compromiso_citas);
 
 })
+
+
+
+
+$('#editar_encabezado_dev_iva').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var auditor = button.data('auditor')
+  var bim = button.data('bim')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacion_archivos')
+  var fecha_auditoria_encabezado_dev_iva = new Date(button.data('fechaauditoriaencabezadodeviva')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #auditor').val(auditor)
+  modal.find('.modal-body #bim').val(bim)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria_encabezado_dev_iva').val(fecha_auditoria_encabezado_dev_iva)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
 
 
 
@@ -576,6 +677,37 @@ $(document).ready(function() {
         }
       },
 
+
+       valor: {
+        message: 'El campo name no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo Valor es requerido!'
+          },
+
+        }
+      },
+
+       horas: {
+        message: 'El campo name no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo Horas es requerido!'
+          },
+
+        }
+      },
+
+      perfil_usuario: {
+        message: 'El campo name no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo Perfil es requerido!'
+          },
+
+        }
+      },
+
       activo: {
         message: 'El campo Activo no es valido!',
         validators: {
@@ -670,6 +802,36 @@ $(document).ready(function() {
         }
       },
 
+       valor: {
+        message: 'El campo name no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo Valor es requerido!'
+          },
+
+        }
+      },
+
+       horas: {
+        message: 'El campo name no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo Horas es requerido!'
+          },
+
+        }
+      },
+
+      perfil_usuario: {
+        message: 'El campo name no es valido!',
+        validators: {
+          notEmpty: {
+            message: 'El campo Perfil es requerido!'
+          },
+
+        }
+      },
+
       activo: {
         message: 'El campo Activo no es valido!',
         validators: {
@@ -752,15 +914,7 @@ $(document).ready(function() {
 
         }
       },
-      notas_cliente:{
-        validators:{
-          notEmpty:{
-            message:'El campo notas_cliente es obligatorio!'
-          },
-
-
-        }
-      },
+      
       gran_contribuyente_cliente:{
         validators:{
           notEmpty:{
@@ -963,15 +1117,7 @@ $(document).ready(function() {
 
         }
       },
-      notas_cliente:{
-        validators:{
-          notEmpty:{
-            message:'El campo notas_cliente es obligatorio!'
-          },
-
-
-        }
-      },
+      
       gran_contribuyente_cliente:{
         validators:{
           notEmpty:{
@@ -1463,4 +1609,93 @@ $(document).ready(function () {
     })
     })
 
+
+
+
+
+$(document).ready(function () {
+        $('#FormCreatechecklists')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            descripcion: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo descripción es requerido'
+                    }
+                }
+            },
+            filtro_plantilla: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo filtro de plantilla es requerido'
+                    }
+                }
+            },
+            tabla_encabezado: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo tabla encabezado es requerido'
+                    }
+                }
+            },
+            tabla_detalle: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo tabla detalle es requerido'
+                    }
+                }
+            }
+
+
+          
+        }//termina
+    })
+    })
+
+
+$(document).ready(function () {
+        $('#FormEditchecklists')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            descripcion: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo descripción es requerido'
+                    }
+                }
+            },
+            filtro_plantilla: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo filtro de plantilla es requerido'
+                    }
+                }
+            },
+            tabla_encabezado: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo tabla encabezado es requerido'
+                    }
+                }
+            },
+            tabla_detalle: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo tabla detalle es requerido'
+                    }
+                }
+            }
+        }
+    })
+    })
 

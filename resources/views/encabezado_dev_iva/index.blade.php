@@ -8,7 +8,7 @@
 @section('main-content')
 
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
         @include('sweet::alert')
 
 
@@ -16,7 +16,7 @@
   <div class="panel-body">
 
 <div class="container">
-{!! Form::open(['route' => 'clientes.index', 'method'=>'GET', 'Class'=>'navbar-form navbar-right']) !!}
+{!! Form::open(['route' => 'encabezado_dev_iva.index', 'method'=>'GET', 'Class'=>'navbar-form navbar-right']) !!}
 <!--<form class="navbar-form navbar-right" role="search">-->
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Search" name="nombre" id="nombre">
@@ -24,12 +24,12 @@
   <button type="submit" class="btn btn-default">Submit</button>
 {!! Form::close() !!}
 <div class="panel panel-default">
-<h4><b><center>REGISTROS DE CLIENTES</h4></b></center>
-<a class="btn btn-info" data-toggle="modal" href='#crear_cliente'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear Cliente</a>
+<h4><b><center>REGISTROS DE encabezado_dev_iva</h4></b></center>
+<a class="btn btn-info" data-toggle="modal" href='#crear_encabezado_dev_iva'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear encabezado_dev_iva</a>
 
-  @include('cliente.create')
+  @include('encabezado_dev_iva.create')
 
-  @include('cliente.edit')
+  @include('encabezado_dev_iva.edit')
 
 
 
@@ -39,30 +39,23 @@
 <table class="table table-hover" >
   <thead>
     <tr>
-      <td>id_cliente</td>
-      <td>nit</td>
-      <td>nombre_cliente</td>
-<!--       <td>direccion_cliente</td>
-      <td>telefono_cliente</td>
-      <td>celular_cliente</td>
-      <td>notas_cliente</td>
-      <td>gran_contribuyente_cliente</td>
-      <td>correo_cliente</td>
-      <td>ciudad_cliente</td>
-      <td>pais_cliente</td>
-      <td>contacto_cliente</td>
-      <td>clave_ingreso_DIAN_cliente</td>
-      <td>clave_firma_DIAN_cliente</td>
-      <td>clave_CC_cliente</td>
-      <td>responsable_cliente</td>
-      <td>ultimo_digito_cliente</td>
-      <td>ultimos_digitos_cliente</td>
-      <td>activo_cliente</td>
-      <td>tipo_cliente</td>
-      <td>representante_legal_cliente</td>
-      <td>nombre_representante_legal_cliente</td> -->
+<th>id</th>
+<th>Detalle Devolución Iva</th>
+<th>responsable</th>
+<th>cliente</th>
+<th>auditor</th>
+<th>bim</th>
+<th>fecha_vencimiento</th>
+<th>fecha_entrega</th>
+<th>Observaciones</th>
+<th>enviar_auditoria</th>
+<th>cierre_auditoria</th>
+<th>observaciones_auditoria</th>
+<th>ubicacion_archivos</th>
+<th>fecha_auditoria_encabezado_dev_iva</th>
+<th>fecha_elaboracion</th>
 
-      <td>  Acción </td>
+       <th>  Acción </th>
 
 
 
@@ -70,60 +63,61 @@
   </thead>
   <tbody>
 
-  @foreach($cliente as $row)
+  @foreach($encabezado_dev_iva as $row)
     <tr>
 
 
 
           <td>{{$row->id}}</td>
-          <td>{{$row->nit}}</td>
-          <td>{{$row->nombre_cliente}}</td>
-         <!--  <td>{{$row->direccion_cliente}}</td>
-          <td>{{$row->telefono_cliente}}</td>
-          <td>{{$row->celular_cliente}}</td>
-          <td>{{$row->notas_cliente}}</td>
-          <td>{{$row->gran_contribuyente_cliente}}</td>
-          <td>{{$row->correo_cliente}}</td>
-          <td>{{$row->ciudad_cliente}}</td>
-          <td>{{$row->pais_cliente}}</td>
-          <td>{{$row->contacto_cliente}}</td>
-          <td>{{$row->clave_ingreso_DIAN_cliente}}</td>
-          <td>{{$row->clave_firma_DIAN_cliente}}</td>
-          <td>{{$row->clave_CC_cliente}}</td>
-          <td>{{$row->responsable_cliente}}</td>
-          <td>{{$row->ultimo_digito_cliente}}</td>
-          <td>{{$row->ultimos_digitos_cliente}}</td>
-          <td>{{$row->activo_cliente}}</td>
-          <td>{{$row->tipo_cliente}}</td>
-          <td>{{$row->representante_legal_cliente}}</td>
-          <td>{{$row->nombre_representante_legal_cliente}}</td> -->
+          <td>
+              <a class="btn bg-navy btn-flat margin" href="{{ $url = route('detalle_dev_iva.edit', $row->id) }}" role="button"><i class="fa fa-list-alt" aria-hidden="true"></i> Detalle Dev Iva</a>  
+          </td>
+          <td>{{$row->usuarios->name}}</td>
+          <td>{{$row->clientes->nombre_cliente}}</td>
+          <td>{{$row->auditores->name}}</td>
+          <td>{{$row->bim}}</td>
+          <td>{{$row->fecha_vencimiento}}</td>
+          <td>{{$row->fecha_entrega}}</td>
+          <td>{{$row->Observaciones}}</td>
+          <td>@if($row->enviar_auditoria==1)
+              <span class="badge bg-light-blue">Si</span> 
+              @else
+              <span class="badge bg-red">No</span>
+              @endif
+          </td>
 
+           <td>@if($row->cierre_auditoria==1)
+             <span class="badge bg-light-blue">Si</span> 
+              @else
+              <span class="badge bg-red">No</span>
+              @endif
+          </td>
+        
+          <td>{{$row->observaciones_auditoria}}</td>
+          <td><a class="btn btn-danger" href="{{$row->ubicacion_archivos}}" role="button"><i class="fa fa-download" aria-hidden="true"></i> Descargar</a></td>
+          <td>{{$row->fecha_auditoria_encabezado_dev_iva}}</td>
+          <td>{{$row->fecha_elaboracion}}</td>
 
+         
 
-          <td><a   data-toggle="modal" data-target="#editar_clientes" data-id="{{$row->id}}"
-            data-nit="{{$row->nit}}"
-            data-nombre_cliente="{{$row->nombre_cliente}}"
-            data-direccion_cliente="{{$row->direccion_cliente}}"
-            data-telefono_cliente="{{$row->telefono_cliente}}"
-            data-celular_cliente="{{$row->celular_cliente}}"
-            data-notas_cliente="{{$row->notas_cliente}}"
-            data-gran_contribuyente_cliente="{{$row->gran_contribuyente_cliente}}"
-            data-correo_cliente="{{$row->correo_cliente}}"
-            data-ciudad_cliente="{{$row->ciudad_cliente}}"
-            data-pais_cliente="{{$row->pais_cliente}}"
-            data-contacto_cliente="{{$row->contacto_cliente}}"
-            data-clave_ingreso_DIAN_cliente="{{$row->clave_ingreso_DIAN_cliente}}"
-            data-clave_firma_DIAN_cliente="{{$row->clave_firma_DIAN_cliente}}"
-            data-clave_CC_cliente="{{$row->clave_CC_cliente}}"
-            data-responsable_cliente="{{$row->responsable_cliente}}"
-            data-ultimo_digito_cliente="{{$row->ultimo_digito_cliente}}"
-            data-ultimos_digitos_cliente="{{$row->ultimos_digitos_cliente}}"
-            data-activo_cliente="{{$row->activo_cliente}}"
-            data-tipo_cliente="{{$row->tipo_cliente}}"
-            data-representante_legal_cliente="{{$row->representante_legal_cliente}}" 
-            data-nombre_representante_legal_cliente="{{$row->nombre_representante_legal_cliente}}"     class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+          <td><a data-toggle="modal" data-target="#editar_encabezado_dev_iva" 
+          data-id="{{$row->id}}"
+          data-responsable="{{$row->responsable}}"
+          data-cliente="{{$row->cliente}}"
+          data-auditor="{{$row->auditor}}"
+          data-bim="{{$row->bim}}"
+          data-fechavencimiento="{{$row->fecha_vencimiento}}"
+          data-fechaentrega="{{$row->fecha_entrega}}"
+          data-Observaciones="{{$row->Observaciones}}"
+          data-enviarauditoria="{{$row->enviar_auditoria}}"
+          data-cierreauditoria="{{$row->cierre_auditoria}}"
+          data-observacionesauditoria="{{$row->observaciones_auditoria}}"
+          data-ubicacionarchivos="{{$row->ubicacion_archivos}}"
+          data-fechaauditoriaencabezadodeviva="{{$row->fecha_auditoria_encabezado_dev_iva}}"
+          data-fechaelaboracion="{{$row->fecha_elaboracion}}" 
+          class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
-            <td>@include('cliente.destroy')</td>
+            <td>@include('encabezado_dev_iva.destroy')</td>
           
     </tr>
   </tbody>
@@ -134,7 +128,7 @@
 </table>
 </div>
 
-<center>{{ $cliente->links() }}</center>
+<center>{{ $encabezado_dev_iva->links() }}</center>
 
 </div>
 

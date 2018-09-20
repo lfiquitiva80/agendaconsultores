@@ -33,12 +33,18 @@
         <ul class="sidebar-menu">
             <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
             <!-- Optionally, you can add icons to the links -->
+
+            @if (Auth::user()->perfil_usuario == 1)
             <li class="active"><a href="{{ url('home') }}"><i class="fa fa-home" aria-hidden="true"></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
 
             <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-tachometer" aria-hidden="true"></i></i> <span> Dashboard</span></a></li>
             <li><a href="{{ route('usuario.index') }}"><i class="fa fa-user-circle" aria-hidden="true"></i> <span> Usuarios</span></a></li>
             <li><a href="{{ route('clientes.index') }}"><i class="fa fa-users" aria-hidden="true"></i> <span> Clientes</span></a></li>
+            <li><a href="{{ route('panel.index') }}"><i class="fa fa-check-square-o" aria-hidden="true"></i></i> <span> Checklist</span></a></li>
+
+
             <li><a href="{{ route('perfil.index') }}"><i class="fa fa-address-card" aria-hidden="true"></i><span> Perfil</span></a></li>
+
             <li><a href="{{ route('citas.index') }}"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> <span> Citas</span></a></li>
             <li><a href="{{ route('cargo.index') }}"><i class="fa fa-id-badge" aria-hidden="true"></i> <span> Cargos</span></a></li>
             <li><a href="{{ route('actividad.index') }}"><i class="fa fa-globe" aria-hidden="true"></i> <span> Actividad</span></a></li>
@@ -59,6 +65,19 @@
                     <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
                 </ul>
             </li>
+            @else
+            <li class="active"><a href="{{ url('home') }}"><i class="fa fa-home" aria-hidden="true"></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
+
+            <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-tachometer" aria-hidden="true"></i></i> <span> Dashboard</span></a></li>
+
+            <li><a href="{{ route('panel.index') }}"><i class="fa fa-check-square-o" aria-hidden="true"></i></i> <span> Checklist</span></a></li>
+
+            @endif
+
+
+            
+
+
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

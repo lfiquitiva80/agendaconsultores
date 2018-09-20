@@ -114,6 +114,12 @@
                        {!! Form::text('nombre_representante_legal_cliente', null,['class' => 'form-control', 'placeholder' => 'nombre_representante_legal_cliente','name'=>'nombre_representante_legal_cliente','id'=>'nombre_representante_legal_cliente']) !!}
                    </div>
 
+                   <div class="form-group">
+                    <label for="id">Valor</label>
+                    {!! Form::number('valor', null,['class' => 'form-control', 'placeholder' => 'valor','name'=>'valor','id'=>'valor']) !!}
+
+                </div>
+
 
 
                    <center><button type="submit" class="btn btn-primary" >Enviar</button>

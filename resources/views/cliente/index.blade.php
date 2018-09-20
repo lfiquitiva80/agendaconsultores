@@ -129,6 +129,7 @@
             data-ultimos_digitos_cliente="{{$row->ultimos_digitos_cliente}}"
             data-activo_cliente="{{$row->activo_cliente}}"
             data-tipo_cliente="{{$row->tipo_cliente}}"
+            data-valor="{{$row->valor}}"
             data-representante_legal_cliente="{{$row->representante_legal_cliente}}" 
             data-nombre_representante_legal_cliente="{{$row->nombre_representante_legal_cliente}}"     class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 

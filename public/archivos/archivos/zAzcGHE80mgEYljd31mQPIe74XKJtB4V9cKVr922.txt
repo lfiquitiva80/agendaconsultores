@@ -1,0 +1,208 @@
+
+********************************
+Crear el modelo y el controlador
+********************************
+
+
+Usuario: consulgro
+Clave: UBT0p_ibdI
+Panel Administrativo:
+http://www.consultoresgroup.com/cpanel
+
+**** bases de datos en la nube
+DB_CONNECTION=mysql
+DB_HOST=190.8.176.14
+DB_PORT=3306
+DB_DATABASE=consulgro_planner
+DB_USERNAME=consulgro_planner
+DB_PASSWORD=Alista2022
+
+******/********
+
+php artisan make:controller utadeoController --resource
+php artisan make:controller empleadoController --resource --model=empleado
+php artisan make:controller gestionpagoController --resource --model=plantilla
+
+php artisan make:controller tipodocumentoController --resource --model=tipodocumento
+php artisan make:controller nivel_educativoController --resource --model=nivel_educativo
+php artisan make:controller profesionController --resource --model=profesion
+
+php artisan make:controller estado_civilController --resource --model=estado_civil
+php artisan make:controller cargoController --resource --model=cargo
+php artisan make:controller sedeController --resource --model=sede
+php artisan make:controller departamento_areaController --resource --model=departamento_area
+php artisan make:controller tipo_empleadoController --resource --model=tipo_empleado
+php artisan make:controller forma_pagoController --resource --model=forma_pago
+php artisan make:controller bancoController --resource --model=banco
+php artisan make:controller estado_trabajadorController --resource --model=estado_trabajador
+
+php artisan make:controller compromisosclientesController --resource --model=compromisos_cliente
+php artisan make:controller arlController --resource --model=arl
+php artisan make:controller epsController --resource --model=eps
+php artisan make:controller contratoController --resource --model=contrato
+
+
+php artisan make:controller servicios_adicionalesController --resource --model=servicios_adicionales
+php artisan make:controller servicios_adicionales_occidentalController --resource --model=servicios_adicionales_occidental
+
+php artisan make:controller tipodevehiculoController --resource --model=tipodevehiculo
+php artisan make:controller tiposervicioController --resource --model=tiposervicio
+php artisan make:controller solicitanteinternoController --resource --model=solicitanteinterno
+
+php artisan make:controller controlhorarioController --resource --model=controlhorario
+php artisan make:controller estadocontrolhorarioController --resource --model=estadocontrolhorario
+php artisan make:controller encabezado_dev_ivaController --resource --model=encabezado_dev_iva
+php artisan make:controller encabezado_dev_ivaController --resource --model=encabezado_dev_iva
+php artisan make:controller plantilla_checklistController --resource --model=plantilla_checklist
+php artisan make:controller panelController --resource
+
+plantilla_checklist
+
+criterios_evaluacion
+
+php artisan make:controllerconfig_globalController --resource --model=config_global
+
+php artisan make:controller encabezado_dev_ivaController --resource
+
+php artisan make:controller preguntasController --resource
+
+	
+
+**********************************
+PANEL ADMINISTRADOR
+**********************************
+
+https://github.com/acacha/adminlte-laravel
+
+
+*************************************
+IMAGENES
+*************************************
+
+https://www.youtube.com/watch?v=Vtvc92uVhqo
+
+
+
+https://styde.net/enviar-emails-con-mailables-en-laravel-5-3/
+
+
+php artisan make:notification documentos --markdown=mails.documentos.documentos
+
+***********************
+Crear Mail, y enviar 
+***********************
+
+php artisan make:mail certificadonopago --markdown=emails.certificadonopago.certificadonopago
+
+php artisan make:mail servicioadd --markdown=emails.servicioadd.servicioadd
+
+php artisan make:mail certificadoypago--markdown=emails.certificadoypago.certificadoypago
+
+
+php artisan make:mail finalencuesta --markdown=emails.finalrespuesta.finalrespuesta
+
+php artisan make:mail aceptacion --markdown=emails.aceptacion.aceptacion
+
+php artisan make:mail gestionpago --markdown=emails.gestionpago.gestionpago
+
+php artisan make:mail rectificacion --markdown=emails.rectificacion.rectificacion
+
+php artisan make:mail confirmacionpagofinanciera --markdown=emails.confirmacionpagofinaciera.confirmacionpagofinanciera
+
+php artisan make:notification usuarios--markdown=mail.usuario.usersedit
+
+
+************************
+Graficos
+************************
+
+https://github.com/fxcosta/laravel-chartjs
+
+
+http://www.midnightcowboycoder.com/
+
+
+
+$app->bind('path.public', function() {
+return base_path().'/../public_html/planner';
+});
+require __DIR__.'/../../agendaconsultores/vendor/autoload.php';
+$app = require_once __DIR__.'/../../agendaconsultores/bootstrap/app.php';
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=consulgro_planner 
+DB_USERNAME=consulgro_planner
+DB_PASSWORD=Alista2022
+
+
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=base64:UvINgSWVVwX6Djk7EnvuZmtFW39LJ7dSkGH+tMeV+bQ=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+LOG_CHANNEL=stack
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=consulgro_planner 
+DB_USERNAME=consulgro_planner
+DB_PASSWORD=Alista2022
+
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
+QUEUE_DRIVER=sync
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+PUSHER_APP_CLUSTER=mt1
+
+MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+
+
+107
+
+
+8257285
+8257110
+8263655
+
+
+  @php
+        $tiposervicio= array("AGENDA 8 HORAS","AGENDA 10 HORAS","AGENDA 12 HORAS",
+"AVANZADA",
+"BACK UP",
+"CARGA CRÍTICA",
+"DESPLAZAMIENTO",
+"INTERNO",
+"MEET & GREET",
+"REACCION 911",
+"RELEVO",
+"TRANSFER",
+"SCRAP"
+);
+
+
+
+    @endphp
+
+
+{{$edit->tipovehiculos->descripcion_tipo_vehiculo}}

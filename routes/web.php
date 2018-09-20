@@ -75,28 +75,31 @@ Route::resource('compromisoscliente','compromisosclientesController');
 //Route::resource('conf_imp_reteica','conf_imp_reteicaController');
 //Route::resource('conf_imp_retencion','conf_imp_retencionController');
 //Route::resource('conf_informe','conf_informeController');
-//Route::resource('detalle_dev_iva','detalle_dev_ivaController');
-//Route::resource('detalle_imp_ica','detalle_imp_icaController');
-//Route::resource('detalle_imp_iva','detalle_imp_ivaController');
-//Route::resource('detalle_imp_renta','detalle_imp_rentaController');
-//Route::resource('detalle_imp_reteica','detalle_imp_reteicaController');
-//Route::resource('detalle_imp_retencion','detalle_imp_retencionController');
-//Route::resource('detalle_informe','detalle_informeController');
-//Route::resource('encabezado_dev_iva','encabezado_dev_ivaController');
-//Route::resource('encabezado_imp_ica','encabezado_imp_icaController');
-//Route::resource('encabezado_imp_iva','encabezado_imp_ivaController');
-//Route::resource('encabezado_imp_renta','encabezado_imp_rentaController');
-//Route::resource('encabezado_imp_retencion','encabezado_imp_retencionController');
-//Route::resource('encabezado_informe','encabezado_informeController');
+Route::resource('detalle_dev_iva','detalle_dev_ivaController');
+Route::resource('detalle_imp_ica','detalle_imp_icaController');
+Route::resource('detalle_imp_iva','detalle_imp_ivaController');
+Route::resource('detalle_imp_renta','detalle_imp_rentaController');
+Route::resource('detalle_imp_reteica','detalle_imp_reteicaController');
+Route::resource('detalle_imp_retencion','detalle_imp_retencionController');
+Route::resource('detalle_informe','detalle_informeController');
+Route::resource('encabezado_dev_iva','encabezado_dev_ivaController');
+Route::resource('encabezado_imp_ica','encabezado_imp_icaController');
+Route::resource('encabezado_imp_iva','encabezado_imp_ivaController');
+Route::resource('encabezado_imp_renta','encabezado_imp_rentaController');
+Route::resource('encabezado_imp_retencion','encabezado_imp_retencionController');
+Route::resource('encabezado_informe','encabezado_informeController');
 Route::resource('estado_cita','estado_citaController');
 Route::resource('lugar','lugarController');
 Route::resource('migrations','migrationsController');
 Route::resource('perfil','perfilController');
 Route::resource('periodo','periodoController');
 Route::resource('usuario','usuarioController');
+Route::resource('checklist','checklistController');
+Route::resource('panel','panelController');
 
 Route::get('citas_agenda','citasController@get_events')->name('citas_agenda');
 Route::get('citas_all','citasController@citasall')->name('citas_all');
+
 
 
 

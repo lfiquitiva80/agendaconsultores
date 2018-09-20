@@ -45,7 +45,8 @@
       <td>  Nombre</td>
       <td>  email</td>
       <td>  Perfil Usuario</td>
-      <td>  Cargo Usuario</td>
+      <td>  Valor</td>
+      <td>  Hora</td>
       <td>  Activo</td>
       <td>  Acción </td>
 
@@ -62,7 +63,8 @@
           <td>{{$row->name}}</td>
           <td>{{$row->email}}</td>
           <td>{{$row->perfil->descripcion_perfil}}</td>
-          <td>{{$row->cargos->descripcion_cargo}}</td>
+          <td>{{$row->valor}}</td>
+          <td>{{$row->horas}}</td>
           <td>@if ($row->activo==1)
     
               <span class="badge bg-light-blue">Si</span>     
@@ -71,7 +73,7 @@
               @endif</td>
 
 
-          <td><a    data-toggle="modal" data-target="#editar_usuario"   data-name="{{$row->name}}"   data-perfil_usuario ="{{$row->perfil_usuario}}" data-email="{{$row->email}}"  data-id="{{$row->id}}" data-type="{{$row->type}}"data-password="{{$row->password}}" data-cargo="{{$row->cargo}}" data-activo="{{$row->activo}}"  class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"> Edición</i></a></td> <td>@include('usuario.destroy')</td>
+          <td><a    data-toggle="modal" data-target="#editar_usuario"   data-name="{{$row->name}}"   data-perfil_usuario ="{{$row->perfil_usuario}}" data-email="{{$row->email}}"  data-id="{{$row->id}}" data-type="{{$row->type}}"data-password="{{$row->password}}" data-cargo="{{$row->cargo}}" data-activo="{{$row->activo}}" data-valor="{{$row->valor}}" data-horas="{{$row->horas}}" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"> Edición</i></a></td> <td>@include('usuario.destroy')</td>
 
     </tr>
   </tbody>

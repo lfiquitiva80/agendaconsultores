@@ -110,7 +110,7 @@
 </table>
 </div>
 
-<center>{{ $detalle_dev_iva->links() }}</center>
+
 
 </div>
 

@@ -23,7 +23,7 @@ class usuarioController extends Controller
      */
     public function index(Request $request)
     {
-        $usuario =User::search($request->name)->orderBy('name', 'asc')->orderBy('activo', 'asc')->paginate(10);
+        $usuario =User::search($request->name)->orderBy('activo', 'desc')->orderBy('name', 'asc')->paginate(10);
 
         $perfil = perfil::pluck('descripcion_perfil','id');
         $cargo = cargo::pluck('descripcion_cargo','id');
@@ -54,6 +54,7 @@ class usuarioController extends Controller
     public function store(Request $request)
     {
           
+          $json = json_encode($request->input('cargo'), true);
 
           $this->validate($request,[
             'name'     => 'required|max:255',
@@ -67,8 +68,11 @@ class usuarioController extends Controller
             'name'     => $request['name'],
             'email'    => $request['email'],
             'password' => bcrypt($request['password']),
-             'cargo'    => $request['cargo'],
+             'cargo'    => $json,
              'activo'    => $request['activo'],
+             'perfil_usuario' => $request['perfil_usuario'],
+             'valor' => $request['valor'],
+             'horas' => $request['horas'],
             ];
             
         
@@ -112,13 +116,17 @@ class usuarioController extends Controller
     public function update(Request $request, $id)
     {
          
+         $json = json_encode($request->input('cargo'), true);
           $input = [
             'name'     => $request['name'],
             'email'    => $request['email'],
             'password' => bcrypt($request['password']),
              'perfil_usuario'    => $request['perfil_usuario'],
-             'cargo'    => $request['cargo'],
+             'cargo'    => $json,
              'activo'    => $request['activo'],
+             'perfil_usuario' => $request['perfil_usuario'],
+             'valor' => $request['valor'],
+             'horas' => $request['horas'],
             ];
 
            // dd($request->all());
