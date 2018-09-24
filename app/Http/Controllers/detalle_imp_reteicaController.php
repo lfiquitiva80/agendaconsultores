@@ -4,6 +4,14 @@ namespace App\Http\Controllers;
 
 use App\detalle_imp_reteica;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+use App\User;
+use App\perfil;
+use Alert;
 
 class detalle_imp_reteicaController extends Controller
 {
@@ -12,9 +20,15 @@ class detalle_imp_reteicaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $detalle_imp_reteica = detalle_imp_reteica::Search($request->nombre)->orderBy('cns_detalle', 'asc')->paginate(50);
+         $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
+         //dd($detalle_imp_reteica);
+
+        //$cliente = DB::table('cliente')->paginate(15);
+        //dd($cliente);
+   return view('detalle_imp_reteica.index',compact('detalle_imp_reteica','usuarios'));
     }
 
     /**
@@ -35,7 +49,11 @@ class detalle_imp_reteicaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $detalle_imp_reteica =  new detalle_imp_reteica($request-> all());
+        $detalle_imp_reteica->save();
+        \Alert::success('', 'El detalle_imp_reteica ha sido registrado con exito !')->persistent('Close');
+         //return redirect()->route('detalle_imp_reteica.index');
+        return back();
     }
 
     /**
@@ -55,9 +73,15 @@ class detalle_imp_reteicaController extends Controller
      * @param  \App\detalle_imp_reteica  $detalle_imp_reteica
      * @return \Illuminate\Http\Response
      */
-    public function edit(detalle_imp_reteica $detalle_imp_reteica)
+    public function edit($id)
+
     {
-        //
+
+        //dd($id);
+        $detalle_imp_reteica = detalle_imp_reteica::where('cns_detalle',$id)->get();
+         $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
+
+         return view('detalle_imp_reteica.detalle',compact('detalle_imp_reteica','usuarios'));
     }
 
     /**
@@ -67,9 +91,16 @@ class detalle_imp_reteicaController extends Controller
      * @param  \App\detalle_imp_reteica  $detalle_imp_reteica
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, detalle_imp_reteica $detalle_imp_reteica)
+    public function update(Request $request, detalle_imp_reteica $id)
     {
-        //
+           //dd($request->all());  
+
+         $detalle_imp_reteica = detalle_imp_reteica::findOrFail($request->id);
+         $detalle_imp_reteica->update($request->all());
+
+      Alert::success('', 'El detalle_imp_reteica ha sido editado con exito !')->persistent('Close');
+      //return redirect()->route('detalle_imp_reteica.index');
+      return back();
     }
 
     /**
@@ -78,8 +109,11 @@ class detalle_imp_reteicaController extends Controller
      * @param  \App\detalle_imp_reteica  $detalle_imp_reteica
      * @return \Illuminate\Http\Response
      */
-    public function destroy(detalle_imp_reteica $detalle_imp_reteica)
+    public function destroy($id)
     {
-        //
+        $detalle_imp_reteica = detalle_imp_reteica::find($id);
+        $detalle_imp_reteica->delete();
+        \Alert::success('', 'El detalle_imp_reteica ha sido sido borrado de forma exita!')->persistent('Close');
+        return redirect()->route('detalle_imp_reteica.index');
     }
 }

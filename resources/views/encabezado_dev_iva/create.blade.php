@@ -40,13 +40,13 @@
 
                 </div>
 
-                <div class="form-group">
+               <!--  <div class="form-group">
                     <label for="id">bim</label>
                     {!! Form::number('bim', null,['class' => 'form-control', 'placeholder' => 'Digite el BIM','name'=>'bim','required']) !!}
 
-                </div>
+                </div> -->
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="id">Fecha de Vencimiento</label>
                     {!! Form::date('fecha_vencimiento', null,['class' => 'form-control', 'placeholder' => 'fecha_vencimiento','name'=>'fecha_vencimiento','required']) !!}
 
@@ -91,7 +91,7 @@
 <label for="id">Fecha Auditoria Encabezado Devolución Iva</label>
 {!! Form::date('fecha_auditoria_encabezado_dev_iva', null,['class' => 'form-control', 'placeholder' => 'fecha_auditoria_encabezado_dev_iva','name'=>'fecha_auditoria_encabezado_dev_iva','required']) !!}
 
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <label for="id">Fecha de Elaboración</label>

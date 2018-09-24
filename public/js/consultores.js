@@ -112,6 +112,184 @@ modal.find('.modal-body #audna').val(audna);
 })
 
 
+$('#editar_detalle_imp_ica').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var cns_detalle = button.data('cns_detalle')
+  var codigo = button.data('codigo')
+  var descripcion = button.data('descripcion')
+  var ressi = button.data('ressi')
+  var resno = button.data('resno')
+  var resna = button.data('resna')
+  var audsi = button.data('audsi')
+  var audno = button.data('audno')
+  var audna = button.data('audna')
+
+// Extract info from data-* attributes
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.modal-body #id').val(id);
+modal.find('.modal-body #cns_detalle').val(cns_detalle);
+modal.find('.modal-body #codigo').val(codigo);
+modal.find('.modal-body #descripcion').val(descripcion);
+modal.find('.modal-body #ressi').val(ressi);
+modal.find('.modal-body #resno').val(resno);
+modal.find('.modal-body #resna').val(resna);
+modal.find('.modal-body #audsi').val(audsi);
+modal.find('.modal-body #audno').val(audno);
+modal.find('.modal-body #audna').val(audna);
+})
+
+$('#editar_detalle_imp_iva').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var cns_detalle = button.data('cns_detalle')
+  var codigo = button.data('codigo')
+  var descripcion = button.data('descripcion')
+  var ressi = button.data('ressi')
+  var resno = button.data('resno')
+  var resna = button.data('resna')
+  var audsi = button.data('audsi')
+  var audno = button.data('audno')
+  var audna = button.data('audna')
+
+// Extract info from data-* attributes
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.modal-body #id').val(id);
+modal.find('.modal-body #cns_detalle').val(cns_detalle);
+modal.find('.modal-body #codigo').val(codigo);
+modal.find('.modal-body #descripcion').val(descripcion);
+modal.find('.modal-body #ressi').val(ressi);
+modal.find('.modal-body #resno').val(resno);
+modal.find('.modal-body #resna').val(resna);
+modal.find('.modal-body #audsi').val(audsi);
+modal.find('.modal-body #audno').val(audno);
+modal.find('.modal-body #audna').val(audna);
+})
+
+
+$('#editar_detalle_imp_renta').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var cns_detalle = button.data('cns_detalle')
+  var codigo = button.data('codigo')
+  var descripcion = button.data('descripcion')
+  var ressi = button.data('ressi')
+  var resno = button.data('resno')
+  var resna = button.data('resna')
+  var audsi = button.data('audsi')
+  var audno = button.data('audno')
+  var audna = button.data('audna')
+
+// Extract info from data-* attributes
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.modal-body #id').val(id);
+modal.find('.modal-body #cns_detalle').val(cns_detalle);
+modal.find('.modal-body #codigo').val(codigo);
+modal.find('.modal-body #descripcion').val(descripcion);
+modal.find('.modal-body #ressi').val(ressi);
+modal.find('.modal-body #resno').val(resno);
+modal.find('.modal-body #resna').val(resna);
+modal.find('.modal-body #audsi').val(audsi);
+modal.find('.modal-body #audno').val(audno);
+modal.find('.modal-body #audna').val(audna);
+})
+
+
+$('#editar_detalle_imp_reteica').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var cns_detalle = button.data('cns_detalle')
+  var codigo = button.data('codigo')
+  var descripcion = button.data('descripcion')
+  var ressi = button.data('ressi')
+  var resno = button.data('resno')
+  var resna = button.data('resna')
+  var audsi = button.data('audsi')
+  var audno = button.data('audno')
+  var audna = button.data('audna')
+
+// Extract info from data-* attributes
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.modal-body #id').val(id);
+modal.find('.modal-body #cns_detalle').val(cns_detalle);
+modal.find('.modal-body #codigo').val(codigo);
+modal.find('.modal-body #descripcion').val(descripcion);
+modal.find('.modal-body #ressi').val(ressi);
+modal.find('.modal-body #resno').val(resno);
+modal.find('.modal-body #resna').val(resna);
+modal.find('.modal-body #audsi').val(audsi);
+modal.find('.modal-body #audno').val(audno);
+modal.find('.modal-body #audna').val(audna);
+})
+
+
+$('#editar_detalle_imp_retencion').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var cns_detalle = button.data('cns_detalle')
+  var codigo = button.data('codigo')
+  var descripcion = button.data('descripcion')
+  var ressi = button.data('ressi')
+  var resno = button.data('resno')
+  var resna = button.data('resna')
+  var audsi = button.data('audsi')
+  var audno = button.data('audno')
+  var audna = button.data('audna')
+
+// Extract info from data-* attributes
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.modal-body #id').val(id);
+modal.find('.modal-body #cns_detalle').val(cns_detalle);
+modal.find('.modal-body #codigo').val(codigo);
+modal.find('.modal-body #descripcion').val(descripcion);
+modal.find('.modal-body #ressi').val(ressi);
+modal.find('.modal-body #resno').val(resno);
+modal.find('.modal-body #resna').val(resna);
+modal.find('.modal-body #audsi').val(audsi);
+modal.find('.modal-body #audno').val(audno);
+modal.find('.modal-body #audna').val(audna);
+})
+
+
+$('#editar_detalle_informe').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var cns_detalle = button.data('cns_detalle')
+  var codigo = button.data('codigo')
+  var descripcion = button.data('descripcion')
+  var ressi = button.data('ressi')
+  var resno = button.data('resno')
+  var resna = button.data('resna')
+  var audsi = button.data('audsi')
+  var audno = button.data('audno')
+  var audna = button.data('audna')
+
+// Extract info from data-* attributes
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.modal-body #id').val(id);
+modal.find('.modal-body #cns_detalle').val(cns_detalle);
+modal.find('.modal-body #codigo').val(codigo);
+modal.find('.modal-body #descripcion').val(descripcion);
+modal.find('.modal-body #ressi').val(ressi);
+modal.find('.modal-body #resno').val(resno);
+modal.find('.modal-body #resna').val(resna);
+modal.find('.modal-body #audsi').val(audsi);
+modal.find('.modal-body #audno').val(audno);
+modal.find('.modal-body #audna').val(audna);
+})
+
 
 $('#editarchecklist').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget)
@@ -164,6 +342,23 @@ $('#editar_perfil').on('show.bs.modal', function (event) {
 var modal = $(this)
 modal.find('.modal-body #id').val(id);
 modal.find('.modal-body #descripcion_perfil').val(descripcion_perfil);
+})
+
+
+$('#editar_pago_cliente').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var cliente_pago = button.data('clientepago')
+  var fecha_pago_cliente = button.data('fechapagocliente')
+  var valor_pago_cliente = button.data('valorpagocliente')
+// Extract info from data-* attributes
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.modal-body #id').val(id);
+modal.find('.modal-body #cliente_pago').val(cliente_pago);
+modal.find('.modal-body #fecha_pago_cliente').val(fecha_pago_cliente);
+modal.find('.modal-body #valor_pago_cliente').val(valor_pago_cliente);
 })
 
 
@@ -241,6 +436,24 @@ modal.find('.modal-body #color_agenda').val(color_agenda);
 
 
 
+$('#editar_plantilla_checklist').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var codigo_plantilla_checklist = button.data('codigoplantillachecklist')
+  var descripcion_plantilla_checklist = button.data('descripcionplantillachecklist')
+  var filtro_checklist = button.data('filtrochecklist')
+// Extract info from data-* attributes
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.modal-body #id').val(id);
+modal.find('.modal-body #codigo_plantilla_checklist').val(codigo_plantilla_checklist);
+modal.find('.modal-body #descripcion_plantilla_checklist').val(descripcion_plantilla_checklist);
+modal.find('.modal-body #filtro_checklist').val(filtro_checklist);
+})
+
+
+
 
 $('#editar_lugar').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget)
@@ -308,7 +521,7 @@ $('#editar_encabezado_dev_iva').on('show.bs.modal', function (event) {
   var enviar_auditoria = button.data('enviarauditoria')
   var cierre_auditoria = button.data('cierreauditoria')
   var observaciones_auditoria = button.data('observacionesauditoria')
-  var ubicacion_archivos = button.data('ubicacion_archivos')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria_encabezado_dev_iva = new Date(button.data('fechaauditoriaencabezadodeviva')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
  
@@ -333,6 +546,244 @@ $('#editar_encabezado_dev_iva').on('show.bs.modal', function (event) {
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
 })
 
+
+$('#editar_encabezado_imp_ica').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var auditor = button.data('auditor')
+  var bim = button.data('bim')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fecha_auditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(auditor)
+  modal.find('.modal-body #bim_auditado').val(bim)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+
+$('#editar_encabezado_imp_iva').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var auditor = button.data('auditor')
+  var bim = button.data('bim')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fecha_auditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(auditor)
+  modal.find('.modal-body #bim_auditado').val(bim)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+
+$('#editar_encabezado_imp_renta').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var auditor = button.data('auditor')
+  var bim = button.data('bim')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fecha_auditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(auditor)
+  modal.find('.modal-body #bim_auditado').val(bim)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+
+$('#editar_encabezado_imp_reteica').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var auditor = button.data('auditor')
+  var bim = button.data('bim')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fecha_auditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(auditor)
+  modal.find('.modal-body #bim_auditado').val(bim)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+$('#editar_encabezado_imp_retencion').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var auditor = button.data('auditor')
+  var bim = button.data('bim')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fecha_auditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(auditor)
+  modal.find('.modal-body #bim_auditado').val(bim)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+
+$('#editar_encabezado_informe').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var auditor = button.data('auditor')
+  var bim = button.data('bim')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fecha_auditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(auditor)
+  modal.find('.modal-body #bim_auditado').val(bim)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
 
 
 
@@ -1698,4 +2149,157 @@ $(document).ready(function () {
         }
     })
     })
+
+
+$(document).ready(function () {
+        $('#FormCreatepago_clientes')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            cliente_pago: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo cliente es requerido'
+                    }
+                }
+            },
+            fecha_pago_cliente: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo Fecha es requerido'
+                    }
+                }
+            },
+            valor_pago_cliente: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo valor es requerido'
+                    }
+                }
+            }
+
+
+          
+        }//termina
+    })
+    })
+
+
+$(document).ready(function () {
+        $('#FormEditpago_clientes')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            cliente_pago: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo cliente es requerido'
+                    }
+                }
+            },
+            fecha_pago_cliente: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo Fecha es requerido'
+                    }
+                }
+            },
+            valor_pago_cliente: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo valor es requerido'
+                    }
+                }
+            }
+
+
+          
+        }//termina
+    })
+    })
+
+
+$(document).ready(function () {
+        $('#FormCreateplantilla_checklists')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            codigo_plantilla_checklist: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo codigo_plantilla_checklist es requerido'
+                    }
+                }
+            },
+            descripcion_plantilla_checklist: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo descripcion_plantilla_checklist es requerido'
+                    }
+                }
+            },
+            filtro_checklist: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo filtro_checklist es requerido'
+                    }
+                }
+            }
+
+
+          
+        }//termina
+    })
+    })
+
+
+$(document).ready(function () {
+        $('#FormEditplantilla_checklists')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            codigo_plantilla_checklist: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo codigo_plantilla_checklist es requerido'
+                    }
+                }
+            },
+            descripcion_plantilla_checklist: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo descripcion_plantilla_checklist es requerido'
+                    }
+                }
+            },
+            filtro_checklist: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo filtro_checklist es requerido'
+                    }
+                }
+            }
+
+
+          
+        }//termina
+    })
+    })
+
 

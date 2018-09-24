@@ -10,7 +10,7 @@
 
                 
 
-<form class="" action="{{route('encabezado_dev_iva.update', 'id' )}}"   method="post" id="FormEditCargos" enctype="multipart/form-data">
+<form class="" action="{{route('encabezado_dev_iva.update', 'id' )}}"   method="post" id="FormEditCargos" >
 
   {{method_field('patch')}}
   {{csrf_field()}}
@@ -75,8 +75,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id"><i class="fa fa-upload" aria-hidden="true"></i> Ubicación de Archivos</label>
-                    {!! Form::file('ubicacion_archivos', ['class' => 'form-control', 'placeholder' => 'ubicacion_archivos','name'=>'ubicacion_archivos','id'=>'ubicacion_archivos', 'required']) !!}
+                    <label for="id">Ubicación de Archivos</label>
+                  {!! Form::text('ubicacion_archivos', null, ['class' => 'form-control', 'placeholder' => 'ubicacion_archivos','name'=>'ubicacion_archivos','id'=>'ubicacion_archivos', 'required']) !!}
 
                 </div>
 

@@ -32,7 +32,7 @@
   <thead>
     <tr>
       
-      
+     <td>id</td> 
      <td>Descripción Checklist</td>
      <td>Filtro plantilla</td>
      <td>Tabla Encabezado</td>
@@ -50,7 +50,7 @@
 
 
 
-          
+          <td class="valor">{{$row->id}}</td>
           <td>{{$row->descripcion}}</td>
           <td>{{$row->filtro_plantilla}}</td>
           <td>{{$row->tabla_encabezado}}</td>

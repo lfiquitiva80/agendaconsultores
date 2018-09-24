@@ -4,6 +4,14 @@ namespace App\Http\Controllers;
 
 use App\plantilla_checklist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+use App\User;
+use App\perfil;
+use Alert;
 
 class plantilla_checklistController extends Controller
 {
@@ -12,9 +20,15 @@ class plantilla_checklistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $plantilla_checklist = plantilla_checklist::Search($request->nombre)->orderBy('codigo_plantilla_checklist', 'asc')->paginate(10);
+         $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
+         //dd($perfil);
+
+        //$cliente = DB::table('cliente')->paginate(15);
+        //dd($cliente);
+   return view('plantilla_checklist.index',compact('plantilla_checklist','usuarios'));
     }
 
     /**
@@ -35,7 +49,10 @@ class plantilla_checklistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $plantilla_checklist =  new plantilla_checklist($request-> all());
+        $plantilla_checklist->save();
+        \Alert::success('', 'El plantilla_checklist ha sido registrado con exito !')->persistent('Close');
+         return redirect()->route('plantilla_checklist.index');
     }
 
     /**
@@ -67,9 +84,13 @@ class plantilla_checklistController extends Controller
      * @param  \App\plantilla_checklist  $plantilla_checklist
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, plantilla_checklist $plantilla_checklist)
+    public function update(Request $request, plantilla_checklist $id)
     {
-        //
+         $plantilla_checklist = plantilla_checklist::findOrFail($request->id);
+         $plantilla_checklist->update($request->all());
+
+      Alert::success('', 'El plantilla_checklist ha sido editado con exito !')->persistent('Close');
+      return redirect()->route('plantilla_checklist.index');
     }
 
     /**
@@ -78,8 +99,11 @@ class plantilla_checklistController extends Controller
      * @param  \App\plantilla_checklist  $plantilla_checklist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(plantilla_checklist $plantilla_checklist)
+    public function destroy($id)
     {
-        //
+        $plantilla_checklist = plantilla_checklist::find($id);
+        $plantilla_checklist->delete();
+        \Alert::success('', 'El plantilla_checklist ha sido sido borrado de forma exita!')->persistent('Close');
+        return redirect()->route('plantilla_checklist.index');
     }
 }

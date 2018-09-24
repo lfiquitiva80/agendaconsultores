@@ -40,50 +40,7 @@
 
 {!! Form::close() !!}
 
-<!-- <p id="valorempresa"></p> -->
 
-
-
-   <!--  <div class="panel-footer">
-        
-        <div class="table-responsive">
-<table class="table table-hover" >
-  <thead>
-    <tr>
-  
-      <td>Cliente</td>
-      <td>Compromisos</td>
-      <td>Periodos</td>
-
-       <td>  Acción </td>
-
-
-
-    </tr>
-  </thead>
-  <tbody>
-
-  @foreach($compromisos_clientes as $row)
-    <tr>
-
-          
-
-        
-          <td>{{$row->clientes->nombre_cliente}}</td>
-          <td>{{$row->compromiso->descripcion_compromisos}}</td>
-          <td>{{$row->periodos->descripcion_periodo}}</td>
-          <td>@include('compromisoscliente.destroy')</td>
-          
-    </tr>
-  </tbody>
-
-  @endforeach
-
-
-</table>
-</div>
-
-    </div> -->
 </div>
 
   </div>

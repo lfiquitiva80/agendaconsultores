@@ -40,20 +40,19 @@
   <thead>
     <tr>
 <th>id</th>
-<th>Detalle Devolución Iva</th>
 <th>responsable</th>
 <th>cliente</th>
 <th>auditor</th>
-<th>bim</th>
+<!-- <th>bim</th>
 <th>fecha_vencimiento</th>
 <th>fecha_entrega</th>
-<th>Observaciones</th>
+<th>Observaciones</th> -->
 <th>enviar_auditoria</th>
 <th>cierre_auditoria</th>
-<th>observaciones_auditoria</th>
+<!-- <th>observaciones_auditoria</th>
 <th>ubicacion_archivos</th>
 <th>fecha_auditoria_encabezado_dev_iva</th>
-<th>fecha_elaboracion</th>
+<th>fecha_elaboracion</th> -->
 
        <th>  Acción </th>
 
@@ -69,16 +68,13 @@
 
 
           <td>{{$row->id}}</td>
-          <td>
-              <a class="btn bg-navy btn-flat margin" href="{{ $url = route('detalle_dev_iva.edit', $row->id) }}" role="button"><i class="fa fa-list-alt" aria-hidden="true"></i> Detalle Dev Iva</a>  
-          </td>
-          <td>{{$row->usuarios->name}}</td>
+                    <td>{{$row->usuarios->name}}</td>
           <td>{{$row->clientes->nombre_cliente}}</td>
           <td>{{$row->auditores->name}}</td>
-          <td>{{$row->bim}}</td>
+          <!-- <td>{{$row->bim}}</td>
           <td>{{$row->fecha_vencimiento}}</td>
           <td>{{$row->fecha_entrega}}</td>
-          <td>{{$row->Observaciones}}</td>
+          <td>{{$row->Observaciones}}</td> -->
           <td>@if($row->enviar_auditoria==1)
               <span class="badge bg-light-blue">Si</span> 
               @else
@@ -93,12 +89,14 @@
               @endif
           </td>
         
-          <td>{{$row->observaciones_auditoria}}</td>
+          <!-- <td>{{$row->observaciones_auditoria}}</td>
           <td><a class="btn btn-danger" href="{{$row->ubicacion_archivos}}" role="button"><i class="fa fa-download" aria-hidden="true"></i> Descargar</a></td>
           <td>{{$row->fecha_auditoria_encabezado_dev_iva}}</td>
-          <td>{{$row->fecha_elaboracion}}</td>
+          <td>{{$row->fecha_elaboracion}}</td> -->
 
-         
+         <td>
+              <a class="btn bg-navy btn-flat margin" href="{{ $url = route('detalle_dev_iva.edit', $row->id) }}" role="button"><i class="fa fa-list-alt" aria-hidden="true"></i> Detalle Dev Iva</a>  
+          </td>
 
           <td><a data-toggle="modal" data-target="#editar_encabezado_dev_iva" 
           data-id="{{$row->id}}"

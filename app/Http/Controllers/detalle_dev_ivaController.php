@@ -22,7 +22,7 @@ class detalle_dev_ivaController extends Controller
      */
     public function index(Request $request)
     {
-        $detalle_dev_iva = detalle_dev_iva::Search($request->nombre)->orderBy('cns_detalle', 'asc')->paginate(10);
+        $detalle_dev_iva = detalle_dev_iva::Search($request->nombre)->orderBy('cns_detalle', 'asc')->paginate(50);
          $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
          //dd($detalle_dev_iva);
 
@@ -52,7 +52,8 @@ class detalle_dev_ivaController extends Controller
         $detalle_dev_iva =  new detalle_dev_iva($request-> all());
         $detalle_dev_iva->save();
         \Alert::success('', 'El detalle_dev_iva ha sido registrado con exito !')->persistent('Close');
-         return redirect()->route('detalle_dev_iva.index');
+         //return redirect()->route('detalle_dev_iva.index');
+        return back();
     }
 
     /**
@@ -98,7 +99,8 @@ class detalle_dev_ivaController extends Controller
          $detalle_dev_iva->update($request->all());
 
       Alert::success('', 'El detalle_dev_iva ha sido editado con exito !')->persistent('Close');
-      return redirect()->route('detalle_dev_iva.index');
+      //return redirect()->route('detalle_dev_iva.index');
+      return back();
     }
 
     /**

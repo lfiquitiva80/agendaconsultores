@@ -39,25 +39,14 @@
 <table class="table table-hover" >
   <thead>
 
-    <tr>
 
-      <th colspan="4"></th>
-      <th  colspan="3"> Responsable</th>
-      <th  colspan="3"> Auditor</th>
-      
-
-    </tr>
     <tr>
       <th>id</th>
       <th>cns_detalle</th>
       <th>codigo</th>
       <th>descripcion</th>
-      <th>ressi</th>
-      <th>resno</th>
-      <th>resna</th>
-      <th>audsi</th>
-      <th>audno</th>
-      <th>audna</th>
+      <th colspan="6"> Checklist</th>
+            
 
        <td>  Acción </td>
 
@@ -67,25 +56,68 @@
   </thead>
   <tbody>
 
+   
+
   @foreach($detalle_dev_iva as $row)
-    <tr>
+    <tr class="id">
 
 
+       
 
       <td>{{$row->id}}</td>
       <td>{{$row->cns_detalle}}</td>
       <td>{{$row->codigo}}</td>
       <td>{{$row->descripcion}}</td>
-      <td>{!! Form::checkbox('all', $row->ressi, $row->ressi, ['disabled']) !!}</td>
-      <td>{!! Form::checkbox('all', $row->resno, $row->resno, ['disabled']) !!}</td>
-      <td>{!! Form::checkbox('all', $row->resna, $row->resna, ['disabled']) !!}</td>
-      <td>{!! Form::checkbox('all', $row->audsi, $row->audsi, ['disabled']) !!}</td>
-      <td>{!! Form::checkbox('all', $row->audno, $row->audno, ['disabled']) !!}</td>
-      <td>{!! Form::checkbox('all', $row->audna, $row->audna, ['disabled']) !!}</td>
+      
+      <td  NOWRAP>
+
+           
+      {!! Form::open(['route' => ['detalle_dev_iva.update', $row->id],'method'=>'PATCH']) !!}
+      <input type="hidden" id="id"  name="id" value="{{$row->id}}">
+
+       @if (Auth::user()->perfil_usuario == 1)
+      {!! Form::checkbox('ressi',  1, $row->ressi, []) !!} Responsable Si
+      {!! Form::checkbox('resno',  1, $row->resno, []) !!} Responsable No 
+      {!! Form::checkbox('resna',  1, $row->resna, []) !!} Responsable No Aplica <br>
+
+      {!! Form::checkbox('audsi',  1, $row->audsi, []) !!} Auditor Si 
+      {!! Form::checkbox('audno',  1, $row->audno, []) !!} Auditor No 
+      {!! Form::checkbox('audna',  1, $row->audna, []) !!} Auditor No Aplica
+
+       @elseif (Auth::user()->perfil_usuario == 2)
+
+       {!! Form::checkbox('ressi',  1, $row->ressi, []) !!} Responsable Si
+      {!! Form::checkbox('resno',  1, $row->resno, []) !!} Responsable No 
+      {!! Form::checkbox('resna',  1, $row->resna, []) !!} Responsable No Aplica <br>
+
+      {!! Form::checkbox('audsi',  1, $row->audsi, ['disabled']) !!} Auditor Si 
+      {!! Form::checkbox('audno',  1, $row->audno, ['disabled']) !!} Auditor No 
+      {!! Form::checkbox('audna',  1, $row->audna, ['disabled']) !!} Auditor No Aplica
+
+      @else
+
+      {!! Form::checkbox('ressi',  1, $row->ressi, ['disabled']) !!} Responsable Si
+      {!! Form::checkbox('resno',  1, $row->resno, ['disabled']) !!} Responsable No 
+      {!! Form::checkbox('resna',  1, $row->resna, ['disabled']) !!} Responsable No Aplica <br>
+
+      {!! Form::checkbox('audsi',  1, $row->audsi, []) !!} Auditor Si 
+      {!! Form::checkbox('audno',  1, $row->audno, []) !!} Auditor No 
+      {!! Form::checkbox('audna',  1, $row->audna, []) !!} Auditor No Aplica
+
+      @endif 
+
+      
+          <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Actualizar</button>
+        
+       {!! Form::close() !!}
+
+      </td>
+
+      
 
   
 
-         
+       
 
           <td><a   data-toggle="modal" data-target="#editar_detalle_dev_iva" data-id="{{$row->id}}"
             data-cns_detalle="{{$row->cns_detalle}}"
@@ -103,20 +135,35 @@
           
     </tr>
   </tbody>
+ 
 
   @endforeach
+
+
 
 
 </table>
 </div>
 
-
-
 </div>
 
 </div>
 </div>
 
+<script type="text/javascript">
 
+$(document).ready(function() {
+
+
+
+var x = document.getElementsByName("check");
+
+$.each(x, function(index, val) {
+   console.log(val);
+});
+
+
+});
+</script>
 
 @endsection

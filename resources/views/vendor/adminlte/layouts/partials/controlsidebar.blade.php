@@ -47,7 +47,7 @@
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
                         {{ trans('adminlte_lang::message.reportpanel') }}
-                        <input type="checkbox" class="pull-right" {{ trans('adminlte_lang::message.checked') }} />
+                        <input type="checkbox" class="pull-right"> {{ trans('adminlte_lang::message.checked') }} />
                     </label>
                     <p>
                         {{ trans('adminlte_lang::message.informationsettings') }}
@@ -56,7 +56,7 @@
             </form>
         </div><!-- /.tab-pane -->
     </div>
-</aside><!-- /.control-sidebar
+</aside><!-- /.control-sidebar-->
 
 <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->

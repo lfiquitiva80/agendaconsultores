@@ -15,18 +15,18 @@
 
                 <div class="form-group" >
                     <label for="id">Consecutivo Detalle</label>
-                    {!! Form::number('cns_detalle', null,['class' => 'form-control', 'placeholder' => 'cns_detalle','name'=>'cns_detalle']) !!}
+                    {!! Form::number('cns_detalle', null,['class' => 'form-control', 'placeholder' => 'cns_detalle','name'=>'cns_detalle', 'required']) !!}
                 </div>
 
 
                 <div class="form-group" >
                     <label for="id">Código</label>
-                    {!! Form::text('codigo', null,['class' => 'form-control', 'placeholder' => 'Digite el código','name'=>'codigo']) !!}
+                    {!! Form::text('codigo', null,['class' => 'form-control', 'placeholder' => 'Digite el código','name'=>'codigo', 'required']) !!}
                 </div>
 
                 <div class="form-group" >
                     <label for="id">Descripción</label>
-                    {!! Form::text('descripcion', null,['class' => 'form-control', 'placeholder' => 'Digite descripcion','name'=>'descripcion']) !!}
+                    {!! Form::text('descripcion', null,['class' => 'form-control', 'placeholder' => 'Digite descripcion','name'=>'descripcion', 'required']) !!}
                 </div>
 
                 <center><button type="submit" class="btn btn-primary" >Enviar</button>

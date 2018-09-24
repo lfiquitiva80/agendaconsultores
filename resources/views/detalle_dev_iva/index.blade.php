@@ -76,12 +76,12 @@
       <td>{{$row->cns_detalle}}</td>
       <td>{{$row->codigo}}</td>
       <td>{{$row->descripcion}}</td>
-      <td>{!! Form::checkbox('all', $row->ressi, $row->ressi, ['disabled']) !!}</td>
-      <td>{!! Form::checkbox('all', $row->resno, $row->resno, ['disabled']) !!}</td>
-      <td>{!! Form::checkbox('all', $row->resna, $row->resna, ['disabled']) !!}</td>
-      <td>{!! Form::checkbox('all', $row->audsi, $row->audsi, ['disabled']) !!}</td>
-      <td>{!! Form::checkbox('all', $row->audno, $row->audno, ['disabled']) !!}</td>
-      <td>{!! Form::checkbox('all', $row->audna, $row->audna, ['disabled']) !!}</td>
+      <td>{!! Form::checkbox('all', $row->ressi, $row->ressi, []) !!}</td>
+      <td>{!! Form::checkbox('all', $row->resno, $row->resno, []) !!}</td>
+      <td>{!! Form::checkbox('all', $row->resna, $row->resna, []) !!}</td>
+      <td>{!! Form::checkbox('all', $row->audsi, $row->audsi, []) !!}</td>
+      <td>{!! Form::checkbox('all', $row->audno, $row->audno, []) !!}</td>
+      <td>{!! Form::checkbox('all', $row->audna, $row->audna, []) !!}</td>
 
   
 

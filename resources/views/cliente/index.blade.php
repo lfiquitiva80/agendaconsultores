@@ -109,6 +109,8 @@
 
          <td><a href="{{ $url = route('compromisoscliente.edit', $row->id) }}" class="btn btn-primary"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Compromisos</a></td>
 
+         <td><a href="{{ $url = route('pago_cliente.edit', $row->id) }}" class="btn btn-default"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Pagos del cliente</a></td>
+
           <td><a   data-toggle="modal" data-target="#editar_clientes" data-id="{{$row->id}}"
             data-nit="{{$row->nit}}"
             data-nombre_cliente="{{$row->nombre_cliente}}"

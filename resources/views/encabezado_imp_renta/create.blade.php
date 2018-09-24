@@ -1,124 +1,113 @@
-<div class="modal fade" id="crear_cliente">
+<div class="modal fade" id="crear_encabezado_imp_renta">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">CREAR CLIENTE</h4>
+                <h4 class="modal-title">CREAR ENCABEZADO Y DETALLE</h4>
             </div>
             <div class="modal-body">
 
 
 
 
-{!! Form::open(['route' => 'clientes.store', 'method'=>'POST','id'=>'CreateFormCliente']) !!}
+                {!! Form::open(['route' => 'encabezado_imp_renta.store', 'method'=>'POST','id'=>'FormCreateencabezado_imp_rentas', 'enctype' => 'multipart/form-data']) !!}
 
 
-<div class="form-group" >
-        <label for="id">nit</label>
-        {!! Form::text('nit', null,['class' => 'form-control', 'placeholder' => 'nit','name'=>'nit']) !!}
-    </div>
+                <div class="form-group">
+                    <label for="id">Responsable</label>
 
-<div class="form-group" >
-        <label for="id">nombre_cliente</label>
-        {!! Form::text('nombre_cliente', null,['class' => 'form-control', 'placeholder' => 'nombre_cliente','name'=>'nombre_cliente']) !!}
-    </div>
+                     @if (Auth::user()->perfil_usuario == 1)
+                    {!! Form::select('responsable', $usuarios, Auth::user()->id, ['class' => 'form-control', 'placeholder' => 'Seleccione el Consultor... ','name'=>'responsable']) !!}
+                    @else
 
-<div class="form-group">
-        <label for="id">direccion_cliente</label>
-        {!! Form::text('direccion_cliente', null,['class' => 'form-control', 'placeholder' => 'direccion_cliente completo','name'=>'direccion_cliente']) !!}
-    </div>
-    <div class="form-group">
-            <label for="id">telefono_cliente</label>
-            {!! Form::text('telefono_cliente', null,['class' => 'form-control', 'placeholder' => 'telefono_cliente','name'=>'telefono_cliente']) !!}
-        </div>
-        <div class="form-group">
-                <label for="id">celular_cliente</label>
-                {!! Form::text('celular_cliente', null,['class' => 'form-control', 'placeholder' => 'celular_cliente','name'=>'celular_cliente']) !!}
+                    <select name="responsable" id="responsable" class="form-control" required>
+                     <option value="{{Auth::user()->id}}">{{Auth::user()->name}}</option>
+                    </select>
 
-            </div>
-      <div class="form-group">
-                    <label for="id">notas_cliente</label>
-                    {!! Form::text('text', null,['class' => 'form-control', 'placeholder' => 'notas_cliente','name'=>'notas_cliente']) !!}
+                    @endif 
 
                 </div>
-      <div class="form-group">
-                        <label for="id">gran_contribuyente_cliente</label>
-                        {!! Form::text('gran_contribuyente_cliente', null,['class' => 'form-control', 'placeholder' => 'gran_contribuyente_cliente','name'=>'gran_contribuyente_cliente']) !!}
+
+                <div class="form-group">
+                    <label for="id">Empresa</label>
+                    {!! Form::select('cliente', $clientes, null, ['class' => 'form-control', 'placeholder' => 'Seleccione la Empresa... ','name'=>'cliente','required']) !!} 
+
+                </div>
+
+                <div class="form-group">
+                    <label for="id">Auditor</label>
+                    {!! Form::select('audito', $auditor, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el Auditor... ','name'=>'audito','required']) !!} 
+
+                </div>
+
+               <!--  <div class="form-group">
+                    <label for="id">bim</label>
+                    {!! Form::number('bim', null,['class' => 'form-control', 'placeholder' => 'Digite el BIM','name'=>'bim','required']) !!}
+
+                </div> -->
+
+                <!-- <div class="form-group">
+                    <label for="id">Fecha de Vencimiento</label>
+                    {!! Form::date('fecha_vencimiento', null,['class' => 'form-control', 'placeholder' => 'fecha_vencimiento','name'=>'fecha_vencimiento','required']) !!}
+
+                </div>
+
+                <div class="form-group">
+                    <label for="id">Fecha de Entrega</label>
+                    {!! Form::date('fecha_entrega', null,['class' => 'form-control', 'placeholder' => 'fecha_entrega','name'=>'fecha_entrega','required']) !!}
+
+                </div>
+
+                <div class="form-group">
+                    <label for="id"><i class="fa fa-upload" aria-hidden="true"></i> Ubicación de Archivos</label>
+                    {!! Form::file('ubicacion_archivos', ['class' => 'form-control', 'placeholder' => 'ubicacion_archivos','name'=>'ubicacion_archivos', 'enctype' => 'multipart/form-data', 'files' => 'true','required']) !!}
+
+                </div>
+
+                <div class="form-group">
+                    <label for="id">Observaciones</label>
+                    {!! Form::textarea('Observaciones', null, ['class' => 'form-control', 'placeholder' => 'Observaciones','name'=>'Observaciones', 'required']) !!}
+
+                </div>
+
+                <div class="form-group">
+                    <label for="id">Enviar Auditoria</label>
+                    {!! Form::select('enviar_auditoria',[ '0'=>'No', '1' =>'Si'],null,['class'=> 'form-control','name'=>'enviar_auditoria','required'] )!!}
+                </div>
+
+                <div class="form-group">
+                    <label for="id">Cierre Auditoria</label>
+                    {!! Form::select('cierre_auditoria',[ '0'=>'No', '1' =>'Si'],null,['class'=> 'form-control','name'=>'cierre_auditoria','required'] )!!}
+                </div>
+
+                <div class="form-group">
+                    <label for="id">Observaciones de Auditoria</label>
+                    {!! Form::textarea('observaciones_auditoria', null, ['class' => 'form-control', 'placeholder' => 'observaciones_auditoria','name'=>'observaciones_auditoria','required']) !!}
+                </div>
+
+                
+
+                <div class="form-group">
+<label for="id">Fecha Auditoria Encabezado Devolución Iva</label>
+{!! Form::date('fecha_auditoria_encabezado_imp_renta', null,['class' => 'form-control', 'placeholder' => 'fecha_auditoria_encabezado_imp_renta','name'=>'fecha_auditoria_encabezado_imp_renta','required']) !!}
+
+                </div> -->
+
+                <div class="form-group">
+                    <label for="id">Fecha de Elaboración</label>
+                    {!! Form::date('fecha_elaboracion', \Carbon\Carbon::now(),['class' => 'form-control', 'placeholder' => 'fecha_elaboracion','name'=>'fecha_elaboracion','readonly']) !!}
+
+                </div>
+
+
+                <center><button type="submit" class="btn btn-primary" >Generar encabezado y detalle</button>
+                    <button type="reset" class="btn btn-danger">Borrar</button></center><p>
+
+                        {!! Form::close() !!}
+
+
                     </div>
-    
-      <div class="form-group">
-                                <label for="id">correo_cliente</label>
-                                {!! Form::text('email', null,['class' => 'form-control', 'placeholder' => 'correo_cliente','name'=>'correo_cliente']) !!}
-                            </div>
- <div class="form-group">
- <label for="id">ciudad_cliente</label>
- {!! Form::text('ciudad_cliente', null,['class' => 'form-control', 'placeholder' => 'ciudad_cliente','name'=>'ciudad_cliente']) !!}
- </div>
+                </div>
 
-<div class="form-group">
- <label for="id">pais_cliente</label>
- {!! Form::text('pais_cliente', null,['class' => 'form-control', 'placeholder' => 'ciudad_cliente','name'=>'pais_cliente']) !!}
- </div>
-
- <div class="form-group">
- <label for="id">contacto_cliente</label>
- {!! Form::text('contacto_cliente', null,['class' => 'form-control', 'placeholder' => 'contacto_cliente','name'=>'contacto_cliente']) !!}
- </div>
- <div class="form-group">
- <label for="id">clave_ingreso_DIAN_cliente</label>
- {!! Form::text('clave_ingreso_DIAN_cliente', null,['class' => 'form-control', 'placeholder' => 'clave_ingreso_DIAN_cliente','name'=>'clave_ingreso_DIAN_cliente']) !!}
- </div>
- <div class="form-group">
- <label for="id">clave_firma_DIAN_cliente</label>
- {!! Form::text('clave_firma_DIAN_cliente', null,['class' => 'form-control', 'placeholder' => 'clave_firma_DIAN_cliente','name'=>'clave_firma_DIAN_cliente']) !!}
- </div>
- <div class="form-group">
- <label for="id">clave_CC_cliente</label>
- {!! Form::text('clave_CC_cliente', null,['class' => 'form-control', 'placeholder' => 'clave_CC_cliente','name'=>'clave_CC_cliente']) !!}
- </div>
-<div class="form-group">
- <label for="id">responsable_cliente</label>
- {!! Form::text('responsable_cliente', null,['class' => 'form-control', 'placeholder' => 'responsable_cliente','name'=>'responsable_cliente']) !!}
- </div>
-
- <div class="form-group">
- <label for="id">ultimo_digito_cliente</label>
- {!! Form::text('ultimo_digito_cliente', null,['class' => 'form-control', 'placeholder' => 'ultimo_digito_cliente','name'=>'ultimo_digito_cliente']) !!}
- </div>
-
-  <div class="form-group">
- <label for="id">ultimos_digitos_cliente</label>
- {!! Form::text('ultimos_digitos_cliente', null,['class' => 'form-control', 'placeholder' => 'ultimos_digitos_cliente','name'=>'ultimos_digitos_cliente']) !!}
- </div>
-<div class="form-group">
- <label for="id">activo_cliente</label>
- {!! Form::text('activo_cliente', null,['class' => 'form-control', 'placeholder' => 'activo_cliente','name'=>'activo_cliente']) !!}
- </div>
-
- <div class="form-group">
- <label for="id">tipo_cliente</label>
- {!! Form::text('tipo_cliente', null,['class' => 'form-control', 'placeholder' => 'tipo_cliente','name'=>'tipo_cliente']) !!}
- </div>
-
- <div class="form-group">
- <label for="id">representante_legal_cliente</label>
- {!! Form::text('representante_legal_cliente', null,['class' => 'form-control', 'placeholder' => 'tipo_cliente','name'=>'representante_legal_cliente']) !!}
- </div>
-
- <div class="form-group">
- <label for="id">nombre_representante_legal_cliente</label>
- {!! Form::text('nombre_representante_legal_cliente', null,['class' => 'form-control', 'placeholder' => 'nombre_representante_legal_cliente','name'=>'nombre_representante_legal_cliente']) !!}
- </div>
-
-
-    <center><button type="submit" class="btn btn-primary" >Enviar</button>
-    <button type="reset" class="btn btn-danger">Borrar</button></center><p>
-
-{!! Form::close() !!}
-
-
-  </div>
-</div>
-
-</div>
-</div>
+            </div>
+        </div>

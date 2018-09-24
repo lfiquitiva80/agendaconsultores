@@ -8,7 +8,7 @@
 @section('main-content')
 
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
         @include('sweet::alert')
 
 
@@ -16,7 +16,7 @@
   <div class="panel-body">
 
 <div class="container">
-{!! Form::open(['route' => 'clientes.index', 'method'=>'GET', 'Class'=>'navbar-form navbar-right']) !!}
+{!! Form::open(['route' => 'detalle_imp_renta.index', 'method'=>'GET', 'Class'=>'navbar-form navbar-right']) !!}
 <!--<form class="navbar-form navbar-right" role="search">-->
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Search" name="nombre" id="nombre">
@@ -24,12 +24,12 @@
   <button type="submit" class="btn btn-default">Submit</button>
 {!! Form::close() !!}
 <div class="panel panel-default">
-<h4><b><center>REGISTROS DE CLIENTES</h4></b></center>
-<a class="btn btn-info" data-toggle="modal" href='#crear_cliente'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear Cliente</a>
+<h4><b><center>DETALLE DEVOLUCION IVA</h4></b></center>
+<a class="btn btn-info" data-toggle="modal" href='#crear_detalle_imp_renta'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear detalle_imp_renta</a>
 
-  @include('cliente.create')
+  @include('detalle_imp_renta.create')
 
-  @include('cliente.edit')
+  @include('detalle_imp_renta.edit')
 
 
 
@@ -38,31 +38,28 @@
 <div class="table-responsive">
 <table class="table table-hover" >
   <thead>
-    <tr>
-      <td>id_cliente</td>
-      <td>nit</td>
-      <td>nombre_cliente</td>
-<!--       <td>direccion_cliente</td>
-      <td>telefono_cliente</td>
-      <td>celular_cliente</td>
-      <td>notas_cliente</td>
-      <td>gran_contribuyente_cliente</td>
-      <td>correo_cliente</td>
-      <td>ciudad_cliente</td>
-      <td>pais_cliente</td>
-      <td>contacto_cliente</td>
-      <td>clave_ingreso_DIAN_cliente</td>
-      <td>clave_firma_DIAN_cliente</td>
-      <td>clave_CC_cliente</td>
-      <td>responsable_cliente</td>
-      <td>ultimo_digito_cliente</td>
-      <td>ultimos_digitos_cliente</td>
-      <td>activo_cliente</td>
-      <td>tipo_cliente</td>
-      <td>representante_legal_cliente</td>
-      <td>nombre_representante_legal_cliente</td> -->
 
-      <td>  Acción </td>
+    <tr>
+
+      <th colspan="4"></th>
+      <th  colspan="3"> Responsable</th>
+      <th  colspan="3"> Auditor</th>
+      
+
+    </tr>
+    <tr>
+      <th>id</th>
+      <th>cns_detalle</th>
+      <th>codigo</th>
+      <th>descripcion</th>
+      <th>ressi</th>
+      <th>resno</th>
+      <th>resna</th>
+      <th>audsi</th>
+      <th>audno</th>
+      <th>audna</th>
+
+       <td>  Acción </td>
 
 
 
@@ -70,60 +67,39 @@
   </thead>
   <tbody>
 
-  @foreach($cliente as $row)
+  @foreach($detalle_imp_renta as $row)
     <tr>
 
 
 
-          <td>{{$row->id}}</td>
-          <td>{{$row->nit}}</td>
-          <td>{{$row->nombre_cliente}}</td>
-         <!--  <td>{{$row->direccion_cliente}}</td>
-          <td>{{$row->telefono_cliente}}</td>
-          <td>{{$row->celular_cliente}}</td>
-          <td>{{$row->notas_cliente}}</td>
-          <td>{{$row->gran_contribuyente_cliente}}</td>
-          <td>{{$row->correo_cliente}}</td>
-          <td>{{$row->ciudad_cliente}}</td>
-          <td>{{$row->pais_cliente}}</td>
-          <td>{{$row->contacto_cliente}}</td>
-          <td>{{$row->clave_ingreso_DIAN_cliente}}</td>
-          <td>{{$row->clave_firma_DIAN_cliente}}</td>
-          <td>{{$row->clave_CC_cliente}}</td>
-          <td>{{$row->responsable_cliente}}</td>
-          <td>{{$row->ultimo_digito_cliente}}</td>
-          <td>{{$row->ultimos_digitos_cliente}}</td>
-          <td>{{$row->activo_cliente}}</td>
-          <td>{{$row->tipo_cliente}}</td>
-          <td>{{$row->representante_legal_cliente}}</td>
-          <td>{{$row->nombre_representante_legal_cliente}}</td> -->
+      <td>{{$row->id}}</td>
+      <td>{{$row->cns_detalle}}</td>
+      <td>{{$row->codigo}}</td>
+      <td>{{$row->descripcion}}</td>
+      <td>{!! Form::checkbox('all', $row->ressi, $row->ressi, ['disabled']) !!}</td>
+      <td>{!! Form::checkbox('all', $row->resno, $row->resno, ['disabled']) !!}</td>
+      <td>{!! Form::checkbox('all', $row->resna, $row->resna, ['disabled']) !!}</td>
+      <td>{!! Form::checkbox('all', $row->audsi, $row->audsi, ['disabled']) !!}</td>
+      <td>{!! Form::checkbox('all', $row->audno, $row->audno, ['disabled']) !!}</td>
+      <td>{!! Form::checkbox('all', $row->audna, $row->audna, ['disabled']) !!}</td>
 
+  
 
+         
 
-          <td><a   data-toggle="modal" data-target="#editar_clientes" data-id="{{$row->id}}"
-            data-nit="{{$row->nit}}"
-            data-nombre_cliente="{{$row->nombre_cliente}}"
-            data-direccion_cliente="{{$row->direccion_cliente}}"
-            data-telefono_cliente="{{$row->telefono_cliente}}"
-            data-celular_cliente="{{$row->celular_cliente}}"
-            data-notas_cliente="{{$row->notas_cliente}}"
-            data-gran_contribuyente_cliente="{{$row->gran_contribuyente_cliente}}"
-            data-correo_cliente="{{$row->correo_cliente}}"
-            data-ciudad_cliente="{{$row->ciudad_cliente}}"
-            data-pais_cliente="{{$row->pais_cliente}}"
-            data-contacto_cliente="{{$row->contacto_cliente}}"
-            data-clave_ingreso_DIAN_cliente="{{$row->clave_ingreso_DIAN_cliente}}"
-            data-clave_firma_DIAN_cliente="{{$row->clave_firma_DIAN_cliente}}"
-            data-clave_CC_cliente="{{$row->clave_CC_cliente}}"
-            data-responsable_cliente="{{$row->responsable_cliente}}"
-            data-ultimo_digito_cliente="{{$row->ultimo_digito_cliente}}"
-            data-ultimos_digitos_cliente="{{$row->ultimos_digitos_cliente}}"
-            data-activo_cliente="{{$row->activo_cliente}}"
-            data-tipo_cliente="{{$row->tipo_cliente}}"
-            data-representante_legal_cliente="{{$row->representante_legal_cliente}}" 
-            data-nombre_representante_legal_cliente="{{$row->nombre_representante_legal_cliente}}"     class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+          <td><a   data-toggle="modal" data-target="#editar_detalle_imp_renta" data-id="{{$row->id}}"
+            data-cns_detalle="{{$row->cns_detalle}}"
+            data-codigo="{{$row->codigo}}"
+            data-descripcion="{{$row->descripcion}}"
+            data-ressi="{{$row->ressi}}"
+            data-resno="{{$row->resno}}"
+            data-resna="{{$row->resna}}"
+            data-audsi="{{$row->audsi}}"
+            data-audno="{{$row->audno}}"
+            data-audna="{{$row->audna}}"
+            class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
-            <td>@include('cliente.destroy')</td>
+            <td>@include('detalle_imp_renta.destroy')</td>
           
     </tr>
   </tbody>
@@ -134,7 +110,7 @@
 </table>
 </div>
 
-<center>{{ $cliente->links() }}</center>
+<center>{{ $detalle_imp_renta->links() }}</center>
 
 </div>
 

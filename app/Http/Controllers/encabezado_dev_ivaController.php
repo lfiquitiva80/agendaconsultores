@@ -20,6 +20,7 @@ use App\periodo;
 use App\checklist;
 use App\plantilla_checklist;
 use Alert;
+use Carbon\Carbon;
 
 class encabezado_dev_ivaController extends Controller
 {
@@ -30,21 +31,21 @@ class encabezado_dev_ivaController extends Controller
      */
     public function index(Request $request)
     {
-        
+
         if (Auth::user()->perfil_usuario == 1) {
-        $encabezado_dev_iva = encabezado_dev_iva::Search($request->nombre)->orderBy('id', 'desc')->paginate(10);
-    }elseif (Auth::user()->perfil_usuario == 2) {
+            $encabezado_dev_iva = encabezado_dev_iva::Search($request->nombre)->orderBy('id', 'desc')->paginate(10);
+        }elseif (Auth::user()->perfil_usuario == 2) {
 
 
-     $encabezado_dev_iva = encabezado_dev_iva::where('responsable', Auth::user()->id)
-      ->Search($request->nombre)
-      ->orderBy('id', 'desc')
-      ->paginate(10);
+           $encabezado_dev_iva = encabezado_dev_iva::where('responsable', Auth::user()->id)
+           ->Search($request->nombre)
+           ->orderBy('id', 'desc')
+           ->paginate(10);
 
 
-      
 
-    }else {
+
+       }else {
 
         $encabezado_dev_iva = encabezado_dev_iva::Search($request->nombre)->orderBy('id', 'desc')
         ->where('enviar_auditoria', 1)
@@ -56,7 +57,7 @@ class encabezado_dev_ivaController extends Controller
     if (Auth::user()->perfil_usuario == 1) {
         $clientes = clientes::pluck('nombre_cliente', 'id');
     } else {
-    $clientes = clientes::where('responsable_cliente',Auth::user()->id)->pluck('nombre_cliente', 'id');
+        $clientes = clientes::where('responsable_cliente',Auth::user()->id)->pluck('nombre_cliente', 'id');
     }
     
     
@@ -68,8 +69,8 @@ class encabezado_dev_ivaController extends Controller
 
         //$cliente = DB::table('cliente')->paginate(15);
         //dd($cliente);
-   return view('encabezado_dev_iva.index',compact('encabezado_dev_iva','usuarios','compromisos','periodo','compromisos_clientes','clientes','auditor'));
-    }
+    return view('encabezado_dev_iva.index',compact('encabezado_dev_iva','usuarios','compromisos','periodo','compromisos_clientes','clientes','auditor'));
+}
 
     /**
      * Show the form for creating a new resource.
@@ -94,57 +95,60 @@ class encabezado_dev_ivaController extends Controller
 
         $encabezado_dev_iva =  new encabezado_dev_iva($request-> all());
 
-            $input = $request->all();
+        $input = $request->all();
 
-          if ($request->hasFile('ubicacion_archivos')) {
+        if ($request->hasFile('ubicacion_archivos')) {
 
-                  
-    $ruta = "/archivos/".$request->file('ubicacion_archivos')->store('archivos');
 
-                }
-    else
-    {
-    $ruta=$encabezado_dev_iva->ubicacion_archivos;
-    }
+            $ruta = "/archivos/".$request->file('ubicacion_archivos')->store('archivos');
+
+        }
+        else
+        {
+            //$ruta=$encabezado_dev_iva->ubicacion_archivos;
+            $dt = Carbon::now();
+            $nit = clientes::find($input['cliente']);
+            $ruta= "//clientes_ftp/".$nit->nit."/".$dt->year."/impuestos/devolucion_iva";
+        }
     //dd($ruta);
-    $encabezado_dev_iva->ubicacion_archivos  = $ruta;
-    $encabezado_dev_iva->responsable=$input['responsable'];
-    $encabezado_dev_iva->cliente=$input['cliente'];
-    $encabezado_dev_iva->auditor=$input['auditor'];
-    $encabezado_dev_iva->bim=$input['bim'];
-    $encabezado_dev_iva->fecha_vencimiento=$input['fecha_vencimiento'];
-    $encabezado_dev_iva->fecha_entrega=$input['fecha_entrega'];
-    $encabezado_dev_iva->Observaciones=$input['Observaciones'];
-    $encabezado_dev_iva->enviar_auditoria=$input['enviar_auditoria'];
-    $encabezado_dev_iva->cierre_auditoria=$input['cierre_auditoria'];
-    $encabezado_dev_iva->observaciones_auditoria=$input['observaciones_auditoria'];
-    $encabezado_dev_iva->fecha_auditoria_encabezado_dev_iva=$input['fecha_auditoria_encabezado_dev_iva'];
-    $encabezado_dev_iva->fecha_elaboracion=$input['fecha_elaboracion'];
+        $encabezado_dev_iva->ubicacion_archivos  = $ruta;
+        $encabezado_dev_iva->responsable=$input['responsable'];
+        $encabezado_dev_iva->cliente=$input['cliente'];
+        $encabezado_dev_iva->auditor=$input['auditor'];
+        $encabezado_dev_iva->bim=0;
+        $encabezado_dev_iva->fecha_vencimiento=$input['fecha_elaboracion'];
+        $encabezado_dev_iva->fecha_entrega=$input['fecha_elaboracion'];
+        $encabezado_dev_iva->Observaciones="null";
+        $encabezado_dev_iva->enviar_auditoria=0;
+        $encabezado_dev_iva->cierre_auditoria=0;
+        $encabezado_dev_iva->observaciones_auditoria="null";
+        $encabezado_dev_iva->fecha_auditoria_encabezado_dev_iva=$input['fecha_elaboracion'];
+        $encabezado_dev_iva->fecha_elaboracion=$input['fecha_elaboracion'];
 
-    $encabezado_dev_iva->save();
+        $encabezado_dev_iva->save();
 
         $checklist=checklist::find(1); 
         $plantilla_checklist = plantilla_checklist::WHERE('filtro_checklist',$checklist->filtro_plantilla)->get();
 
-          foreach ($plantilla_checklist as $key => $value) {
-            
-        
-         DB::table('detalle_dev_iva')->insert([
+        foreach ($plantilla_checklist as $key => $value) {
+
+
+           DB::table('detalle_dev_iva')->insert([
             'cns_detalle' => $encabezado_dev_iva->id,
             'codigo' => $value->codigo_plantilla_checklist,
             'descripcion' => $value->descripcion_plantilla_checklist,
-                               
-           ]);
-         }
+
+        ]);
+       }
 
 
-        \Alert::success('', 'El encabezado_dev_iva ha sido registrado con exito !')->persistent('Close');
-         return redirect()->route('encabezado_dev_iva.index');
+       \Alert::success('', 'El encabezado_dev_iva ha sido registrado con exito !')->persistent('Close');
+       return redirect()->route('encabezado_dev_iva.index');
 
 
 
 
-    }
+   }
 
     /**
      * Display the specified resource.
@@ -165,7 +169,7 @@ class encabezado_dev_ivaController extends Controller
      */
     public function edit(encabezado_dev_iva $id)
     {
-      
+
     }
 
     /**
@@ -177,22 +181,23 @@ class encabezado_dev_ivaController extends Controller
      */
     public function update(Request $request, encabezado_dev_iva $id)
     {
-         
 
-         $encabezado_dev_iva = encabezado_dev_iva::findOrFail($request->id);
 
-         
-         $input = $request->all();
+       $encabezado_dev_iva = encabezado_dev_iva::findOrFail($request->id);
 
-          if ($request->hasFile('ubicacion_archivos')) {
 
-                  
-    $ruta = "/archivos/".$request->file('ubicacion_archivos')->store('archivos');
+       $input = $request->all();
 
-                }
+       if ($request->hasFile('ubicacion_archivos')) {
+
+
+        $ruta = "/archivos/".$request->file('ubicacion_archivos')->store('archivos');
+
+    }
     else
     {
-    $ruta=$encabezado_dev_iva->ubicacion_archivos;
+        
+        $ruta=$input['ubicacion_archivos'];
     }
     //dd($ruta);
     $encabezado_dev_iva->ubicacion_archivos  = $ruta;
@@ -211,11 +216,11 @@ class encabezado_dev_ivaController extends Controller
 
     $encabezado_dev_iva->save();
     
-         
 
-      Alert::success('', 'El encabezado_dev_iva ha sido editado con exito !')->persistent('Close');
-      return redirect()->route('encabezado_dev_iva.index');
-    }
+
+    Alert::success('', 'El encabezado_dev_iva ha sido editado con exito !')->persistent('Close');
+    return redirect()->route('encabezado_dev_iva.index');
+}
 
     /**
      * Remove the specified resource from storage.

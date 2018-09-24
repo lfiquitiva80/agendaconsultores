@@ -28,7 +28,7 @@ class checklistController extends Controller
      */
     public function index(Request $request)
     {
-        $checklist = checklist::Search($request->nombre)->orderBy('descripcion', 'desc')->paginate(10);
+        $checklist = checklist::Search($request->nombre)->paginate(10);
 
         $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
         $auditor = User::where('perfil_usuario',3)->pluck('name', 'id');

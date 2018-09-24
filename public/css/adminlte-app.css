@@ -548,7 +548,7 @@ a:focus {
   display: block;
 }
 .sidebar-menu .treeview-menu {
-  display: none;
+  /*display: none;*/
   list-style: none;
   padding: 0;
   margin: 0;
