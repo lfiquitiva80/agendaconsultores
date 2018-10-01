@@ -105,10 +105,10 @@ class encabezado_informeController extends Controller
         }
         else
         {
-            //$ruta=$encabezado_informe->ubicacion_archivos;
+            $ruta=$encabezado_informe->ubicacion_archivos;
             $dt = Carbon::now();
             $nit = clientes::find($input['cliente']);
-            $ruta= "//clientes_ftp/".$nit->nit."/".$dt->year."/informes";
+            $ruta2= "//clientes_ftp/".$nit->nit."/".$dt->year."/informes";
         }
     //dd($ruta);
         $encabezado_informe->ubicacion_archivos  = $ruta;
@@ -191,7 +191,13 @@ class encabezado_informeController extends Controller
        if ($request->hasFile('ubicacion_archivos')) {
 
 
-        $ruta = "/archivos/".$request->file('ubicacion_archivos')->store('archivos');
+        $rutaold = "/archivos/".$request->file('ubicacion_archivos')->store('archivos');
+
+         $nombre=$request->ubicacion_archivos->getClientOriginalName();
+        $dt = Carbon::now();
+        $nit = clientes::find($input['cliente']);
+        $rutaalmacenamiento= $nit->nit."/".$dt->year."/informes";
+        $ruta = Storage::disk('public')->putFileAs($rutaalmacenamiento, $request->file('ubicacion_archivos'), $nombre);
 
     }
     else

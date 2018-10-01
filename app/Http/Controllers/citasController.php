@@ -31,7 +31,28 @@ class citasController extends Controller
     {
         $citas = citas::Search($request->nombre)->orderBy('id', 'asc')->paginate(10);
          $lugar = lugar::pluck('descripcion_lugar', 'id');
-         $clientes = clientes::pluck('nombre_cliente', 'id');
+         
+         $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
+    if (Auth::user()->perfil_usuario == 1) {
+        $clientes = clientes::pluck('nombre_cliente', 'id');
+    } else {
+        $clientes = clientes::where('responsable_cliente',Auth::user()->id)->pluck('nombre_cliente', 'id');
+    }
+
+    if (Auth::user()->perfil_usuario == 1) {
+        
+        $citas = citas::Search($request->nombre)->orderBy('id', 'asc')->paginate(10);
+    } else {
+     
+     $citas = citas::where('usuario_citas',Auth::user()->id)->Search($request->nombre)->orderBy('id', 'asc')->paginate(10);   
+    }
+    
+
+    
+
+
+
+
          $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
          $actividad_citas = actividad::pluck('descripcion_actividad', 'id');
          $estado_citas = estado_cita::pluck('Estado', 'id');
@@ -65,6 +86,7 @@ class citasController extends Controller
         
         //dd($request-> all());
         $json = json_encode($request->input('actividad_citas'), true);
+        $json2 = json_encode($request->input('compromiso_citas'), true);
         //dd($json);
         // $citas =  new citas($request-> all());
         // $citas->actividad_citas=$json;
@@ -82,7 +104,7 @@ class citasController extends Controller
         $citas->hora_citas=$request->input('hora_citas');
         $citas->actividad_citas=$json;
         $citas->estado_citas=$request->input('estado_citas');
-        $citas->compromiso_citas=$request->input('compromiso_citas');
+        $citas->compromiso_citas=$json2;
         // ...
 
         $citas->save();
@@ -129,6 +151,7 @@ class citasController extends Controller
          // $citas = citas::findOrFail($request->id);
          // $citas->update($request->all());
          $json = json_encode($request->input('actividad_citas'), true);
+         $json2 = json_encode($request->input('compromiso_citas'), true);
         $citas = citas::findOrFail($request->id);
         $citas->fecha_citas=$request->input('fecha_citas');
         $citas->lugar_citas=$request->input('lugar_citas');
@@ -141,7 +164,7 @@ class citasController extends Controller
         $citas->hora_citas=$request->input('hora_citas');
         $citas->actividad_citas=$json;
         $citas->estado_citas=$request->input('estado_citas');
-        $citas->compromiso_citas=$request->input('compromiso_citas');
+        $citas->compromiso_citas=$json2;
         // ...
 
         $citas->save();
@@ -202,6 +225,15 @@ class citasController extends Controller
       $data = citas::all();
       
       return response()->json($data);
+    }
+
+    public function actavisitas($id)
+    {
+        
+        $citas = \DB::table('citas')->where('id',$id)->first();
+
+        //dd($citas);
+        return view('actas.actas',compact('citas'));
     }
 
 

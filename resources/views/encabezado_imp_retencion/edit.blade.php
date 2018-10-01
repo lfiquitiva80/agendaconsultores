@@ -10,7 +10,7 @@
 
                 
 
-<form class="" action="{{route('encabezado_imp_retencion.update', 'id' )}}"   method="post" id="FormEditCargos" >
+<form class="" action="{{route('encabezado_imp_retencion.update', 'id' )}}"   method="post" id="FormEditCargos" enctype = 'multipart/form-data'>
 
   {{method_field('patch')}}
   {{csrf_field()}}
@@ -76,7 +76,8 @@
 
                 <div class="form-group">
                     <label for="id">Ubicación de Archivos</label>
-                  {!! Form::text('ubicacion_archivos', null, ['class' => 'form-control', 'placeholder' => 'ubicacion_archivos','name'=>'ubicacion_archivos','id'=>'ubicacion_archivos', 'required']) !!}
+                  
+                  {!! Form::file('ubicacion_archivos', null, ['class' => 'form-control', 'placeholder' => 'ubicacion_archivos','name'=>'ubicacion_archivos','id'=>'ubicacion_archivos', 'required']) !!}
 
                 </div>
 

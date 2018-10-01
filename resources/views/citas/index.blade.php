@@ -82,7 +82,10 @@
           <td>{{$row->estado->Estado}}</td>
 
 
-          <td><a   data-toggle="modal" data-target="#editar_citas" data-id ="{{$row->id}}"
+           <td><a href="{{ $url = route('actavisita', $row->id) }}" class="btn bg-purple margin"><i class="fa fa-eye" aria-hidden="true"></i> Acta Visita</a></td>
+
+
+          <!-- <td><a   data-toggle="modal" data-target="#editar_citas" data-id ="{{$row->id}}"
               data-fecha_citas ="{{$row->fecha_citas}}"
               data-lugar_citas ="{{$row->lugar_citas}}"
               data-observacion_citas ="{{$row->observacion_citas}}"
@@ -96,7 +99,7 @@
               data-estado_citas ="{{$row->estado_citas}}"
               data-compromiso_citas ="{{$row->compromiso_citas}}"
 
-            class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+            class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a></td> -->
 
             <td>@include('citas.destroy')</td>
           

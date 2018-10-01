@@ -18,7 +18,7 @@
         {!! Form::text('descripcion_cargo', null,['class' => 'form-control', 'placeholder' => 'descripcion_cargo','name'=>'descripcion_cargo']) !!}
     </div>
 
-    <center><button type="submit" class="btn btn-primary" >Enviar</button>
+    <center><button type="submit" class="btn btn-primary" >Guardar</button>
     <button type="reset" class="btn btn-danger">Borrar</button></center><p>
 
 {!! Form::close() !!}

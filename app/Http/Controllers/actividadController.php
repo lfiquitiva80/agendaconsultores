@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\actividad;
+use App\tipo_actividad;
 use Illuminate\Http\Request;
 use App\cargo;
 use Illuminate\Support\Facades\Auth;
@@ -25,11 +26,12 @@ class actividadController extends Controller
     {
         $actividad = actividad::Search($request->nombre)->orderBy('descripcion_actividad', 'asc')->paginate(10);
          $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
+         $tipo_actividad= tipo_actividad::pluck('descripcion', 'id');
          //dd($perfil);
 
         //$cliente = DB::table('cliente')->paginate(15);
         //dd($cliente);
-   return view('actividad.index',compact('actividad','usuarios'));
+   return view('actividad.index',compact('actividad','usuarios', 'tipo_actividad'));
     }
 
     /**
@@ -50,7 +52,10 @@ class actividadController extends Controller
      */
     public function store(Request $request)
     {
+
+        $json = json_encode($request->input('tipo'), true);
         $actividad =  new actividad($request-> all());
+        $actividad->tipo=$json;
         $actividad->save();
         \Alert::success('', 'El actividad ha sido registrado con exito !')->persistent('Close');
          return redirect()->route('actividad.index');
@@ -87,8 +92,13 @@ class actividadController extends Controller
      */
     public function update(Request $request, $id)
     {
+           //dd($request->all()); 
+         $json = json_encode($request->input('tipo'), true);           
          $actividad = actividad::findOrFail($request->id);
-         $actividad->update($request->all());
+         $actividad->descripcion_actividad= $request->input('descripcion_actividad');
+         $actividad->modo_actividad= $request->input('modo_actividad');
+         $actividad->tipo = $json; 
+         $actividad->save();
 
       Alert::success('', 'El actividad ha sido editado con exito !')->persistent('Close');
       return redirect()->route('actividad.index');

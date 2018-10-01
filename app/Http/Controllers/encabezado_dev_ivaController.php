@@ -34,6 +34,11 @@ class encabezado_dev_ivaController extends Controller
 
         if (Auth::user()->perfil_usuario == 1) {
             $encabezado_dev_iva = encabezado_dev_iva::Search($request->nombre)->orderBy('id', 'desc')->paginate(10);
+
+            $auditoria = \DB::table('encabezado_dev_iva')
+                ->where('responsable', Auth::user()->id)
+                ->OrWhere('enviar_auditoria',1)
+                ->paginate(15);
         }elseif (Auth::user()->perfil_usuario == 2) {
 
 
@@ -43,13 +48,24 @@ class encabezado_dev_ivaController extends Controller
            ->paginate(10);
 
 
+             $auditoria = \DB::table('encabezado_dev_iva')
+                ->where('responsable', Auth::user()->id)
+                ->OrWhere('enviar_auditoria',1)
+                ->paginate(15);
 
+
+                
 
        }else {
 
         $encabezado_dev_iva = encabezado_dev_iva::Search($request->nombre)->orderBy('id', 'desc')
         ->where('enviar_auditoria', 1)
         ->paginate(10);
+
+        $auditoria = \DB::table('encabezado_dev_iva')
+                ->where('responsable', Auth::user()->id)
+                ->orWhere('enviar_auditoria',1)
+                ->paginate(15);
 
     }
 
@@ -69,7 +85,7 @@ class encabezado_dev_ivaController extends Controller
 
         //$cliente = DB::table('cliente')->paginate(15);
         //dd($cliente);
-    return view('encabezado_dev_iva.index',compact('encabezado_dev_iva','usuarios','compromisos','periodo','compromisos_clientes','clientes','auditor'));
+    return view('encabezado_dev_iva.index',compact('encabezado_dev_iva','usuarios','compromisos','periodo','compromisos_clientes','clientes','auditor','auditoria'));
 }
 
     /**
@@ -97,18 +113,22 @@ class encabezado_dev_ivaController extends Controller
 
         $input = $request->all();
 
+
+       
+
         if ($request->hasFile('ubicacion_archivos')) {
 
 
             $ruta = "/archivos/".$request->file('ubicacion_archivos')->store('archivos');
+           
 
         }
         else
         {
-            //$ruta=$encabezado_dev_iva->ubicacion_archivos;
+            $ruta=$encabezado_dev_iva->ubicacion_archivos;
             $dt = Carbon::now();
             $nit = clientes::find($input['cliente']);
-            $ruta= "//clientes_ftp/".$nit->nit."/".$dt->year."/impuestos/devolucion_iva";
+            $ruta2= "//clientes_ftp/".$nit->nit."/".$dt->year."/impuestos/devolucion_iva";
         }
     //dd($ruta);
         $encabezado_dev_iva->ubicacion_archivos  = $ruta;
@@ -187,11 +207,16 @@ class encabezado_dev_ivaController extends Controller
 
 
        $input = $request->all();
+       
 
        if ($request->hasFile('ubicacion_archivos')) {
 
 
-        $ruta = "/archivos/".$request->file('ubicacion_archivos')->store('archivos');
+        $nombre=$request->ubicacion_archivos->getClientOriginalName();
+        $dt = Carbon::now();
+        $nit = clientes::find($input['cliente']);
+        $rutaalmacenamiento= $nit->nit."/".$dt->year."/impuestos/devolucion_iva";
+        $ruta = Storage::disk('public')->putFileAs($rutaalmacenamiento, $request->file('ubicacion_archivos'), $nombre);
 
     }
     else

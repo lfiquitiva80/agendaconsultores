@@ -27,6 +27,8 @@
 <h4><b><center>REGISTROS DE ACTIVIDAD</h4></b></center>
 <a class="btn btn-info" data-toggle="modal" href='#crear_actividad'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear actividad</a>
 
+<li><a href="{{ route('tipo_actividad.index') }}" class="btn btn-primary pull-right"><i class="fa fa-low-vision" aria-hidden="true"></i><span> Ir a Tipo de Actividad</span></a></li>
+
   @include('actividad.create')
 
   @include('actividad.edit')
@@ -41,7 +43,7 @@
     <tr>
       <td>id_actividad</td>
       <td>descripcion_actividad</td>
-       <td>  Acción </td>
+      <td>  Acción </td>
 
 
 
@@ -56,10 +58,13 @@
 
           <td>{{$row->id}}</td>
           <td>{{$row->descripcion_actividad}}</td>
+
          
 
           <td><a   data-toggle="modal" data-target="#editar_actividad" data-id="{{$row->id}}"
-            data-descripcion_actividad="{{$row->descripcion_actividad}}" data-modo_actividad="{{$row->modo_actividad}}"
+            data-descripcion_actividad="{{$row->descripcion_actividad}}" 
+            data-modo_actividad="{{$row->modo_actividad}}"
+            data-tipo="{{$row->tipo}}"
             class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
             <td>@include('actividad.destroy')</td>

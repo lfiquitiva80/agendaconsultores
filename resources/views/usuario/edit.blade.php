@@ -38,7 +38,7 @@
 
           </div>
           <div class="form-group">
-            <label for="id">Cargo del Usuario</label>
+            <label for="id">Cargo del Usuario  <code>Tecla Control + clic derecho para Seleccionar</code></label>
 
             {!! Form::select('cargo', $cargo,null, ['class' => 'form-control','name'=>'cargo[]','id'=>'cargo', 'multiple' => 'multiple' ]) !!}             
 

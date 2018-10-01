@@ -79,14 +79,7 @@
 
             <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-tachometer" aria-hidden="true"></i></i> <span> Dashboard</span></a></li>
 
-            <li><a href="{{ route('encabezado_dev_iva.index') }}"><i class="fa fa-check-square-o" aria-hidden="true"></i></i> <span> Checklist DEVOLUCIÓN IVA</span></a></li>
-            <li><a href="{{ route('encabezado_imp_ica.index') }}"><i class="fa fa-check-circle-o" aria-hidden="true"></i></i> <span> Checklist ICA</span></a></li>
-            <li><a href="{{ route('encabezado_imp_iva.index') }}"><i class="fa fa-check-circle" aria-hidden="true"></i></i> <span> Checklist IVA</span></a></li>
-            <li><a href="{{ route('encabezado_imp_renta.index') }}"><i class="fa fa-check-square" aria-hidden="true"></i></i> <span> Checklist RENTA</span></a></li>
-            <li><a href="{{ route('encabezado_imp_reteica.index') }}"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></i> <span> Checklist RENTEICA</span></a></li>
-            <li><a href="{{ route('encabezado_imp_retencion.index') }}"><i class="fa fa-check" aria-hidden="true"></i></i> <span> Checklist RETENCIÓN</span></a></li>
-            <li><a href="{{ route('encabezado_informe.index') }}"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></i> <span> Checklist INFORME</span></a></li>
-
+           
 
 
             @endif

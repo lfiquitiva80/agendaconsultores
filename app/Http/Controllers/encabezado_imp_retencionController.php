@@ -106,10 +106,10 @@ class encabezado_imp_retencionController extends Controller
         }
         else
         {
-            //$ruta=$encabezado_imp_retencion->ubicacion_archivos;
+            $ruta=$encabezado_imp_retencion->ubicacion_archivos;
             $dt = Carbon::now();
             $nit = clientes::find($input['cliente']);
-            $ruta= "//clientes_ftp/".$nit->nit."/".$dt->year."/impuestos/retencion";
+            $ruta2= "//clientes_ftp/".$nit->nit."/".$dt->year."/impuestos/retencion";
         }
     //dd($ruta);
         $encabezado_imp_retencion->ubicacion_archivos  = $ruta;
@@ -192,7 +192,13 @@ class encabezado_imp_retencionController extends Controller
        if ($request->hasFile('ubicacion_archivos')) {
 
 
-        $ruta = "/archivos/".$request->file('ubicacion_archivos')->store('archivos');
+        $rutaold = "/archivos/".$request->file('ubicacion_archivos')->store('archivos');
+
+         $nombre=$request->ubicacion_archivos->getClientOriginalName();
+        $dt = Carbon::now();
+        $nit = clientes::find($input['cliente']);
+        $rutaalmacenamiento= $nit->nit."/".$dt->year."/impuestos/retencion";
+        $ruta = Storage::disk('public')->putFileAs($rutaalmacenamiento, $request->file('ubicacion_archivos'), $nombre);
 
     }
     else

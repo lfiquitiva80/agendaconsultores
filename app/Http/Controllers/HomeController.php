@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\perfil;
 use App\citas;
@@ -45,9 +46,13 @@ class HomeController extends Controller
     {
          $citas = citas::all();
          $lugar = lugar::pluck('descripcion_lugar', 'id');
-         $clientes = clientes::pluck('nombre_cliente', 'id');
+         if (Auth::user()->perfil_usuario == 1) {
+        $clientes = clientes::pluck('nombre_cliente', 'id');
+    } else {
+        $clientes = clientes::where('responsable_cliente',Auth::user()->id)->pluck('nombre_cliente', 'id');
+    }
          $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
-         $actividad_citas = actividad::pluck('descripcion_actividad', 'id');
+         $actividad_citas = actividad::where('tipo',1)->orWhere('tipo','["1","2"]')->pluck('descripcion_actividad', 'id');
          $estado_citas = estado_cita::pluck('Estado', 'id');
          $jornada = jornada::pluck('descripcion_jornada', 'id');
          $compromisos = compromisos::pluck('descripcion_compromisos', 'id');

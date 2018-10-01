@@ -42,7 +42,7 @@
 
 
                 <div class="form-group">
-                    <label for="id">Cargo del Usuario</label>
+                    <label for="id">Cargo del Usuario  <code>Tecla Control + clic derecho para Seleccionar</code></label>
 
                     {!! Form::select('cargo', $cargo,null, ['class' => 'form-control','name'=>'cargo[]','id'=>'cargo', 'multiple' => 'multiple' ]) !!}             
 
@@ -68,7 +68,7 @@
                     {!! Form::select('activo',[ '1'=>'Activo', '0' =>'Inactivo'],null,['class'=> 'form-control','id' => 'activo','name'=>'activo'] )!!}
                 </div>
 
-                <center><button type="submit" class="btn btn-primary" >Enviar</button>
+                <center><button type="submit" class="btn btn-primary" >Guardar</button>
                     <button type="reset" class="btn btn-danger">Borrar</button></center><p>
 
                         {!! Form::close() !!}

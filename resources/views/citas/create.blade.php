@@ -13,7 +13,7 @@
 {!! Form::open(['route' => 'citas.store', 'method'=>'POST','id'=>'CreateFormCliente']) !!}
 
 <div class="row">
-<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
    <div class="form-group" >
         <label for="id">fecha</label>
         {!! Form::date('fecha_citas', \Carbon\Carbon::now(),['class' => 'form-control', 'placeholder' => 'fecha_citas','name'=>'fecha_citas','id'=>'fecha_citas']) !!}
@@ -21,7 +21,7 @@
 
 </div>
 
-<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
  <div class="form-group" >
     <label for="id">Hora</label>
     {{ Form::time('hora_citas', Carbon\Carbon::now()->format('H:i'),['class' => 'form-control', 'placeholder' => 'Hora_citas','name'=>'hora_citas']) }}
@@ -31,7 +31,7 @@
 
 </div>
 
-<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
  <div class="form-group" >
     <label for="id">hora_final</label>
     {{ Form::time('hora_final_citas', Carbon\Carbon::now()->format('H:i'),['class' => 'form-control', 'placeholder' => 'hora_final_citas','name'=>'hora_final_citas']) }}
@@ -53,7 +53,7 @@
 
 <div class="form-group">
     <label for="id">empresa</label>
-    {!! Form::select('empresa_citas', $clientes, null, ['class' => 'form-control', 'placeholder' => 'Seleccione la Empresa... ','name'=>'empresa_citas']) !!} 
+    {!! Form::select('empresa_citas', $clientes, null, ['class' => 'form-control', 'placeholder' => 'Seleccione la Empresa... ','name'=>'empresa_citas','id'=>'empresa_citas2']) !!} 
     
 </div>
 
@@ -98,7 +98,7 @@
 
 <div class="form-group">
     <label for="id">Compromisos</label>
-    {!! Form::select('compromiso_citas', $compromisos, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el compromiso... ','name'=>'compromiso_citas']) !!} 
+    {!! Form::select('compromiso_citas', $compromisos, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el compromiso... ','name'=>'compromiso_citas[]','id'=>'compromiso_citas2' ,'multiple'=>'multiple']) !!} 
     
 </div>
 
@@ -109,7 +109,7 @@
 
 
 
-    <center><button type="submit" class="btn btn-primary" >Enviar</button>
+    <center><button type="submit" class="btn btn-primary" >Guardar</button>
     <button type="reset" class="btn btn-danger">Borrar</button></center><p>
 
 {!! Form::close() !!}

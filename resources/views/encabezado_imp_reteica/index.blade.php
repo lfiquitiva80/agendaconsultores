@@ -49,6 +49,7 @@
 <th>Observaciones</th> -->
 <th>enviar_auditoria</th>
 <th>cierre_auditoria</th>
+<th>ubicacion_archivos</th>
 <!-- <th>observaciones_auditoria</th>
 <th>ubicacion_archivos</th>
 <th>fecha_auditoria_encabezado_imp_reteica</th>
@@ -88,6 +89,12 @@
               <span class="badge bg-red">No</span>
               @endif
           </td>
+            <td>@if(!empty($row->ubicacion_archivos))
+            <a class="btn btn-danger" href="{{asset('storage/'.$row->ubicacion_archivos)}}" role="button"><i class="fa fa-download" aria-hidden="true"></i> Descargar</a>
+            @else
+            Falta subir el archivo
+            @endif
+          </td> 
         
           <!-- <td>{{$row->observaciones_auditoria}}</td>
           <td><a class="btn btn-danger" href="{{$row->ubicacion_archivos}}" role="button"><i class="fa fa-download" aria-hidden="true"></i> Descargar</a></td>

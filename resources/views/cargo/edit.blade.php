@@ -23,8 +23,8 @@
     </div>
 
 
-    <center><button type="submit" class="btn btn-primary" >Enviar</button>
-    <button type="button" class="btn btn-default "data-dismiss="modal" >Close</button></center><p>
+    <center><button type="submit" class="btn btn-primary" >Actualizar</button>
+    <button type="button" class="btn btn-default "data-dismiss="modal" >Cerrar</button></center><p>
 
 </form>
 

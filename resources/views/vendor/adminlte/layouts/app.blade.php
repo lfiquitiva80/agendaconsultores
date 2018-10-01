@@ -9,6 +9,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 @section('htmlheader')
     @include('adminlte::layouts.partials.htmlheader')
+
+   <style type="text/css">
+       
+
+#cargando {
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#fff url(img/loading.gif) no-repeat center;
+}
+
+
+   </style> 
     
 @show
 
@@ -33,8 +46,12 @@ desired effect
 |---------------------------------------------------------|
 -->
 <body class="skin-purple sidebar-mini ">
+
+    <div id="cargando"></div><!-- temporizad de un loading..-->
 <div id="app" v-cloak>
     <div class="wrapper">
+
+
 
     @include('adminlte::layouts.partials.mainheader')
 

@@ -99,9 +99,13 @@ Route::resource('periodo','periodoController');
 Route::resource('usuario','usuarioController');
 Route::resource('checklist','checklistController');
 Route::resource('panel','panelController');
+Route::resource('tipo_actividad','tipo_actividadController');
+Route::resource('actividad_cargo','actividad_cargoController');
 
 Route::get('citas_agenda','citasController@get_events')->name('citas_agenda');
 Route::get('citas_all','citasController@citasall')->name('citas_all');
+Route::get('actavisita/{id}','citasController@actavisitas')->name('actavisita');
+Route::get('comproclientesall','compromisosclientesController@compclientesall')->name('compromisosclienteall');
 
 
 

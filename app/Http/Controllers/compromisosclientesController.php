@@ -143,4 +143,13 @@ class compromisosclientesController extends Controller
         \Alert::success('', 'El compromisos_cliente ha sido sido borrado de forma exita!')->persistent('Close');
         return redirect()->route('compromisoscliente.index');
     }
+
+
+
+    public function  compclientesall(){
+  
+      $data = compromisos_cliente::all();
+      
+      return response()->json($data);
+    }
 }

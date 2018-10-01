@@ -18,18 +18,23 @@
                   <input type="hidden" id="id"  name="id" value="">
 
                   <div class="form-group" >
-                    <label for="id">descripcion_actividad</label>
-                    {!! Form::text('descripcion_actividad', null,['class' => 'form-control', 'placeholder' => 'descripcion_actividad','name'=>'descripcion_actividad','id'=>'descripcion_actividad']) !!}
-                </div>
+                        <label for="id">descripcion_actividad</label>
+                        {!! Form::text('descripcion_actividad', null,['class' => 'form-control', 'placeholder' => 'descripcion_actividad','name'=>'descripcion_actividad','id'=>'descripcion_actividad']) !!}
+                    </div>
 
-                <div class="form-group">
-                    <label for="id">Modo Actividad</label>
-                    {!! Form::select('modo_actividad',['1'=>'Si', '0' =>'No'],null,['class'=> 'form-control','id' => 'modo_actividad','name'=>'modo_actividad'] )!!}
-                </div> 
+                    <div class="form-group">
+                        <label for="id">Tipo Actividad <code> Tecla Control + click derecho para seleccionar</code></label>
+                        {!! Form::select('tipo',$tipo_actividad,null,['class'=> 'form-control','id' => 'tipo','name'=>'tipo[]','id'=>'tipo', 'multiple' => 'multiple'] )!!}
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="id">Modo Actividad</label>
+                        {!! Form::select('modo_actividad',['1'=>'Si', '0' =>'No'],null,['class'=> 'form-control','id' => 'modo_actividad','name'=>'modo_actividad','id'=>'modo_actividad'] )!!}
+                    </div> 
 
 
-                <center><button type="submit" class="btn btn-primary" >Enviar</button>
-                    <button type="button" class="btn btn-default "data-dismiss="modal" >Close</button></center><p>
+                <center><button type="submit" class="btn btn-primary" >Actualizar</button>
+                    <button type="button" class="btn btn-default "data-dismiss="modal" >Cerrar</button></center><p>
 
                     </form>
 

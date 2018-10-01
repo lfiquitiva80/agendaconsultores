@@ -345,6 +345,35 @@ modal.find('.modal-body #descripcion_perfil').val(descripcion_perfil);
 })
 
 
+$('#editar_tipo_actividad').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var descripcion = button.data('descripcion')
+// Extract info from data-* attributes
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.modal-body #id').val(id);
+modal.find('.modal-body #descripcion').val(descripcion);
+})
+
+
+$('#editar_actividad_cargo').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var cargo = button.data('cargo')
+  var actividad = button.data('actividad')
+// Extract info from data-* attributes
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.modal-body #id').val(id);
+modal.find('.modal-body #id_cargo').val(cargo);
+modal.find('.modal-body #id_actividad').val(actividad);
+})
+
+
+
 $('#editar_pago_cliente').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget)
   var id = button.data('id')
@@ -380,6 +409,7 @@ $('#editar_actividad').on('show.bs.modal', function (event) {
   var id = button.data('id')
   var descripcion_actividad = button.data('descripcion_actividad')
   var modo_actividad = button.data('modo_actividad')
+  var tipo_actividad = button.data('tipo')
 // Extract info from data-* attributes
 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
@@ -387,6 +417,7 @@ var modal = $(this)
 modal.find('.modal-body #id').val(id);
 modal.find('.modal-body #descripcion_actividad').val(descripcion_actividad);
 modal.find('.modal-body #modo_actividad').val(modo_actividad);
+modal.find('.modal-body #tipo').val(tipo_actividad);
 })
 
 
@@ -489,6 +520,7 @@ $('#editar_citas').on('show.bs.modal', function (event) {
 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 var modal = $(this)
 modal.find('.modal-body #id').val(id);
+modal.find('.modal-body #id2').html(id);
 modal.find('.modal-body #fecha_citas').val(fecha_citas);
 modal.find('.modal-body #lugar_citas').val(lugar_citas);
 modal.find('.modal-body #observacion_citas').val(observacion_citas);

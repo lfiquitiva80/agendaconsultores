@@ -5,9 +5,6 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">ACTUALIZAR AGENDA</h4>
-            </div>
-            <div class="modal-body">
-
                 
 
 <form class="" action="{{route('citas.update', 'id' )}}"   method="post" id="EditFormCitas">
@@ -16,9 +13,14 @@
   {{csrf_field()}}
 
 <input type="hidden" id="id"  name="id" value="">
+<input type="hidden" id="id2"  name="id" value="">
+
+<button type="button" class="btn bg-purple margin" id="acta"> <i class="fa fa-eye" aria-hidden="true"></i> Acta Visita</button>
+
+
 
 <div class="row">
-<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
    <div class="form-group" >
         <label for="id">fecha</label>
         {!! Form::date('fecha_citas', \Carbon\Carbon::now(),['class' => 'form-control', 'placeholder' => 'fecha_citas','name'=>'fecha_citas' ,'id'=>'fecha_citas_agenda']) !!}
@@ -26,7 +28,7 @@
 
 </div>
 
-<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
  <div class="form-group" >
     <label for="id">Hora</label>
     {{ Form::time('Hora_citas', Carbon\Carbon::now()->format('H:i'),['class' => 'form-control', 'placeholder' => 'Hora_citas','name'=>'hora_citas','id'=>'hora_citas']) }}
@@ -36,7 +38,7 @@
 
 </div>
 
-<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
  <div class="form-group" >
     <label for="id">hora_final</label>
     {{ Form::time('hora_final_citas', Carbon\Carbon::now()->format('H:i'),['class' => 'form-control', 'placeholder' => 'hora_final_citas','name'=>'hora_final_citas','id'=>'hora_final_citas']) }}
@@ -104,7 +106,7 @@
 
 <div class="form-group">
     <label for="id">Compromisos</label>
-    {!! Form::select('compromiso_citas', $compromisos, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el compromiso... ','name'=>'compromiso_citas','id'=>'compromiso_citas']) !!} 
+    {!! Form::select('compromiso_citas', $compromisos, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el compromiso... ','name'=>'compromiso_citas[]','id'=>'compromiso_citas','multiple'=>'multiple']) !!} 
     
 </div>
 
@@ -115,10 +117,21 @@
 
 
 
-    <center><button type="submit" class="btn btn-primary" >Enviar</button>
-    <button type="button" class="btn btn-default "data-dismiss="modal" >Close</button></center><p>
+    <center><button type="submit" class="btn btn-primary" id="actualizarcita">Actualzar</button>
+    <button type="button" class="btn btn-default "data-dismiss="modal" >Cerrar</button></center><p>
 
 </form>
+
+
+                
+
+
+            </div>
+            <div class="modal-body">
+
+                
+
+                
 
 
 

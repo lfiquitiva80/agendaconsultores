@@ -41,6 +41,7 @@
     <tr>
       <td>id_cargo</td>
       <td>descripcion_cargo</td>
+      <td>Actividades del Cargo</td>
        <td>  Acción </td>
 
 
@@ -56,6 +57,10 @@
 
           <td>{{$row->id}}</td>
           <td>{{$row->descripcion_cargo}}</td>
+
+
+
+          <td><a href="{{ $url = route('actividad_cargo.edit', $row->id) }}" class="btn btn-default"><i class="fa fa-low-vision" aria-hidden="true"></i> Actividades de Cargo</a></td>
          
 
           <td><a   data-toggle="modal" data-target="#editar_cargo" data-id="{{$row->id}}"

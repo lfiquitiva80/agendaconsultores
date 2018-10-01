@@ -39,16 +39,23 @@
 <table class="table table-hover" >
   <thead>
 
-     <tr>
+    <tr>
+      <th colspan="4"></th>
+      <th>Responsable&nbsp;&nbsp;&nbsp;&nbsp;Auditor</th>
+     
+
+    </tr>
+
+    <tr>
       <th>id</th>
       <th>cns_detalle</th>
       <th>codigo</th>
       <th>descripcion</th>
-      <th>Checklist</th>
-     
+      <th>Si&nbsp;&nbsp;&nbsp;&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;Na&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Si&nbsp;&nbsp;&nbsp;&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;Na
+      </th>
+      
             
 
-       <td>  Acción </td>
 
 
 
@@ -74,36 +81,82 @@
       <input type="hidden" id="id"  name="id" value="{{$row->id}}">
 
        @if (Auth::user()->perfil_usuario == 1)
-      {!! Form::checkbox('ressi',  1, $row->ressi, []) !!} Responsable Si
-      {!! Form::checkbox('resno',  1, $row->resno, []) !!} Responsable No 
-      {!! Form::checkbox('resna',  1, $row->resna, []) !!} Responsable No Aplica <br>
 
-      {!! Form::checkbox('audsi',  1, $row->audsi, []) !!} Auditor Si 
-      {!! Form::checkbox('audno',  1, $row->audno, []) !!} Auditor No 
-      {!! Form::checkbox('audna',  1, $row->audna, []) !!} Auditor No Aplica
+
+      {!! Form::checkbox('ressi',  1, $row->ressi, []) !!}
+      &nbsp;
+      &nbsp; 
+      {!! Form::checkbox('resno',  1, $row->resno, []) !!} 
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      {!! Form::checkbox('resna',  1, $row->resna, []) !!} 
+      &nbsp;
+      &nbsp;
+      &nbsp;
+
+      {!! Form::checkbox('audsi',  1, $row->audsi, []) !!} 
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      {!! Form::checkbox('audno',  1, $row->audno, []) !!} 
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      {!! Form::checkbox('audna',  1, $row->audna, []) !!} 
 
        @elseif (Auth::user()->perfil_usuario == 2)
 
-       {!! Form::checkbox('ressi',  1, $row->ressi, []) !!} Responsable Si
-      {!! Form::checkbox('resno',  1, $row->resno, []) !!} Responsable No 
-      {!! Form::checkbox('resna',  1, $row->resna, []) !!} Responsable No Aplica <br>
-
-      {!! Form::checkbox('audsi',  1, $row->audsi, ['disabled']) !!} Auditor Si 
-      {!! Form::checkbox('audno',  1, $row->audno, ['disabled']) !!} Auditor No 
-      {!! Form::checkbox('audna',  1, $row->audna, ['disabled']) !!} Auditor No Aplica
+       {!! Form::checkbox('ressi',  1, $row->ressi, []) !!}
+        &nbsp;
+      &nbsp; 
+      {!! Form::checkbox('resno',  1, $row->resno, []) !!}
+       &nbsp;
+      &nbsp;
+      &nbsp;
+      {!! Form::checkbox('resna',  1, $row->resna, []) !!}
+     &nbsp;
+      &nbsp;
+      &nbsp;
+      {!! Form::checkbox('audsi',  1, $row->audsi, ['disabled']) !!}
+       &nbsp;
+      &nbsp;
+      &nbsp;
+      {!! Form::checkbox('audno',  1, $row->audno, ['disabled']) !!}
+       &nbsp;
+      &nbsp;
+      &nbsp;
+      {!! Form::checkbox('audna',  1, $row->audna, ['disabled']) !!}
 
       @else
 
-      {!! Form::checkbox('ressi',  1, $row->ressi, ['disabled']) !!} Responsable Si
-      {!! Form::checkbox('resno',  1, $row->resno, ['disabled']) !!} Responsable No 
-      {!! Form::checkbox('resna',  1, $row->resna, ['disabled']) !!} Responsable No Aplica <br>
+      {!! Form::checkbox('ressi',  1, $row->ressi, ['disabled']) !!}
+       &nbsp;
+      &nbsp;
+      
+      {!! Form::checkbox('resno',  1, $row->resno, ['disabled']) !!}
+       &nbsp;
+      &nbsp;
+      &nbsp;
+      {!! Form::checkbox('resna',  1, $row->resna, ['disabled']) !!}
+       &nbsp;
+      &nbsp;
+      &nbsp;
 
-      {!! Form::checkbox('audsi',  1, $row->audsi, []) !!} Auditor Si 
-      {!! Form::checkbox('audno',  1, $row->audno, []) !!} Auditor No 
-      {!! Form::checkbox('audna',  1, $row->audna, []) !!} Auditor No Aplica
+      {!! Form::checkbox('audsi',  1, $row->audsi, []) !!}
+       &nbsp;
+      &nbsp;
+      &nbsp;
+      {!! Form::checkbox('audno',  1, $row->audno, []) !!}
+       &nbsp;
+      &nbsp;
+      &nbsp;
+      {!! Form::checkbox('audna',  1, $row->audna, []) !!}
+       &nbsp;
+      &nbsp;
+      &nbsp;
 
       @endif 
-
       
           <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Actualizar</button>
         
@@ -117,7 +170,7 @@
 
         
 
-          <td><a   data-toggle="modal" data-target="#editar_detalle_imp_retencion" data-id="{{$row->id}}"
+         <!--  <td><a   data-toggle="modal" data-target="#editar_detalle_imp_retencion" data-id="{{$row->id}}"
             data-cns_detalle="{{$row->cns_detalle}}"
             data-codigo="{{$row->codigo}}"
             data-descripcion="{{$row->descripcion}}"
@@ -129,7 +182,7 @@
             data-audna="{{$row->audna}}"
             class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
-            <td>@include('detalle_imp_retencion.destroy')</td>
+            <td>@include('detalle_imp_retencion.destroy')</td> -->
           
     </tr>
   </tbody>
