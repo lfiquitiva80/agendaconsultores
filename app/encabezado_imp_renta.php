@@ -26,4 +26,7 @@ class encabezado_imp_renta extends Model
     public function auditores(){
  		return $this->belongsTo('App\User', 'audito');
   }
+  public function checklista(){
+    return $this->belongsTo('App\checklist', 'id_checklist');
+   }
 }

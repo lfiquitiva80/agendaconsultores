@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\encabezado_informe;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,8 @@ use Illuminate\Support\Facades\DB;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use App\Mail\auditoria2;
+use App\Mail\consultor;
 use App\User;
 use App\perfil;
 use App\clientes;
@@ -24,7 +27,7 @@ use Carbon\Carbon;
 
 class encabezado_informeController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -33,43 +36,67 @@ class encabezado_informeController extends Controller
     {
 
         if (Auth::user()->perfil_usuario == 1) {
-            $encabezado_informe = encabezado_informe::Search($request->nombre)->orderBy('id', 'desc')->paginate(10);
+            $encabezado_informe = encabezado_informe::where([['enviar_auditoria', '=', '0'],
+                ['cierre_auditoria', '=', '0'],])->Search($request->nombre)->orderBy('id', 'desc')->paginate(10);
+
+            $auditoria = \DB::table('encabezado_informe')
+            ->where([['enviar_auditoria', '=', '1'],['cierre_auditoria', '=', '0'],])
+            ->paginate(15);
+
+            $cerrados =  \DB::table('encabezado_informe')
+            ->where([['enviar_auditoria', '=', '1'],
+                ['cierre_auditoria', '=', '1'],])->paginate(15);   
+
         }elseif (Auth::user()->perfil_usuario == 2) {
 
+         $encabezado_informe = encabezado_informe::where([['enviar_auditoria', '=', '0'],
+            ['cierre_auditoria', '=', '0'],['responsable', '=', Auth::user()->id],])->Search($request->nombre)->orderBy('id', 'desc')->paginate(10);
 
-           $encabezado_informe = encabezado_informe::where('responsable', Auth::user()->id)
-           ->Search($request->nombre)
-           ->orderBy('id', 'desc')
-           ->paginate(10);
+         $auditoria = \DB::table('encabezado_informe')
+         ->where([['enviar_auditoria', '=', '1'],['cierre_auditoria', '=', '0'],['responsable', '=', Auth::user()->id],])
+         ->paginate(15);
+
+         $cerrados =  \DB::table('encabezado_informe')
+         ->where([['enviar_auditoria', '=', '1'],
+            ['cierre_auditoria', '=', '1'],['responsable', '=', Auth::user()->id],])->paginate(15);        
 
 
 
 
-       }else {
+     }else {
 
-        $encabezado_informe = encabezado_informe::Search($request->nombre)->orderBy('id', 'desc')
-        ->where('enviar_auditoria', 1)
-        ->paginate(10);
+       $encabezado_informe = encabezado_informe::where([['enviar_auditoria', '=', '0'],
+        ['cierre_auditoria', '=', '0'],['responsable', '=', Auth::user()->id],])->Search($request->nombre)->orderBy('id', 'desc')->paginate(10);
 
-    }
+       $auditoria = \DB::table('encabezado_informe')
+       ->where([['enviar_auditoria', '=', '1'],['cierre_auditoria', '=', '0'],])
+       ->paginate(15);
 
-    $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
-    if (Auth::user()->perfil_usuario == 1) {
-        $clientes = clientes::pluck('nombre_cliente', 'id');
-    } else {
-        $clientes = clientes::where('responsable_cliente',Auth::user()->id)->pluck('nombre_cliente', 'id');
-    }
-    
-    
-    $compromisos = compromisos::pluck('descripcion_compromisos', 'id');
-    $periodo = periodo::pluck('descripcion_periodo', 'id');
-    $compromisos_clientes = compromisos_cliente::all();
-    $auditor = User::where('perfil_usuario',3)->pluck('name', 'id');
+       $cerrados =  \DB::table('encabezado_informe')
+       ->where([['enviar_auditoria', '=', '1'],
+        ['cierre_auditoria', '=', '1'],])->paginate(15);        
+
+   }
+
+   $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
+   if (Auth::user()->perfil_usuario == 1 || Auth::user()->perfil_usuario == 3) {
+    $clientes = clientes::pluck('nombre_cliente', 'id');
+} else {
+    $clientes = clientes::where('responsable_cliente',Auth::user()->id)->pluck('nombre_cliente', 'id');
+}
+
+
+$compromisos = compromisos::pluck('descripcion_compromisos', 'id');
+$periodo = periodo::pluck('descripcion_periodo', 'id');
+$compromisos_clientes = compromisos_cliente::all();
+$auditor = User::where('perfil_usuario',3)->pluck('name', 'id');
+$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
          //dd($encabezado_informe);
+Log::info(Auth::user()->name. " Ingreso a encabezado_informe");
 
         //$cliente = DB::table('cliente')->paginate(15);
         //dd($cliente);
-    return view('encabezado_informe.index',compact('encabezado_informe','usuarios','compromisos','periodo','compromisos_clientes','clientes','auditor'));
+return view('encabezado_informe.index',compact('encabezado_informe','usuarios','compromisos','periodo','compromisos_clientes','clientes','auditor','auditoria','cerrados','meses'));
 }
 
     /**
@@ -95,12 +122,16 @@ class encabezado_informeController extends Controller
 
         $encabezado_informe =  new encabezado_informe($request-> all());
 
-        $input = $request->all();
+        $input = $request->all(); //dd($input);
+
+
+
 
         if ($request->hasFile('ubicacion_archivos')) {
 
 
             $ruta = "/archivos/".$request->file('ubicacion_archivos')->store('archivos');
+
 
         }
         else
@@ -130,25 +161,27 @@ class encabezado_informeController extends Controller
         $checklist=checklist::find(7); 
         $plantilla_checklist = plantilla_checklist::WHERE('filtro_checklist',$checklist->filtro_plantilla)->get();
 
+        //dd($plantilla_checklist);
+
         foreach ($plantilla_checklist as $key => $value) {
 
 
-           DB::table('detalle_informe')->insert([
+         DB::table('detalle_informe')->insert([
             'cns_detalle' => $encabezado_informe->id,
             'codigo' => $value->codigo_plantilla_checklist,
             'descripcion' => $value->descripcion_plantilla_checklist,
 
         ]);
-       }
+     }
+
+     Log::info(Auth::user()->name. " Creo una encabezado_informe y su detalle ". $encabezado_informe );
+     \Alert::success('', 'El encabezado_informe ha sido registrado con exito !')->persistent('Close');
+     return redirect()->route('encabezado_informe.index');
 
 
-       \Alert::success('', 'El encabezado_informe ha sido registrado con exito !')->persistent('Close');
-       return redirect()->route('encabezado_informe.index');
 
 
-
-
-   }
+ }
 
     /**
      * Display the specified resource.
@@ -182,28 +215,48 @@ class encabezado_informeController extends Controller
     public function update(Request $request, encabezado_informe $id)
     {
 
+        $encabezado_informe= encabezado_informe::find($request->id);
 
-       $encabezado_informe = encabezado_informe::findOrFail($request->id);
-
-
-       $input = $request->all();
-
-       if ($request->hasFile('ubicacion_archivos')) {
+        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 
 
-        $rutaold = "/archivos/".$request->file('ubicacion_archivos')->store('archivos');
+        $input = $request->all(); //dd($input);
 
-         $nombre=$request->ubicacion_archivos->getClientOriginalName();
+        $store=$encabezado_informe;
+
+        $mailconsultor = User::find($input['responsable']);
+        $mailauditor = User::find($input['audito']);
+
+        if ($input['enviar_auditoria'] == 1 && Auth::user()->perfil_usuario == 2 && $mailauditor->notificacion == 1) {
+
+           \Mail::to($mailauditor->email)->send(new auditoria2($store));
+       } elseif ($input['enviar_auditoria'] == 0 && Auth::user()->perfil_usuario == 3 && $mailconsultor->notificacion == 1) {
+        \Mail::to($mailconsultor->email)->send(new consultor($store));
+    }
+
+    if ($request->hasFile('ubicacion_archivos')) {
+
+        $files = $request->file('ubicacion_archivos');    
         $dt = Carbon::now();
         $nit = clientes::find($input['cliente']);
-        $rutaalmacenamiento= $nit->nit."/".$dt->year."/informes";
-        $ruta = Storage::disk('public')->putFileAs($rutaalmacenamiento, $request->file('ubicacion_archivos'), $nombre);
+        $rutaalmacenamiento= $nit->nit."/".$dt->year."/informes/".$meses[$input['mes']];
+
+        foreach($files as $file) {
+            $filename = $file->getClientOriginalName();
+            $ruta2 = Storage::disk('public')->putFileAs($rutaalmacenamiento, $file, $filename);
+            $ruta =$rutaalmacenamiento;
+            
+        }
+            //$nombre=$request->ubicacion_archivos->getClientOriginalName();
+        
+
+        
 
     }
     else
     {
-        
-        $ruta=$input['ubicacion_archivos'];
+
+        $ruta=$encabezado_informe->ubicacion_archivos;
     }
     //dd($ruta);
     $encabezado_informe->ubicacion_archivos  = $ruta;
@@ -221,9 +274,9 @@ class encabezado_informeController extends Controller
     $encabezado_informe->fecha_elaboracion=$input['fecha_elaboracion'];
 
     $encabezado_informe->save();
-    
 
 
+    Log::info(Auth::user()->name. " Actualizó el registro ". $encabezado_informe );
     Alert::success('', 'El encabezado_informe ha sido editado con exito !')->persistent('Close');
     return redirect()->route('encabezado_informe.index');
 }
@@ -237,8 +290,11 @@ class encabezado_informeController extends Controller
     public function destroy($id)
     {
         $encabezado_informe = encabezado_informe::find($id);
+        Storage::disk('public')->delete($encabezado_informe->ubicacion_archivos);
         $encabezado_informe->delete();
+        
         \Alert::success('', 'El encabezado_informe ha sido sido borrado de forma exita!')->persistent('Close');
+        Log::info(Auth::user()->name. " Eliminó el registro ". $encabezado_informe );
         return redirect()->route('encabezado_informe.index');
     }
 }

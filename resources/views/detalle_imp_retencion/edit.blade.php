@@ -155,7 +155,7 @@
             
 
 
-            <center><button type="submit" class="btn btn-primary" >Enviar</button>
+            <center><button type="submit" class="btn btn-primary" >Actualizar</button>
                 <button type="button" class="btn btn-default "data-dismiss="modal" >Close</button></center><p>
 
                 </form>

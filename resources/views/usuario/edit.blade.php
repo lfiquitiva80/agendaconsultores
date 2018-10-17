@@ -9,12 +9,19 @@
 
 
 
-        <form class="" action="{{route('usuario.update', 'id' )}}"   method="post" id="formUserEdit">
+        <form class="" action="{{route('usuario.update', 'id' )}}"   method="post" id="formUserEdit" enctype="multipart/form-data">
 
           {{method_field('patch')}}
           {{csrf_field()}}
 
           <input type="hidden" id="id"  name="id" value="">
+
+      <img  id="avatar" style="width:140px; height:140px; position:absolute; top:10px; left:10px; border-radius:50%">
+
+</a>
+
+<br><br><br><br><br><br><br><br>
+{!!   Form::file('avatar')!!}
 
           <div class="form-group">
             <label for="id">Nombre</label>

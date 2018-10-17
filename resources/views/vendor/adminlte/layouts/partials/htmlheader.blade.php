@@ -15,6 +15,9 @@
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 
+        <script src="../../../../../../node_modules/admin-lte/dist/js/adminlte.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../../../node_modules/admin-lte/dist/css/AdminLTE.min.css">
+
     
     <!--<link rel='stylesheet' href='/js/fullcalendar/fullcalendar.css' />-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

@@ -65,6 +65,9 @@ $('#editar_usuario').on('show.bs.modal', function (event) {
   var activo = button.data('activo')
   var valor = button.data('valor')
   var horas = button.data('horas')
+  var avatar = button.data('avatar')
+  
+
 // Extract info from data-* attributes
 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
@@ -79,6 +82,40 @@ modal.find('.modal-body #cargo').val(cargo);
 modal.find('.modal-body #activo').val(activo);
 modal.find('.modal-body #valor').val(valor);
 modal.find('.modal-body #horas').val(horas);
+modal.find('.modal-body #avatar').attr('src', avatar);
+})
+
+
+$('#editar_empresa').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var id = button.data('id')
+  var razon_social = button.data('razon_social')
+  var nit = button.data('nit')
+  var logo = button.data('logo')
+  var logo2 = button.data('logo')
+  var direccion = button.data('direccion')
+  var telefono = button.data('telefono')
+  var pais = button.data('pais')
+  var ciudad = button.data('ciudad')
+  var celular = button.data('celular')
+   var contacto = button.data('contacto')
+  
+
+// Extract info from data-* attributes
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.modal-body #razon_social').val(razon_social);
+modal.find('.modal-body #nit').val(nit);
+modal.find('.modal-body #direccion').val(direccion);
+modal.find('.modal-body #id').val(id);
+modal.find('.modal-body #telefono').val(telefono);
+modal.find('.modal-body #pais').val(pais);
+modal.find('.modal-body #ciudad').val(ciudad);
+modal.find('.modal-body #celular').val(celular);
+modal.find('.modal-body #contacto').val(contacto);
+modal.find('.modal-body #logo2').val(logo2);
+modal.find('.modal-body #logo').attr('src', logo);
 })
 
 
@@ -579,7 +616,8 @@ $('#editar_encabezado_dev_iva').on('show.bs.modal', function (event) {
 })
 
 
-$('#editar_encabezado_imp_ica').on('show.bs.modal', function (event) {
+
+$('#editar_encabezado_dev_iva2').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
   var id = button.data('id')  
@@ -587,6 +625,84 @@ $('#editar_encabezado_imp_ica').on('show.bs.modal', function (event) {
   var cliente = button.data('cliente')
   var auditor = button.data('auditor')
   var bim = button.data('bim')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria_encabezado_dev_iva = new Date(button.data('fechaauditoriaencabezadodeviva')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #auditor').val(auditor)
+  modal.find('.modal-body #bim').val(bim)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria_encabezado_dev_iva').val(fecha_auditoria_encabezado_dev_iva)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+$('#editar_encabezado_dev_iva3').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var auditor = button.data('auditor')
+  var bim = button.data('bim')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria_encabezado_dev_iva = new Date(button.data('fechaauditoriaencabezadodeviva')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #auditor').val(auditor)
+  modal.find('.modal-body #bim').val(bim)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria_encabezado_dev_iva').val(fecha_auditoria_encabezado_dev_iva)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+$('#editar_encabezado_imp_ica1').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bim')
   var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
   var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
   var Observaciones = button.data('observaciones')
@@ -605,8 +721,8 @@ $('#editar_encabezado_imp_ica').on('show.bs.modal', function (event) {
   modal.find('.modal-body #id').val(id)
   modal.find('.modal-body #responsable').val(responsable)
   modal.find('.modal-body #cliente').val(cliente)
-  modal.find('.modal-body #audito').val(auditor)
-  modal.find('.modal-body #bim_auditado').val(bim)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
   modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
   modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
   modal.find('.modal-body #Observaciones').val(Observaciones)
@@ -618,15 +734,92 @@ $('#editar_encabezado_imp_ica').on('show.bs.modal', function (event) {
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
 })
 
-
-$('#editar_encabezado_imp_iva').on('show.bs.modal', function (event) {
+$('#editar_encabezado_imp_ica22').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
   var id = button.data('id')  
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
-  var auditor = button.data('auditor')
-  var bim = button.data('bim')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bimauditado')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+$('#editar_encabezado_imp_ica3').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bimauditado')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+$('#editar_encabezado_imp_iva1').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bim')
   var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
   var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
   var Observaciones = button.data('observaciones')
@@ -645,8 +838,86 @@ $('#editar_encabezado_imp_iva').on('show.bs.modal', function (event) {
   modal.find('.modal-body #id').val(id)
   modal.find('.modal-body #responsable').val(responsable)
   modal.find('.modal-body #cliente').val(cliente)
-  modal.find('.modal-body #audito').val(auditor)
-  modal.find('.modal-body #bim_auditado').val(bim)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+$('#editar_encabezado_imp_iva22').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bimauditado')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+$('#editar_encabezado_imp_iva3').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bimauditado')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
   modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
   modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
   modal.find('.modal-body #Observaciones').val(Observaciones)
@@ -659,14 +930,14 @@ $('#editar_encabezado_imp_iva').on('show.bs.modal', function (event) {
 })
 
 
-$('#editar_encabezado_imp_renta').on('show.bs.modal', function (event) {
+$('#editar_encabezado_imp_renta1').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
   var id = button.data('id')  
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
-  var auditor = button.data('auditor')
-  var bim = button.data('bim')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bim')
   var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
   var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
   var Observaciones = button.data('observaciones')
@@ -685,8 +956,86 @@ $('#editar_encabezado_imp_renta').on('show.bs.modal', function (event) {
   modal.find('.modal-body #id').val(id)
   modal.find('.modal-body #responsable').val(responsable)
   modal.find('.modal-body #cliente').val(cliente)
-  modal.find('.modal-body #audito').val(auditor)
-  modal.find('.modal-body #bim_auditado').val(bim)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+$('#editar_encabezado_imp_renta22').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bimauditado')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+$('#editar_encabezado_imp_renta3').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bimauditado')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
   modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
   modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
   modal.find('.modal-body #Observaciones').val(Observaciones)
@@ -699,14 +1048,14 @@ $('#editar_encabezado_imp_renta').on('show.bs.modal', function (event) {
 })
 
 
-$('#editar_encabezado_imp_reteica').on('show.bs.modal', function (event) {
+$('#editar_encabezado_imp_reteica1').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
   var id = button.data('id')  
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
-  var auditor = button.data('auditor')
-  var bim = button.data('bim')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bim')
   var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
   var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
   var Observaciones = button.data('observaciones')
@@ -725,8 +1074,8 @@ $('#editar_encabezado_imp_reteica').on('show.bs.modal', function (event) {
   modal.find('.modal-body #id').val(id)
   modal.find('.modal-body #responsable').val(responsable)
   modal.find('.modal-body #cliente').val(cliente)
-  modal.find('.modal-body #audito').val(auditor)
-  modal.find('.modal-body #bim_auditado').val(bim)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
   modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
   modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
   modal.find('.modal-body #Observaciones').val(Observaciones)
@@ -738,14 +1087,93 @@ $('#editar_encabezado_imp_reteica').on('show.bs.modal', function (event) {
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
 })
 
-$('#editar_encabezado_imp_retencion').on('show.bs.modal', function (event) {
+$('#editar_encabezado_imp_reteica22').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
   var id = button.data('id')  
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
-  var auditor = button.data('auditor')
-  var bim = button.data('bim')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bimauditado')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+$('#editar_encabezado_imp_reteica3').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bimauditado')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+
+$('#editar_encabezado_imp_retencion1').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bim')
   var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
   var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
   var Observaciones = button.data('observaciones')
@@ -764,8 +1192,86 @@ $('#editar_encabezado_imp_retencion').on('show.bs.modal', function (event) {
   modal.find('.modal-body #id').val(id)
   modal.find('.modal-body #responsable').val(responsable)
   modal.find('.modal-body #cliente').val(cliente)
-  modal.find('.modal-body #audito').val(auditor)
-  modal.find('.modal-body #bim_auditado').val(bim)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+$('#editar_encabezado_imp_retencion22').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bimauditado')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+$('#editar_encabezado_imp_retencion3').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bimauditado')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
   modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
   modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
   modal.find('.modal-body #Observaciones').val(Observaciones)
@@ -778,14 +1284,14 @@ $('#editar_encabezado_imp_retencion').on('show.bs.modal', function (event) {
 })
 
 
-$('#editar_encabezado_informe').on('show.bs.modal', function (event) {
+$('#editar_encabezado_informe1').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
   var id = button.data('id')  
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
-  var auditor = button.data('auditor')
-  var bim = button.data('bim')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bim')
   var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
   var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
   var Observaciones = button.data('observaciones')
@@ -804,8 +1310,8 @@ $('#editar_encabezado_informe').on('show.bs.modal', function (event) {
   modal.find('.modal-body #id').val(id)
   modal.find('.modal-body #responsable').val(responsable)
   modal.find('.modal-body #cliente').val(cliente)
-  modal.find('.modal-body #audito').val(auditor)
-  modal.find('.modal-body #bim_auditado').val(bim)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
   modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
   modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
   modal.find('.modal-body #Observaciones').val(Observaciones)
@@ -817,10 +1323,83 @@ $('#editar_encabezado_informe').on('show.bs.modal', function (event) {
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
 })
 
+$('#editar_encabezado_informe22').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bimauditado')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
 
 
 
+  var modal = $(this)
 
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
+
+$('#editar_encabezado_informe3').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) // Button triggered the modal
+  var id = button.data('id')  
+  var responsable = button.data('responsable')
+  var cliente = button.data('cliente')
+  var audito = button.data('audito')
+  var bim_auditado = button.data('bimauditado')
+  var fecha_vencimiento = new Date(button.data('fechavencimiento')).toISOString().slice(0, 10)
+  var fecha_entrega = new Date(button.data('fechaentrega')).toISOString().slice(0, 10)
+  var Observaciones = button.data('observaciones')
+  var enviar_auditoria = button.data('enviarauditoria')
+  var cierre_auditoria = button.data('cierreauditoria')
+  var observaciones_auditoria = button.data('observacionesauditoria')
+  var ubicacion_archivos = button.data('ubicacionarchivos')
+  var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
+  var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
+ 
+
+
+
+  var modal = $(this)
+
+  modal.find('.modal-body #id').val(id)
+  modal.find('.modal-body #responsable').val(responsable)
+  modal.find('.modal-body #cliente').val(cliente)
+  modal.find('.modal-body #audito').val(audito)
+  modal.find('.modal-body #bim_auditado').val(bim_auditado)
+  modal.find('.modal-body #fecha_vencimiento').val(fecha_vencimiento)
+  modal.find('.modal-body #fecha_entrega').val(fecha_entrega)
+  modal.find('.modal-body #Observaciones').val(Observaciones)
+  modal.find('.modal-body #enviar_auditoria').val(enviar_auditoria)
+  modal.find('.modal-body #cierre_auditoria').val(cierre_auditoria)
+  modal.find('.modal-body #observaciones_auditoria').val(observaciones_auditoria)
+  modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
+  modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
+  modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+})
 
 $(document).ready(function() {
   $('#CreateFormCliente').bootstrapValidator({
@@ -2298,6 +2877,162 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
+        $('#FormEditempresas')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            razon_social: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo razon_social es requerido'
+                    }
+                }
+            },
+            nit : {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo nit es requerido'
+                    }
+                }
+            },
+           
+            direccion: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo direccion es requerido'
+                    }
+                }
+            },
+            telefono: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo telefono es requerido'
+                    }
+                }
+            },
+            pais: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo pais es requerido'
+                    }
+                }
+            },
+            ciudad: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo ciudad es requerido'
+                    }
+                }
+            },
+            celular: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo celular es requerido'
+                    }
+                }
+            },
+            contacto: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo contacto es requerido'
+                    }
+                }
+            }
+            
+
+
+          
+        }//termina
+    })
+    })
+
+
+$(document).ready(function () {
+        $('#FormCreateempresas')
+    .bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            razon_social: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo razon_social es requerido'
+                    }
+                }
+            },
+            nit : {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo nit es requerido'
+                    }
+                }
+            },
+            logo: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo logo es requerido'
+                    }
+                }
+            },
+            direccion: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo direccion es requerido'
+                    }
+                }
+            },
+            telefono: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo telefono es requerido'
+                    }
+                }
+            },
+            pais: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo pais es requerido'
+                    }
+                }
+            },
+            ciudad: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo ciudad es requerido'
+                    }
+                }
+            },
+            celular: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo celular es requerido'
+                    }
+                }
+            },
+            contacto: {
+                validators: {
+                    notEmpty: {
+                        message: 'El campo contacto es requerido'
+                    }
+                }
+            }
+            
+
+
+          
+        }//termina
+    })
+    })
+
+
+$(document).ready(function () {
         $('#FormEditplantilla_checklists')
     .bootstrapValidator({
         feedbackIcons: {
@@ -2334,4 +3069,18 @@ $(document).ready(function () {
     })
     })
 
+
+
+$(document).ready(function() {
+  
+  $('#sider').click(function(event) {
+    
+   $('#siderbody').removeClass('sidebar-collapse'); 
+   $('#siderbody').addClass('sidebar-open');
+   $('#treerevision').addClass('menu-open'); 
+
+  });
+
+  
+});
 

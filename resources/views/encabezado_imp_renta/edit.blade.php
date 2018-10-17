@@ -1,5 +1,5 @@
 
-<div class="modal fade" id="editar_encabezado_imp_renta">
+<div class="modal fade" id="editar_encabezado_imp_renta1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,16 +8,16 @@
             </div>
             <div class="modal-body">
 
-                
 
-<form class="" action="{{route('encabezado_imp_renta.update', 'id' )}}"   method="post" id="FormEditCargos" enctype = 'multipart/form-data'>
 
-  {{method_field('patch')}}
-  {{csrf_field()}}
+                <form class="" action="{{route('encabezado_imp_renta.update', 'id' )}}"   method="post" id="FormEditCargos" enctype = 'multipart/form-data'>
 
-<input type="hidden" id="id"  name="id" value="">
+                  {{method_field('patch')}}
+                  {{csrf_field()}}
 
-              <div class="form-group">
+                  <input type="hidden" id="id"  name="id" value="">
+
+                  <div class="form-group">
                     <label for="id">Responsable</label>
                     {!! Form::select('responsable', $usuarios, Auth::user()->id, ['class' => 'form-control', 'placeholder' => 'Seleccione el Consultor... ','name'=>'responsable','id'=>'responsable', 'required']) !!} 
 
@@ -31,7 +31,7 @@
 
                 <div class="form-group">
                     <label for="id">Auditor</label>
-                    {!! Form::select('audito', $auditor, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el Auditor... ','name'=>'audito','id'=>'audito', 'required']) !!} 
+                    {!! Form::select('auditor', $auditor, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el Auditor... ','name'=>'audito','id'=>'audito', 'required']) !!} 
 
                 </div>
 
@@ -53,6 +53,22 @@
 
                 </div>
 
+                   <div class="form-group">
+                    <label for="id">Ubicación de Archivos <code>Puede subir más de un archivo</code></label>
+                                   
+                     <input type="file" class="form-control" id="ubicacion_archivos[]" name="ubicacion_archivos[]" multiple="">   
+
+                </div>
+
+                <div class="form-group">
+                    <label for="id">Mes <code>Se guardara el archivo en el mes de: </code></label>
+
+                    <?php $dt= \Carbon\Carbon::now();   ?>
+                    {!! Form::select('mes', $meses,($dt->month)-1, ['class' => 'form-control', 'placeholder' => 'Seleccione el Mes... ','name'=>'mes']) !!}
+
+
+                </div>
+
                 <div class="form-group">
                     <label for="id">Observaciones</label>
                     {!! Form::textarea('Observaciones', null, ['class' => 'form-control', 'placeholder' => 'Observaciones','name'=>'Observaciones','id'=>'Observaciones', 'required']) !!}
@@ -64,45 +80,75 @@
                     {!! Form::select('enviar_auditoria',[ '0'=>'No', '1' =>'Si'],null,['class'=> 'form-control','name'=>'enviar_auditoria','id'=>'enviar_auditoria', 'required'] )!!}
                 </div>
 
-                <div class="form-group">
-                    <label for="id">Cierre Auditoria</label>
-                    {!! Form::select('cierre_auditoria',[ '0'=>'No', '1' =>'Si'],null,['class'=> 'form-control','name'=>'cierre_auditoria','id'=>'cierre_auditoria', 'required'] )!!}
+                <div id="auditoriaedit">
+
+                    <input type="hidden" id="valorperfil" value="{{Auth::user()->perfil_usuario}}">
+
+                    <div class="form-group">
+
+                        @if(Auth::user()->perfil_usuario == 1)
+                        <label for="id">Cierre Auditoria</label>
+                        {!! Form::select('cierre_auditoria',[ '0'=>'No', '1' =>'Si'],null,['class'=> 'form-control','name'=>'cierre_auditoria','id'=>'cierre_auditoria'] )!!}
+
+                        @else
+
+                        {!! Form::hidden('cierre_auditoria', 0, []) !!}    
+
+                        @endif
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id">Observaciones de Auditoria</label>
+                        {!! Form::textarea('observaciones_auditoria', null, ['class' => 'form-control', 'placeholder' => 'observaciones_auditoria','name'=>'observaciones_auditoria','id'=>'observaciones_auditoria', 'required']) !!}
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="id">Fecha Auditoria</label>
+                        {!! Form::date('fecha_auditoria', null,['class' => 'form-control', 'placeholder' => 'fecha_auditoria','name'=>'fecha_auditoria','id'=>'fecha_auditoria', 'required']) !!}
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id">Fecha de Elaboración</label>
+                        {!! Form::date('fecha_elaboracion', null,['class' => 'form-control', 'placeholder' => 'fecha_elaboracion','name'=>'fecha_elaboracion','id'=>'fecha_elaboracion', 'required']) !!}
+
+                    </div>
+
                 </div>
 
-                <div class="form-group">
-                    <label for="id">Observaciones de Auditoria</label>
-                    {!! Form::textarea('observaciones_auditoria', null, ['class' => 'form-control', 'placeholder' => 'observaciones_auditoria','name'=>'observaciones_auditoria','id'=>'observaciones_auditoria', 'required']) !!}
-                </div>
 
-                <div class="form-group">
-                    <label for="id">Ubicación de Archivos</label>
-                 
-                  {!! Form::file('ubicacion_archivos', null, ['class' => 'form-control', 'placeholder' => 'ubicacion_archivos','name'=>'ubicacion_archivos','id'=>'ubicacion_archivos', 'required']) !!}
+                <center><button type="submit" class="btn btn-primary" >Actualizar</button>
+                    <button type="button" class="btn btn-default "data-dismiss="modal" >Cerrar</button></center><p>
 
-                </div>
-
-                <div class="form-group">
-<label for="id">Fecha Auditoria</label>
-{!! Form::date('fecha_auditoria', null,['class' => 'form-control', 'placeholder' => 'fecha_auditoria','name'=>'fecha_auditoria','id'=>'fecha_auditoria', 'required']) !!}
-
-                </div>
-
-                <div class="form-group">
-                    <label for="id">Fecha de Elaboración</label>
-                    {!! Form::date('fecha_elaboracion', null,['class' => 'form-control', 'placeholder' => 'fecha_elaboracion','name'=>'fecha_elaboracion','id'=>'fecha_elaboracion', 'required']) !!}
-
-                </div>
+                    </form>
 
 
-    <center><button type="submit" class="btn btn-primary" >Enviar</button>
-    <button type="button" class="btn btn-default "data-dismiss="modal" >Close</button></center><p>
+                    <script type="text/javascript">
 
-</form>
+                     $(document).ready(function() {
+
+                        var valorperfil= $('#valorperfil').val();
+
+
+                        if (valorperfil==2) {
+
+                            $('#auditoriaedit').hide();
+
+                        } else {
+                            $('#auditoriaedit').show();
+                        }
+                    });
+                </script>
 
 
 
-  </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 
-</div>
-</div>
+

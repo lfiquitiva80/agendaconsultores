@@ -12,8 +12,8 @@
   {{method_field('patch')}}
   {{csrf_field()}}
 
-<input type="hidden" id="id"  name="id" value="">
-<input type="hidden" id="id2"  name="id" value="">
+<input type="hidden" id="id5"  name="id" value="">
+
 
 <button type="button" class="btn bg-purple margin" id="acta"> <i class="fa fa-eye" aria-hidden="true"></i> Acta Visita</button>
 
@@ -94,7 +94,7 @@
 
 <div class="form-group">
     <label for="id">actividad <code>Tecla Control + clic derecho para Seleccionar</code></label>
-    {!! Form::select('actividad_citas', $actividad_citas, null, ['class' => 'form-control','name'=>'actividad_citas[]','id'=>'actividad_citas','multiple'=>'multiple']) !!} 
+    {!! Form::select('actividad_citas', $actividad_citas, null, ['class' => 'form-control','name'=>'actividad_citas[]','id'=>'actividad_citas','multiple'=>'multiple', 'style' => '.selected {background-color:red;}' ]) !!} 
     
 </div>
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
@@ -12,7 +14,7 @@ use App\User;
 use App\cargo;
 use App\perfil;
 use Alert;
-
+use Carbon\Carbon;
 
 class usuarioController extends Controller
 {
@@ -54,6 +56,7 @@ class usuarioController extends Controller
     public function store(Request $request)
     {
           
+          //dd($request->all());
           $json = json_encode($request->input('cargo'), true);
 
           $this->validate($request,[
@@ -64,6 +67,21 @@ class usuarioController extends Controller
             
         ]);
 
+
+             if ($request->hasFile('avatar')) {
+
+
+        $nombre=$request->avatar->getClientOriginalName();
+        $dt = Carbon::now();
+       $ruta = "/archivos/".Storage::disk('local')->putFileAs('avatar', $request->file('avatar'), $nombre);
+
+    }
+    else
+    {
+        
+        $ruta='img/default.jpg';
+    }
+
           $input = [
             'name'     => $request['name'],
             'email'    => $request['email'],
@@ -73,6 +91,7 @@ class usuarioController extends Controller
              'perfil_usuario' => $request['perfil_usuario'],
              'valor' => $request['valor'],
              'horas' => $request['horas'],
+             'avatar' => $ruta,
             ];
             
         
@@ -116,6 +135,23 @@ class usuarioController extends Controller
     public function update(Request $request, $id)
     {
          
+            $usuarioupdate=DB::table('users')->where('id',"=",$request->id)->first();    
+            //dd($usuarioupdate);
+                if ($request->hasFile('avatar')) {
+
+
+        $nombre=$request->avatar->getClientOriginalName();
+        $dt = Carbon::now();
+       $ruta = "/archivos/".Storage::disk('local')->putFileAs('avatar', $request->file('avatar'), $nombre);
+
+    }
+    else
+    {
+        
+        $ruta=$usuarioupdate->avatar;
+    }
+
+
          $json = json_encode($request->input('cargo'), true);
           $input = [
             'name'     => $request['name'],
@@ -127,6 +163,7 @@ class usuarioController extends Controller
              'perfil_usuario' => $request['perfil_usuario'],
              'valor' => $request['valor'],
              'horas' => $request['horas'],
+             'avatar' => $ruta,
             ];
 
            // dd($request->all());
@@ -156,5 +193,41 @@ class usuarioController extends Controller
     public function export() 
     {
         return \Excel::download(new UsersExport, 'Usuarios.xlsx');
+    }
+
+    public function profile(Request $request)
+    {
+        
+        $usuario=DB::table('users')->where('id',"=",$request->id)->first();
+
+
+                      if ($request->hasFile('avatar')) {
+
+
+        $nombre=$request->avatar->getClientOriginalName();
+        $dt = Carbon::now();
+       $ruta = "/archivos/".Storage::disk('local')->putFileAs('avatar', $request->file('avatar'), $nombre);
+
+    }
+    else
+    {
+        
+        $ruta=$usuario->avatar;
+    }
+
+         $input = [
+            'name'     => $request['name'],
+            'password' => bcrypt($request['password']),
+            'avatar' => $ruta,
+            'notificacion'     => $request['notificacion'],
+            ];
+
+               $updates=DB::table('users')->where('id',"=",$request['id'])->update($input);
+         //dd($updates);
+      Alert::success('', 'el Perfil ha sido editado con exito !')->persistent('Close');
+
+
+        //dd($usuario);
+        return back();
     }
 }

@@ -1,11 +1,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <img src="{{asset('/img/coorporativo.jpeg')}}"/>@yield('contentheader_title', 'Consultores Group')
+    	<?php $empresa =  \App\empresa::first();?>
+        <img src="{{asset($empresa->logo)}}"/> {{$empresa->razon_social}}
         <small>@yield('contentheader_description')</small>
     </h1>
 
-	
+	@include('usuario.profile')
 
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> {{ trans('adminlte_lang::message.level') }}</a></li>

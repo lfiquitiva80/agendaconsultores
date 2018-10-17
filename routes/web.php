@@ -101,11 +101,18 @@ Route::resource('checklist','checklistController');
 Route::resource('panel','panelController');
 Route::resource('tipo_actividad','tipo_actividadController');
 Route::resource('actividad_cargo','actividad_cargoController');
+Route::resource('empresa','empresaController');
 
 Route::get('citas_agenda','citasController@get_events')->name('citas_agenda');
 Route::get('citas_all','citasController@citasall')->name('citas_all');
 Route::get('actavisita/{id}','citasController@actavisitas')->name('actavisita');
 Route::get('comproclientesall','compromisosclientesController@compclientesall')->name('compromisosclienteall');
+Route::get('agendaconsultor','HomeController@agendaconsultor')->name('agendaconsultor');
+Route::get('adminitradordearchivos','HomeController@adminitradordearchivos')->name('adminitradordearchivos');
+Route::get('iniciosesion', 'HomeController@info')->name('iniciosesion');
+Route::post('savesesion', 'citasController@sesion')->name('sesiones');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::any('/user/profile', 'usuarioController@profile')->name('profile');
 
 
 
@@ -116,3 +123,4 @@ Route::get('usuariosexcel','usuarioController@export')->name('usuarioexcel');
 
 
 });
+

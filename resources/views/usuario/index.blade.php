@@ -44,6 +44,7 @@
       <td>  id  </td>
       <td>  Nombre</td>
       <td>  email</td>
+      <td>  Avatar </td>
       <td>  Perfil Usuario</td>
       <td>  Valor</td>
       <td>  Hora</td>
@@ -60,8 +61,14 @@
     <tr>
 
           <td>{{$row->id}}</td>
-          <td>{{$row->name}}</td>
+                     <td>{{$row->name}}</td>
           <td>{{$row->email}}</td>
+          <td>@if ($row->avatar == 'default.jpg')
+            <img src="{{ asset('img/default.jpg')}}" style="width:50px; height:50px;  border-radius:50%">
+            @else
+            <img src="{{asset($row->avatar)}}"  style="width:50px; height:50px;  border-radius:50%">
+
+            @endif</td>
           <td>{{$row->perfil->descripcion_perfil}}</td>
           <td>{{$row->valor}}</td>
           <td>{{$row->horas}}</td>
@@ -73,7 +80,9 @@
               @endif</td>
 
 
-          <td><a    data-toggle="modal" data-target="#editar_usuario"   data-name="{{$row->name}}"   data-perfil_usuario ="{{$row->perfil_usuario}}" data-email="{{$row->email}}"  data-id="{{$row->id}}" data-type="{{$row->type}}"data-password="{{$row->password}}" data-cargo="{{$row->cargo}}" data-activo="{{$row->activo}}" data-valor="{{$row->valor}}" data-horas="{{$row->horas}}" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"> Edición</i></a></td> <td>@include('usuario.destroy')</td>
+          <td><a    data-toggle="modal" data-target="#editar_usuario"   data-name="{{$row->name}}"   data-perfil_usuario ="{{$row->perfil_usuario}}" data-email="{{$row->email}}"  data-id="{{$row->id}}" data-type="{{$row->type}}"data-password="{{$row->password}}" data-cargo="{{$row->cargo}}" data-activo="{{$row->activo}}" data-valor="{{$row->valor}}" data-horas="{{$row->horas}}"
+          data-avatar="{{$row->avatar}}"
+           class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"> Edición</i></a></td> <td>@include('usuario.destroy')</td>
 
     </tr>
   </tbody>

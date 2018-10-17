@@ -10,18 +10,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 @section('htmlheader')
     @include('adminlte::layouts.partials.htmlheader')
 
-   <style type="text/css">
-       
-
-#cargando {
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:#fff url(img/loading.gif) no-repeat center;
-}
-
-
-   </style> 
     
 @show
 
@@ -45,9 +33,9 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="skin-purple sidebar-mini ">
-
-    <div id="cargando"></div><!-- temporizad de un loading..-->
+<body class="skin-purple sidebar-mini sidebar-collapse" id="siderbody">
+      
+    <!-- temporizad de un loading..-->
 <div id="app" v-cloak>
     <div class="wrapper">
 
@@ -64,6 +52,7 @@ desired effect
 
         <!-- Main content -->
         <section class="content">
+          
             <!-- Your Page Content Here -->
             @yield('main-content')
         </section><!-- /.content -->
@@ -74,6 +63,7 @@ desired effect
     @include('adminlte::layouts.partials.footer')
 
 </div><!-- ./wrapper -->
+
 </div>
 @section('scripts')
     @include('adminlte::layouts.partials.scripts')

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
@@ -19,6 +20,7 @@ use App\estado_cita;
 use App\compromisos;
 use App\jornada;
 use Alert;
+use Carbon\Carbon;
 
 class citasController extends Controller
 {
@@ -59,7 +61,7 @@ class citasController extends Controller
          $jornada = jornada::pluck('descripcion_jornada', 'id');
          $compromisos = compromisos::pluck('descripcion_compromisos', 'id');
          //dd($perfil);
-
+         Log::info(Auth::user()->name. " Ingreso a citas");
         //$cliente = DB::table('cliente')->paginate(15);
         //dd($cliente);
    return view('citas.index',compact('citas','lugar','clientes','usuarios','actividad_citas','estado_citas','jornada','compromisos'));
@@ -111,7 +113,7 @@ class citasController extends Controller
 
 
 
-
+        Log::info(Auth::user()->name. " Creo una cita ". $citas );
         \Alert::success('', 'El citas ha sido registrado con exito !')->persistent('Close');
          //return redirect()->route('citas.index');
          return back();
@@ -150,6 +152,7 @@ class citasController extends Controller
     {
          // $citas = citas::findOrFail($request->id);
          // $citas->update($request->all());
+        //dd($request->all());
          $json = json_encode($request->input('actividad_citas'), true);
          $json2 = json_encode($request->input('compromiso_citas'), true);
         $citas = citas::findOrFail($request->id);
@@ -165,9 +168,10 @@ class citasController extends Controller
         $citas->actividad_citas=$json;
         $citas->estado_citas=$request->input('estado_citas');
         $citas->compromiso_citas=$json2;
-        // ...
-
         $citas->save();
+
+
+        Log::info(Auth::user()->name. " Actualizó el registro ". $citas );
 
       Alert::success('', 'El citas ha sido editado con exito !')->persistent('Close');
       //return redirect()->route('citas.index');
@@ -185,22 +189,64 @@ class citasController extends Controller
         $citas = citas::find($id);
         $citas->delete();
         \Alert::success('', 'El citas ha sido sido borrado de forma exita!')->persistent('Close');
+
+        Log::info(Auth::user()->name. " Eliminó el registro ". $citas );
         return redirect()->route('citas.index');
     }
 
-     public function  get_events(){
+    public function sesion(Request $request)
+    {
+        
+        //dd($request-> all());
+        $json = json_encode($request->input('actividad_citas'), true);
+        $json2 = json_encode($request->input('compromiso_citas'), true);
+        //dd($json);
+        $date= Carbon::now();
+        $ip= "Inicio de Sesión del Usuario ". Auth::user()->name. " La Dirección Ip =>  ". $_SERVER['REMOTE_ADDR']; 
+
+        $citas = new citas;
+                $citas->fecha_citas=$date;
+                $citas->lugar_citas=$request->input('lugar_citas');
+                $citas->observacion_citas=$ip;
+                $citas->empresa_citas=$request->input('empresa_citas');;
+                $citas->jornada_citas=1;
+                $citas->hora_citas=Carbon::now()->format('H:i');
+                $citas->usuario_citas=Auth::user()->id;
+                $citas->hora_final_citas=Carbon::now()->format('H:i');
+                $citas->hora_citas=Carbon::now()->format('H:i');
+                $citas->actividad_citas='["17"]';
+                $citas->estado_citas=1;
+                $citas->compromiso_citas='["3","5","6","17","20","21","22"]';
+        // ...
+
+        $citas->save();
+
+
+
+        Log::info(Auth::user()->name. " Creo una cita ". $citas );
+        \Alert::success('', 'El registro de Inicio de Sesión fue registrado con exito !')->persistent('Close');
+         //return redirect()->route('citas.index');
+         return redirect()->route('home');
+    }
+
+
+     public function  get_events(Request $request){
     //     $data = \DB::table('ordenesdeservicio')
     //                 ->join('cliente','cliente.id','=','ordenesdeservicio.cliente')
     //                 ->join('vehiculo','vehiculo.id','=','ordenesdeservicio.placa')
     //                 //->select("ordenesdeservicio.Escolta_asignado as id","ordenesdeservicio.Escolta_asignado as resourceId")
     // ->select("ordenesdeservicio.Escolta_asignado as id",DB::raw("CONCAT(vehiculo.placa,'  .Detalle Del Servicio:',ordenesdeservicio.detalle_del_servicio,'  .Nombre Cliente:',cliente.nombre) as title"),"ordenesdeservicio.Escolta_asignado as resourceId","fecha_inicio_servicio as start","color_agenda as color")
     //                 ->get();
+        //dd($request->all());
         if (Auth::user()->perfil_usuario == 1) {
             $data=\DB::table('citas')
             ->join('cliente','cliente.id','=','citas.empresa_citas')
             ->join('estado_cita','estado_cita.id','=','citas.estado_citas')
             ->select("citas.id as id","cliente.nombre_cliente as title","fecha_citas as start","estado_cita.color_agenda as color")
+            ->where('usuario_citas','LIKE','%' .$request->nombre . '%')
             ->get();
+
+
 
         } else {
 

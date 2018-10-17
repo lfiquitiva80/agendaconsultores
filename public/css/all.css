@@ -1425,6 +1425,11 @@ a:focus {
   text-decoration: underline;
 }
 
+select:focus {
+  color: #216a94;
+  text-decoration: underline;
+}
+
 a:focus {
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
@@ -23676,3 +23681,4 @@ button.toast-close-button {
     width: 25em;
   }
 }
+

@@ -15,8 +15,6 @@
 <script src='{{ url (asset('/js/fullcalendar/fullcalendar.js')) }}'></script>
 <script src='{{ url (asset('/js/fullcalendar/locale-all.js')) }}'></script>
 <script src='{{ url (asset('/js/sweetalert.min.js')) }}'></script>
-
-
 <!-- Se verifica el validador de formularios  -->
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>

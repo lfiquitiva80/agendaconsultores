@@ -35,7 +35,7 @@
 
 
 
-    <center><button type="submit" class="btn btn-primary" >Enviar</button>
+    <center><button type="submit" class="btn btn-primary" >Guardar</button>
     <button type="reset" class="btn btn-danger">Borrar</button></center><p>
 
 {!! Form::close() !!}

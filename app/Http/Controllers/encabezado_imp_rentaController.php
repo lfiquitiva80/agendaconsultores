@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\encabezado_imp_renta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,8 @@ use Illuminate\Support\Facades\DB;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use App\Mail\auditoria2;
+use App\Mail\consultor;
 use App\User;
 use App\perfil;
 use App\clientes;
@@ -33,43 +36,67 @@ class encabezado_imp_rentaController extends Controller
     {
 
         if (Auth::user()->perfil_usuario == 1) {
-            $encabezado_imp_renta = encabezado_imp_renta::Search($request->nombre)->orderBy('id', 'desc')->paginate(10);
+            $encabezado_imp_renta = encabezado_imp_renta::where([['enviar_auditoria', '=', '0'],
+                ['cierre_auditoria', '=', '0'],])->Search($request->nombre)->orderBy('id', 'desc')->paginate(10);
+
+            $auditoria = \DB::table('encabezado_imp_renta')
+            ->where([['enviar_auditoria', '=', '1'],['cierre_auditoria', '=', '0'],])
+            ->paginate(15);
+
+            $cerrados =  \DB::table('encabezado_imp_renta')
+            ->where([['enviar_auditoria', '=', '1'],
+                ['cierre_auditoria', '=', '1'],])->paginate(15);   
+
         }elseif (Auth::user()->perfil_usuario == 2) {
 
+         $encabezado_imp_renta = encabezado_imp_renta::where([['enviar_auditoria', '=', '0'],
+            ['cierre_auditoria', '=', '0'],['responsable', '=', Auth::user()->id],])->Search($request->nombre)->orderBy('id', 'desc')->paginate(10);
 
-           $encabezado_imp_renta = encabezado_imp_renta::where('responsable', Auth::user()->id)
-           ->Search($request->nombre)
-           ->orderBy('id', 'desc')
-           ->paginate(10);
+         $auditoria = \DB::table('encabezado_imp_renta')
+         ->where([['enviar_auditoria', '=', '1'],['cierre_auditoria', '=', '0'],['responsable', '=', Auth::user()->id],])
+         ->paginate(15);
+
+         $cerrados =  \DB::table('encabezado_imp_renta')
+         ->where([['enviar_auditoria', '=', '1'],
+            ['cierre_auditoria', '=', '1'],['responsable', '=', Auth::user()->id],])->paginate(15);        
 
 
 
 
-       }else {
+     }else {
 
-        $encabezado_imp_renta = encabezado_imp_renta::Search($request->nombre)->orderBy('id', 'desc')
-        ->where('enviar_auditoria', 1)
-        ->paginate(10);
+       $encabezado_imp_renta = encabezado_imp_renta::where([['enviar_auditoria', '=', '0'],
+        ['cierre_auditoria', '=', '0'],['responsable', '=', Auth::user()->id],])->Search($request->nombre)->orderBy('id', 'desc')->paginate(10);
 
-    }
+       $auditoria = \DB::table('encabezado_imp_renta')
+       ->where([['enviar_auditoria', '=', '1'],['cierre_auditoria', '=', '0'],])
+       ->paginate(15);
 
-    $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
-    if (Auth::user()->perfil_usuario == 1) {
-        $clientes = clientes::pluck('nombre_cliente', 'id');
-    } else {
-        $clientes = clientes::where('responsable_cliente',Auth::user()->id)->pluck('nombre_cliente', 'id');
-    }
-    
-    
-    $compromisos = compromisos::pluck('descripcion_compromisos', 'id');
-    $periodo = periodo::pluck('descripcion_periodo', 'id');
-    $compromisos_clientes = compromisos_cliente::all();
-    $auditor = User::where('perfil_usuario',3)->pluck('name', 'id');
+       $cerrados =  \DB::table('encabezado_imp_renta')
+       ->where([['enviar_auditoria', '=', '1'],
+        ['cierre_auditoria', '=', '1'],])->paginate(15);        
+
+   }
+
+   $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
+   if (Auth::user()->perfil_usuario == 1 || Auth::user()->perfil_usuario == 3) {
+    $clientes = clientes::pluck('nombre_cliente', 'id');
+} else {
+    $clientes = clientes::where('responsable_cliente',Auth::user()->id)->pluck('nombre_cliente', 'id');
+}
+
+
+$compromisos = compromisos::pluck('descripcion_compromisos', 'id');
+$periodo = periodo::pluck('descripcion_periodo', 'id');
+$compromisos_clientes = compromisos_cliente::all();
+$auditor = User::where('perfil_usuario',3)->pluck('name', 'id');
+$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
          //dd($encabezado_imp_renta);
+Log::info(Auth::user()->name. " Ingreso a encabezado_imp_renta");
 
         //$cliente = DB::table('cliente')->paginate(15);
         //dd($cliente);
-    return view('encabezado_imp_renta.index',compact('encabezado_imp_renta','usuarios','compromisos','periodo','compromisos_clientes','clientes','auditor'));
+return view('encabezado_imp_renta.index',compact('encabezado_imp_renta','usuarios','compromisos','periodo','compromisos_clientes','clientes','auditor','auditoria','cerrados','meses'));
 }
 
     /**
@@ -95,12 +122,16 @@ class encabezado_imp_rentaController extends Controller
 
         $encabezado_imp_renta =  new encabezado_imp_renta($request-> all());
 
-        $input = $request->all();
+        $input = $request->all(); //dd($input);
+
+
+
 
         if ($request->hasFile('ubicacion_archivos')) {
 
 
             $ruta = "/archivos/".$request->file('ubicacion_archivos')->store('archivos');
+
 
         }
         else
@@ -108,7 +139,7 @@ class encabezado_imp_rentaController extends Controller
             $ruta=$encabezado_imp_renta->ubicacion_archivos;
             $dt = Carbon::now();
             $nit = clientes::find($input['cliente']);
-            $ruta2= "//clientes_ftp/".$nit->nit."/".$dt->year."/impuestos/rentas";
+            $ruta2= "//clientes_ftp/".$nit->nit."/".$dt->year."/impuestos/devolucion_iva";
         }
     //dd($ruta);
         $encabezado_imp_renta->ubicacion_archivos  = $ruta;
@@ -130,25 +161,27 @@ class encabezado_imp_rentaController extends Controller
         $checklist=checklist::find(4); 
         $plantilla_checklist = plantilla_checklist::WHERE('filtro_checklist',$checklist->filtro_plantilla)->get();
 
+        //dd($plantilla_checklist);
+
         foreach ($plantilla_checklist as $key => $value) {
 
 
-           DB::table('detalle_imp_renta')->insert([
+         DB::table('detalle_imp_renta')->insert([
             'cns_detalle' => $encabezado_imp_renta->id,
             'codigo' => $value->codigo_plantilla_checklist,
             'descripcion' => $value->descripcion_plantilla_checklist,
 
         ]);
-       }
+     }
+
+     Log::info(Auth::user()->name. " Creo una encabezado_imp_renta y su detalle ". $encabezado_imp_renta );
+     \Alert::success('', 'El encabezado_imp_renta ha sido registrado con exito !')->persistent('Close');
+     return redirect()->route('encabezado_imp_renta.index');
 
 
-       \Alert::success('', 'El encabezado_imp_renta ha sido registrado con exito !')->persistent('Close');
-       return redirect()->route('encabezado_imp_renta.index');
 
 
-
-
-   }
+ }
 
     /**
      * Display the specified resource.
@@ -182,28 +215,52 @@ class encabezado_imp_rentaController extends Controller
     public function update(Request $request, encabezado_imp_renta $id)
     {
 
+        $encabezado_imp_renta= encabezado_imp_renta::find($request->id);
 
-       $encabezado_imp_renta = encabezado_imp_renta::findOrFail($request->id);
-
-
-       $input = $request->all();
-
-       if ($request->hasFile('ubicacion_archivos')) {
+        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 
 
-        $rutaold = "/archivos/".$request->file('ubicacion_archivos')->store('archivos');
-        
-        $nombre=$request->ubicacion_archivos->getClientOriginalName();
+        $input = $request->all(); //dd($input);
+
+        $store=$encabezado_imp_renta;
+
+        $mailconsultor = User::find($input['responsable']);
+        $mailauditor = User::find($input['audito']);
+
+   if ($input['enviar_auditoria'] == 1 && Auth::user()->perfil_usuario == 2 && $mailauditor->notificacion == 1) {
+
+             \Mail::to($mailauditor->email)->send(new auditoria2($store));
+        } elseif ($input['enviar_auditoria'] == 0 && Auth::user()->perfil_usuario == 3 && $mailconsultor->notificacion == 1) {
+            \Mail::to($mailconsultor->email)->send(new consultor($store));
+        }
+
+
+
+
+
+    if ($request->hasFile('ubicacion_archivos')) {
+
+        $files = $request->file('ubicacion_archivos');    
         $dt = Carbon::now();
         $nit = clientes::find($input['cliente']);
-        $rutaalmacenamiento= $nit->nit."/".$dt->year."/impuestos/rentas";
-        $ruta = Storage::disk('public')->putFileAs($rutaalmacenamiento, $request->file('ubicacion_archivos'), $nombre);
+        $rutaalmacenamiento= $nit->nit."/".$dt->year."/impuestos/rentas/".$meses[$input['mes']];
+
+        foreach($files as $file) {
+            $filename = $file->getClientOriginalName();
+            $ruta2 = Storage::disk('public')->putFileAs($rutaalmacenamiento, $file, $filename);
+            $ruta =$rutaalmacenamiento;
+            
+        }
+            //$nombre=$request->ubicacion_archivos->getClientOriginalName();
+
+
+
 
     }
     else
     {
-        
-        $ruta=$input['ubicacion_archivos'];
+
+        $ruta=$encabezado_imp_renta->ubicacion_archivos;
     }
     //dd($ruta);
     $encabezado_imp_renta->ubicacion_archivos  = $ruta;
@@ -221,9 +278,9 @@ class encabezado_imp_rentaController extends Controller
     $encabezado_imp_renta->fecha_elaboracion=$input['fecha_elaboracion'];
 
     $encabezado_imp_renta->save();
-    
 
 
+    Log::info(Auth::user()->name. " Actualizó el registro ". $encabezado_imp_renta );
     Alert::success('', 'El encabezado_imp_renta ha sido editado con exito !')->persistent('Close');
     return redirect()->route('encabezado_imp_renta.index');
 }
@@ -237,8 +294,11 @@ class encabezado_imp_rentaController extends Controller
     public function destroy($id)
     {
         $encabezado_imp_renta = encabezado_imp_renta::find($id);
+        Storage::disk('public')->delete($encabezado_imp_renta->ubicacion_archivos);
         $encabezado_imp_renta->delete();
+
         \Alert::success('', 'El encabezado_imp_renta ha sido sido borrado de forma exita!')->persistent('Close');
+        Log::info(Auth::user()->name. " Eliminó el registro ". $encabezado_imp_renta );
         return redirect()->route('encabezado_imp_renta.index');
     }
 }

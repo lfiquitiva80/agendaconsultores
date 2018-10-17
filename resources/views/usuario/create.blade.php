@@ -10,9 +10,14 @@
                 <!--  -->
 
 
-                {!! Form::open(['route' => 'usuario.store', 'method'=>'POST','id'=>'formUserCreate']) !!}
+                {!! Form::open(['route' => 'usuario.store', 'method'=>'POST','id'=>'formUserCreate', 'enctype' => 'multipart/form-data']) !!}
 
+                    <img src="{{ asset('img/default.jpg')}}" style="width:140px; height:140px; position:absolute; top:10px; left:10px; border-radius:50%">
 
+</a>
+
+<br><br><br><br><br><br><br><br>
+{!!   Form::file('avatar')!!}
 
                 <div class="form-group">
                     <label for="id">Nombre</label>

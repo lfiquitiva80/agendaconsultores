@@ -83,7 +83,7 @@ class actividad_cargoController extends Controller
            $actividad_cargo= actividad_cargo::where('id_cargo',$id)->get();
            $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
           $cargo = cargo::pluck('descripcion_cargo', 'id');
-          $actividad = actividad::where('tipo',2)->orWhere('tipo','["1","2"]')->pluck('descripcion_actividad', 'id');
+          $actividad = actividad::where('tipo','["2"]')->orWhere('tipo','["1","2"]')->pluck('descripcion_actividad', 'id');
 
         
          

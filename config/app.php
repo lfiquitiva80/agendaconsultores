@@ -152,6 +152,10 @@ return [
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        Arcanedev\LogViewer\LogViewerServiceProvider::class,
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        
         
 
         /*
@@ -220,6 +224,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
 
     ],

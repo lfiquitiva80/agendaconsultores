@@ -63,6 +63,7 @@ $cliente = clientes::Search($request->nombre)->orderBy('activo_cliente', 'desc')
         $Clientes =  new clientes($request-> all());
         $Clientes->save();
         Alert::success('', 'el cliente ha sido registrado con exito !')->persistent('Close');
+        abort(500, 'Unauthorized action.');
          return redirect()->route('clientes.index');
     }
 

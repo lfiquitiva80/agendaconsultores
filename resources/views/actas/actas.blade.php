@@ -423,7 +423,7 @@
 			<td colspan="9" style="background-color:#dce6f1; height:18.0pt; text-align:left; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">CONSULTOR:</span></strong></span></td>
 		</tr>
 		<tr>
-			<td colspan="9" rowspan="4" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:normal; width:649pt"><span style="font-size:11pt; text-transform:uppercase;"><textarea name="" id="" cols="125" rows="4"></textarea><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></strong></span></td>
+			<td colspan="9" rowspan="4" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:normal; width:649pt"><span style="font-size:11pt; text-transform:uppercase;"><textarea name="" id="" cols="125" rows="10">{{$citas->observacion_citas}}</textarea><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></strong></span></td>
 		</tr>
 		<tr>
 		</tr>

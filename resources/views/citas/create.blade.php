@@ -8,8 +8,6 @@
             <div class="modal-body">
 
 
-
-
 {!! Form::open(['route' => 'citas.store', 'method'=>'POST','id'=>'CreateFormCliente']) !!}
 
 <div class="row">
@@ -86,7 +84,7 @@
 
 <div class="form-group">
     <label for="id">actividad <code>Tecla Control + clic derecho para Seleccionar</code></label>
-    {!! Form::select('actividad_citas', $actividad_citas, null, ['class' => 'form-control','name'=>'actividad_citas[]','multiple'=>'multiple']) !!} 
+    {!! Form::select('actividad_citas', $actividad_citas, null, ['class' => 'form-control ','name'=>'actividad_citas[]','multiple'=>'multiple']) !!} 
     
 </div>
 
