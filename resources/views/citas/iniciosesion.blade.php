@@ -10,7 +10,7 @@
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
                 </head>
                 <body id="registro_home">
-                    
+
                 </body>
                 </html>
 
@@ -20,7 +20,7 @@
     // id de nuestro modal
     $("#iniciosesion").modal("show");
   });
-  </script> 
+  </script>
 
 
 
@@ -70,16 +70,17 @@
 
 <div class="form-group">
     <label for="id">lugar</label>
-    {!! Form::select('lugar_citas', $lugar, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el Lugar de la cita... ','name'=>'lugar_citas']) !!} 
-    
+    {!! Form::select('lugar_citas', $lugar, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el Lugar de la cita... ','name'=>'lugar_citas','required']) !!}
+
+
 </div>
 
 
 
 <div class="form-group">
     <label for="id">empresa</label>
-    {!! Form::select('empresa_citas', $clientes, null, ['class' => 'form-control', 'placeholder' => 'Seleccione la Empresa... ','name'=>'empresa_citas','id'=>'empresa_citas2']) !!} 
-    
+    {!! Form::select('empresa_citas', $clientes, null, ['class' => 'form-control', 'placeholder' => 'Seleccione la Empresa... ','name'=>'empresa_citas','id'=>'empresa_citas2','required']) !!}
+
 </div>
 
 <!-- <div class="form-group">
@@ -98,45 +99,45 @@
         <option value="{{Auth::user()->id}}">{{Auth::user()->name}}</option>
     </select>
 
-    @endif 
-    
+    @endif
+
 </div>
 
 <!-- <div class="form-group">
     <label for="id">jornada</label>
-    
-    {!! Form::select('jornada_citas', $jornada, 1, ['class' => 'form-control', 'placeholder' => 'Seleccione la actividad... ','name'=>'jornada_citas','readonly']) !!} 
-    
+
+    {!! Form::select('jornada_citas', $jornada, 1, ['class' => 'form-control', 'placeholder' => 'Seleccione la actividad... ','name'=>'jornada_citas','readonly']) !!}
+
 </div>
 
 <div class="form-group">
     <label for="id">actividad <code>Tecla Control + clic derecho para Seleccionar</code></label>
-    {!! Form::select('actividad_citas', $actividad_citas, null, ['class' => 'form-control ','name'=>'actividad_citas[]','multiple'=>'multiple','readonly']) !!} 
-    
+    {!! Form::select('actividad_citas', $actividad_citas, null, ['class' => 'form-control ','name'=>'actividad_citas[]','multiple'=>'multiple','readonly']) !!}
+
 </div>
 
 <div class="form-group">
     <label for="id">estado</label>
-    {!! Form::select('estado_citas', $estado_citas, 1, ['class' => 'form-control', 'placeholder' => 'Seleccione el estado... ','name'=>'estado_citas','readonly']) !!} 
-    
+    {!! Form::select('estado_citas', $estado_citas, 1, ['class' => 'form-control', 'placeholder' => 'Seleccione el estado... ','name'=>'estado_citas','readonly']) !!}
+
 </div>
 
 <div class="form-group">
     <label for="id">Compromisos</label>
-    {!! Form::select('compromiso_citas', $compromisos, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el compromiso... ','name'=>'compromiso_citas[]','id'=>'compromiso_citas2' ,'multiple'=>'multiple','readonly']) !!} 
-    
+    {!! Form::select('compromiso_citas', $compromisos, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el compromiso... ','name'=>'compromiso_citas[]','id'=>'compromiso_citas2' ,'multiple'=>'multiple','readonly']) !!}
+
 </div>
 
 <div class="form-group">
     <label for="id">observacion</label>
     <?php  $ip= "Inicio de Sesióin del Usuario ". Auth::user()->name. " Dirección Ip =>  ". $_SERVER['REMOTE_ADDR'];   ?>
    {!! Form::textarea('observacion_citas', $ip, ['class' => 'form-control', 'placeholder' => 'Digite una Observación','name'=>'observacion_citas','readonly']) !!}
-</div>    
+</div>
  -->
 
 
     <center><button type="submit" class="btn btn-default" >Registrar su inicio de Sesión</button>
-            
+
 
 {!! Form::close() !!}
 

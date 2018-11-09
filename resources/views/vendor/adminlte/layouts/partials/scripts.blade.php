@@ -8,7 +8,7 @@
 <script src="{{ url (asset('/js/Chart.js')) }}" type="text/javascript"></script>
 <script src="{{ url (asset('/js/Chart.min.js')) }}" type="text/javascript"></script>
 <script src="https://unpkg.com/ionicons@4.2.1/dist/ionicons.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 <script src='{{ url (asset('/js/fullcalendar/lib/jquery.min.js')) }}'></script>
 <script src='{{ url (asset('/js/fullcalendar/lib/moment.min.js')) }}'></script>
@@ -20,6 +20,7 @@
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
 

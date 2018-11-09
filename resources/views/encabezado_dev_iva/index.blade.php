@@ -16,25 +16,31 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
+      @if (Auth::user()->perfil_usuario == 3)
+      @else
       <a href="#Proceso" aria-controls="Proceso" role="tab" data-toggle="tab">
-     
-      Proceso
+
+      <i class="fa fa-hourglass-start" aria-hidden="true"></i> Proceso
 
       </a>
+      @endif
+
     </li>
     <li role="presentation">
-      <a href="#Auditoria" aria-controls="Auditoria" role="tab" data-toggle="tab">Auditoria</a>
+
+      <a href="#Auditoria" aria-controls="Auditoria" role="tab" data-toggle="tab"><i class="fa fa-list" aria-hidden="true"></i> Auditoria</a>
+
     </li>
 
     <li role="presentation">
-      <a href="#Cerrados" aria-controls="Cerrados" role="tab" data-toggle="tab">Cerrados</a>
+      <a href="#Cerrados" aria-controls="Cerrados" role="tab" data-toggle="tab"><i class="fa fa-lock" aria-hidden="true"></i> Cerrados</a>
     </li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="Proceso">
-      
+
 
        <div class="panel-body">
 
@@ -54,7 +60,7 @@
 
   @include('encabezado_dev_iva.edit')
 
-  
+
 
 
 
@@ -104,21 +110,21 @@
           <td>{{$row->fecha_entrega}}</td>
           <td>{{$row->Observaciones}}</td> -->
           <td>@if($row->enviar_auditoria==1)
-              <span class="badge bg-light-blue">Si</span> 
+              <span class="badge bg-light-blue">Si</span>
               @else
               <span class="badge bg-red">No</span>
               @endif
           </td>
 
            <td>@if($row->cierre_auditoria==1)
-             <span class="badge bg-light-blue">Si</span> 
+             <span class="badge bg-light-blue">Si</span>
               @else
               <span class="badge bg-red">No</span>
               @endif
           </td>
 
 
-          
+
           <?php $files3 = Storage::disk('public')->allFiles($row->ubicacion_archivos);
 
            ?>
@@ -137,32 +143,32 @@
 
                    @if(!empty($row->ubicacion_archivos))
           <!--   <a class="btn btn-danger" href="{{asset('storage/'.$row->ubicacion_archivos)}}" role="button"><i class="fa fa-download" aria-hidden="true"></i> Descargar</a> -->
-         
+
           @foreach($files3 as $file)
-            <a href="{{'storage/'.$file}}">{{$file}}</a><br>
+            <a href="{{'storage/'.$file}}" target="_blank">{{$file}}</a><br>
           @endforeach
             @else
             Falta subir el archivo
             @endif
-                  
+
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-       
+
                 </div>
               </div>
             </div>
           </div>
-           
+
           </td>
           <!--<td>{{$row->fecha_auditoria_encabezado_dev_iva}}</td>
           <td>{{$row->fecha_elaboracion}}</td> -->
 
          <td>
-              <a class="btn btn-default" href="{{ $url = route('detalle_dev_iva.edit', $row->id) }}" role="button"><i class="fa fa-list-alt" aria-hidden="true"></i> Detalle Dev Iva</a>  
+              <a class="btn btn-default" href="{{ $url = route('detalle_dev_iva.edit', $row->id) }}" role="button"><i class="fa fa-list-alt" aria-hidden="true"></i> Detalle Dev Iva</a>
           </td>
 
-          <td><a data-toggle="modal" data-target="#editar_encabezado_dev_iva" 
+          <td><a data-toggle="modal" data-target="#editar_encabezado_dev_iva"
           data-id="{{$row->id}}"
           data-responsable="{{$row->responsable}}"
           data-cliente="{{$row->cliente}}"
@@ -176,11 +182,12 @@
           data-observacionesauditoria="{{$row->observaciones_auditoria}}"
           data-ubicacionarchivos="{{$row->ubicacion_archivos}}"
           data-fechaauditoriaencabezadodeviva="{{$row->fecha_auditoria_encabezado_dev_iva}}"
-          data-fechaelaboracion="{{$row->fecha_elaboracion}}" 
+          data-fechaelaboracion="{{$row->fecha_elaboracion}}"
+          data-mes_archivo="{{$row->mes_archivo}}"
           class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
             <td>@include('encabezado_dev_iva.destroy')</td>
-          
+
     </tr>
   </tbody>
 
@@ -212,7 +219,7 @@
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 {!! Form::close() !!}
-  
+
     @include('encabezado_dev_iva.auditoriaedit')
 
 
@@ -273,19 +280,19 @@
           <td>{{$row->fecha_entrega}}</td>
           <td>{{$row->Observaciones}}</td> -->
           <td>@if($row->enviar_auditoria==1)
-              <span class="badge bg-light-blue">Si</span> 
+              <span class="badge bg-light-blue">Si</span>
               @else
               <span class="badge bg-red">No</span>
               @endif
           </td>
 
            <td>@if($row->cierre_auditoria==1)
-             <span class="badge bg-light-blue">Si</span> 
+             <span class="badge bg-light-blue">Si</span>
               @else
               <span class="badge bg-red">No</span>
               @endif
           </td>
-        
+
           <?php $files3 = Storage::disk('public')->allFiles($row->ubicacion_archivos);
 
            ?>
@@ -304,34 +311,34 @@
 
                    @if(!empty($row->ubicacion_archivos))
           <!--   <a class="btn btn-danger" href="{{asset('storage/'.$row->ubicacion_archivos)}}" role="button"><i class="fa fa-download" aria-hidden="true"></i> Descargar</a> -->
-         
+
           @foreach($files3 as $file)
-            <a href="{{'storage/'.$file}}">{{$file}}</a><br>
+            <a href="{{'storage/'.$file}}" target="_blank">{{$file}}</a><br>
           @endforeach
             @else
             Falta subir el archivo
             @endif
-                  
+
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-       
+
                 </div>
               </div>
             </div>
           </div>
-           
+
           </td>
           <!--<td>{{$row->fecha_auditoria_encabezado_dev_iva}}</td>
           <td>{{$row->fecha_elaboracion}}</td> -->
 
          <td>
-              <a class="btn btn-default" href="{{ $url = route('detalle_dev_iva.edit', $row->id) }}" role="button"><i class="fa fa-list-alt" aria-hidden="true"></i> Detalle Dev Iva</a>  
+              <a class="btn btn-default" href="{{ $url = route('detalle_dev_iva.edit', $row->id) }}" role="button"><i class="fa fa-list-alt" aria-hidden="true"></i> Detalle Dev Iva</a>
           </td>
           @if(Auth::user()->perfil_usuario == 2)
 
           @else
-          <td><a data-toggle="modal" data-target="#editar_encabezado_dev_iva2" 
+          <td><a data-toggle="modal" data-target="#editar_encabezado_dev_iva2"
           data-id="{{$row->id}}"
           data-responsable="{{$row->responsable}}"
           data-cliente="{{$row->cliente}}"
@@ -345,12 +352,13 @@
           data-observacionesauditoria="{{$row->observaciones_auditoria}}"
           data-ubicacionarchivos="{{$row->ubicacion_archivos}}"
           data-fechaauditoriaencabezadodeviva="{{$row->fecha_auditoria_encabezado_dev_iva}}"
-          data-fechaelaboracion="{{$row->fecha_elaboracion}}" 
+          data-fechaelaboracion="{{$row->fecha_elaboracion}}"
+          data-mes_archivo="{{$row->mes_archivo}}"
           class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
             <td>@include('encabezado_dev_iva.destroy')</td>
-          @endif  
-          
+          @endif
+
     </tr>
   </tbody>
 
@@ -367,7 +375,7 @@
 </div>
 </div>
 
-    
+
     </div><!--Cierre Auditoria-->
 
 
@@ -383,7 +391,7 @@
 {!! Form::close() !!}
 
  @include('encabezado_dev_iva.cerradosedit')
-  
+
     @include('encabezado_dev_iva.auditoriaedit')
 
 
@@ -444,19 +452,19 @@
           <td>{{$row->fecha_entrega}}</td>
           <td>{{$row->Observaciones}}</td> -->
           <td>@if($row->enviar_auditoria==1)
-              <span class="badge bg-light-blue">Si</span> 
+              <span class="badge bg-light-blue">Si</span>
               @else
               <span class="badge bg-red">No</span>
               @endif
           </td>
 
            <td>@if($row->cierre_auditoria==1)
-             <span class="badge bg-light-blue">Si</span> 
+             <span class="badge bg-light-blue">Si</span>
               @else
               <span class="badge bg-red">No</span>
               @endif
           </td>
-        
+
           <!-- <td>{{$row->observaciones_auditoria}}</td>-->
          <?php $files3 = Storage::disk('public')->allFiles($row->ubicacion_archivos);
 
@@ -476,35 +484,33 @@
 
                    @if(!empty($row->ubicacion_archivos))
           <!--   <a class="btn btn-danger" href="{{asset('storage/'.$row->ubicacion_archivos)}}" role="button"><i class="fa fa-download" aria-hidden="true"></i> Descargar</a> -->
-         
+
           @foreach($files3 as $file)
-            <a href="{{'storage/'.$file}}">{{$file}}</a><br>
+            <a href="{{'storage/'.$file}}" target="_blank">{{$file}}</a><br>
           @endforeach
             @else
             Falta subir el archivo
             @endif
-                  
+
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-       
+
                 </div>
               </div>
             </div>
           </div>
-           
+
           </td>
           <!--<td>{{$row->fecha_auditoria_encabezado_dev_iva}}</td>
           <td>{{$row->fecha_elaboracion}}</td> -->
 
          <td>
-              <a class="btn btn-default" href="{{ $url = route('detalle_dev_iva.edit', $row->id) }}" role="button"><i class="fa fa-list-alt" aria-hidden="true"></i> Detalle Dev Iva</a>  
+              <a class="btn btn-default" href="{{ $url = route('detalle_dev_iva.edit', $row->id) }}" role="button"><i class="fa fa-list-alt" aria-hidden="true"></i> Detalle Dev Iva</a>
           </td>
 
-          @if(Auth::user()->perfil_usuario != 1)
 
-          @else
-          <td><a data-toggle="modal" data-target="#editar_encabezado_dev_iva3" 
+          <td><a data-toggle="modal" data-target="#editar_encabezado_dev_iva3"
           data-id="{{$row->id}}"
           data-responsable="{{$row->responsable}}"
           data-cliente="{{$row->cliente}}"
@@ -518,9 +524,12 @@
           data-observacionesauditoria="{{$row->observaciones_auditoria}}"
           data-ubicacionarchivos="{{$row->ubicacion_archivos}}"
           data-fechaauditoriaencabezadodeviva="{{$row->fecha_auditoria_encabezado_dev_iva}}"
-          data-fechaelaboracion="{{$row->fecha_elaboracion}}" 
+          data-fechaelaboracion="{{$row->fecha_elaboracion}}"
+          data-mes_archivo="{{$row->mes_archivo}}"
           class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+          @if(Auth::user()->perfil_usuario != 1)
 
+          @else
             <td>@include('encabezado_dev_iva.destroy')</td>
           @endif
     </tr>
@@ -542,7 +551,7 @@
 
     </div><!--Cierre id cerrados-->
   </div>
-</div>  
+</div>
 
 
 

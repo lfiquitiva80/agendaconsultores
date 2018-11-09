@@ -155,8 +155,9 @@ return [
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        
-        
+        Barryvdh\DomPDF\ServiceProvider::class,
+
+
 
         /*
          * Package Service Providers...
@@ -225,6 +226,7 @@ return [
         'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
 
     ],

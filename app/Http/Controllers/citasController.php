@@ -33,24 +33,28 @@ class citasController extends Controller
     {
         $citas = citas::Search($request->nombre)->orderBy('id', 'asc')->paginate(10);
          $lugar = lugar::pluck('descripcion_lugar', 'id');
-         
          $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
-    if (Auth::user()->perfil_usuario == 1) {
+
+
+    if (Auth::user()->perfil_usuario == 1 || Auth::user()->habilitar_empresas == 1) {
         $clientes = clientes::pluck('nombre_cliente', 'id');
-    } else {
+    } 
+    else {
         $clientes = clientes::where('responsable_cliente',Auth::user()->id)->pluck('nombre_cliente', 'id');
     }
 
+
+
     if (Auth::user()->perfil_usuario == 1) {
-        
+
         $citas = citas::Search($request->nombre)->orderBy('id', 'asc')->paginate(10);
     } else {
-     
-     $citas = citas::where('usuario_citas',Auth::user()->id)->Search($request->nombre)->orderBy('id', 'asc')->paginate(10);   
-    }
-    
 
-    
+     $citas = citas::where('usuario_citas',Auth::user()->id)->Search($request->nombre)->orderBy('id', 'asc')->paginate(10);
+    }
+
+
+
 
 
 
@@ -85,7 +89,7 @@ class citasController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         //dd($request-> all());
         $json = json_encode($request->input('actividad_citas'), true);
         $json2 = json_encode($request->input('compromiso_citas'), true);
@@ -196,13 +200,13 @@ class citasController extends Controller
 
     public function sesion(Request $request)
     {
-        
+
         //dd($request-> all());
         $json = json_encode($request->input('actividad_citas'), true);
         $json2 = json_encode($request->input('compromiso_citas'), true);
         //dd($json);
         $date= Carbon::now();
-        $ip= "Inicio de Sesión del Usuario ". Auth::user()->name. " La Dirección Ip =>  ". $_SERVER['REMOTE_ADDR']; 
+        $ip= "Inicio de Sesión del Usuario ". Auth::user()->name. " La Dirección Ip =>  ". $_SERVER['REMOTE_ADDR'];
 
         $citas = new citas;
                 $citas->fecha_citas=$date;
@@ -258,8 +262,8 @@ class citasController extends Controller
             ->get();
 
         }
-        
-        
+
+
 
       //$data = citas::select("id","observacion_citas as title","fecha_citas as start" )->get();
       return response()->json($data);
@@ -267,15 +271,15 @@ class citasController extends Controller
 
 
     public function  citasall(){
-  
+
       $data = citas::all();
-      
+
       return response()->json($data);
     }
 
     public function actavisitas($id)
     {
-        
+
         $citas = \DB::table('citas')->where('id',$id)->first();
 
         //dd($citas);

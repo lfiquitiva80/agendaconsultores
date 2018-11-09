@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','cargo','activo','valor','horas','perfil_usuario','avatar','notificacion'
+        'name', 'email', 'password','cargo','activo','valor','horas','perfil_usuario','avatar','notificacion','habilitar_empresas'
     ];
 
     /**
@@ -36,18 +36,15 @@ class User extends Authenticatable
    {
 
         return $this->belongsTo('App\perfil','perfil_usuario');
-      
+
    }
 
           public  function cargos()
    {
 
         return $this->belongsTo('App\cargo','cargo');
-      
+
    }
 
 
 }
-
-
-

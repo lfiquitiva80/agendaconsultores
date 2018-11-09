@@ -14,6 +14,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use App\Mail\auditoria;
 use App\Mail\consultor;
+use App\Mail\cerrados;
 use App\User;
 use App\perfil;
 use App\clientes;
@@ -45,7 +46,7 @@ class encabezado_dev_ivaController extends Controller
 
             $cerrados =  \DB::table('encabezado_dev_iva')
             ->where([['enviar_auditoria', '=', '1'],
-                ['cierre_auditoria', '=', '1'],])->paginate(15);   
+                ['cierre_auditoria', '=', '1'],])->paginate(15);
 
         }elseif (Auth::user()->perfil_usuario == 2) {
 
@@ -58,7 +59,7 @@ class encabezado_dev_ivaController extends Controller
 
            $cerrados =  \DB::table('encabezado_dev_iva')
            ->where([['enviar_auditoria', '=', '1'],
-            ['cierre_auditoria', '=', '1'],['responsable', '=', Auth::user()->id],])->paginate(15);        
+            ['cierre_auditoria', '=', '1'],['responsable', '=', Auth::user()->id],])->paginate(15);
 
 
 
@@ -74,18 +75,18 @@ class encabezado_dev_ivaController extends Controller
 
          $cerrados =  \DB::table('encabezado_dev_iva')
          ->where([['enviar_auditoria', '=', '1'],
-            ['cierre_auditoria', '=', '1'],])->paginate(15);        
+            ['cierre_auditoria', '=', '1'],])->paginate(15);
 
      }
 
      $usuarios = User::where('perfil_usuario',2)->pluck('name', 'id');
-     if (Auth::user()->perfil_usuario == 1 || Auth::user()->perfil_usuario == 3) {
+     if (Auth::user()->perfil_usuario == 1 || Auth::user()->perfil_usuario == 3 || Auth::user()->habilitar_empresas == 1) {
         $clientes = clientes::pluck('nombre_cliente', 'id');
     } else {
         $clientes = clientes::where('responsable_cliente',Auth::user()->id)->pluck('nombre_cliente', 'id');
     }
-    
-    
+
+
     $compromisos = compromisos::pluck('descripcion_compromisos', 'id');
     $periodo = periodo::pluck('descripcion_periodo', 'id');
     $compromisos_clientes = compromisos_cliente::all();
@@ -154,10 +155,12 @@ class encabezado_dev_ivaController extends Controller
         $encabezado_dev_iva->observaciones_auditoria="null";
         $encabezado_dev_iva->fecha_auditoria_encabezado_dev_iva=$input['fecha_elaboracion'];
         $encabezado_dev_iva->fecha_elaboracion=$input['fecha_elaboracion'];
+        $encabezado_dev_iva->mes_archivo=0;
+
 
         $encabezado_dev_iva->save();
 
-        $checklist=checklist::find(1); 
+        $checklist=checklist::find(1);
         $plantilla_checklist = plantilla_checklist::WHERE('filtro_checklist',$checklist->filtro_plantilla)->get();
 
         foreach ($plantilla_checklist as $key => $value) {
@@ -217,25 +220,20 @@ class encabezado_dev_ivaController extends Controller
         $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 
 
-        $input = $request->all(); 
+        $input = $request->all();
 
-        $store=$encabezado_dev_iva;
+
         $mailconsultor = User::find($input['responsable']);
         $mailauditor = User::find($input['auditor']);
 
-        if ($input['enviar_auditoria'] == 1 && Auth::user()->perfil_usuario == 2 && $mailauditor->notificacion == 1) {
 
-             \Mail::to($mailauditor->email)->send(new auditoria($store));
-        } elseif ($input['enviar_auditoria'] == 0 && Auth::user()->perfil_usuario == 3 && $mailconsultor->notificacion == 1) {
-            \Mail::to($mailconsultor->email)->send(new consultor($store));
-        }
-        
-        
-       
+
+
+
 
         if ($request->hasFile('ubicacion_archivos')) {
 
-        $files = $request->file('ubicacion_archivos');    
+        $files = $request->file('ubicacion_archivos');
         $dt = Carbon::now();
         $nit = clientes::find($input['cliente']);
         $rutaalmacenamiento= $nit->nit."/".$dt->year."/impuestos/devolucion_iva/".$meses[$input['mes']];
@@ -244,12 +242,12 @@ class encabezado_dev_ivaController extends Controller
             $filename = $file->getClientOriginalName();
             $ruta2 = Storage::disk('public')->putFileAs($rutaalmacenamiento, $file, $filename);
             $ruta =$rutaalmacenamiento;
-            
+
             }
             //$nombre=$request->ubicacion_archivos->getClientOriginalName();
-            
 
-            
+
+
 
         }
         else
@@ -271,8 +269,21 @@ class encabezado_dev_ivaController extends Controller
         $encabezado_dev_iva->observaciones_auditoria=$input['observaciones_auditoria'];
         $encabezado_dev_iva->fecha_auditoria_encabezado_dev_iva=$input['fecha_auditoria_encabezado_dev_iva'];
         $encabezado_dev_iva->fecha_elaboracion=$input['fecha_elaboracion'];
-
+        $encabezado_dev_iva->mes_archivo=$input['mes'];
         $encabezado_dev_iva->save();
+
+        $store=$encabezado_dev_iva;
+        
+        if ($input['enviar_auditoria'] == 1 && Auth::user()->perfil_usuario == 2 && $mailauditor->notificacion == 1) {
+
+               \Mail::to($mailauditor->email)->send(new auditoria($store));
+          } elseif ($input['enviar_auditoria'] == 1 && Auth::user()->perfil_usuario == 3 && $mailconsultor->notificacion == 1) {
+              \Mail::to($mailconsultor->email)->send(new cerrados($store));
+          } elseif ($input['enviar_auditoria'] == 0 && Auth::user()->perfil_usuario == 3 && $mailconsultor->notificacion == 1) {
+              \Mail::to($mailconsultor->email)->send(new consultor($store));
+          }
+
+
 
 
         Log::info(Auth::user()->name. " Actualizó el registro ". $encabezado_dev_iva );
@@ -291,7 +302,7 @@ class encabezado_dev_ivaController extends Controller
         $encabezado_dev_iva = encabezado_dev_iva::find($id);
         Storage::disk('public')->delete($encabezado_dev_iva->ubicacion_archivos);
         $encabezado_dev_iva->delete();
-       
+
         \Alert::success('', 'El encabezado_dev_iva ha sido sido borrado de forma exita!')->persistent('Close');
         Log::info(Auth::user()->name. " Eliminó el registro ". $encabezado_dev_iva );
         return redirect()->route('encabezado_dev_iva.index');

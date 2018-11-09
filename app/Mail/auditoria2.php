@@ -35,10 +35,10 @@ class auditoria2 extends Mailable
                         'checklist' => $this->store->checklista->descripcion,
                         'cliente' => $this->store->clientes->nombre_cliente,
                         'auditor' => $this->store->auditores->name,
-                        'Observaciones' => $this->store->Observaciones,
+                        'Observacion' => $this->store->Observaciones,
                         'fecha_elaboracion' => $this->store->fecha_elaboracion,
                         'id' => $this->store->id,
-                    
+
                     ]);
     }
 }

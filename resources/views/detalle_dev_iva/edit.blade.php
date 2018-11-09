@@ -5,10 +5,11 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">ACTUALIZAR DETALLE DEVOLUCION IVA</h4>
+                <a href="{{ URL::previous() }}" class="btn btn-primary"><i class="fa fa-hand-o-left" aria-hidden="true"></i> Regresar</a><p>
             </div>
             <div class="modal-body">
 
-                
+
 
                 <form class="" action="{{route('detalle_dev_iva.update', 'id' )}}"   method="post" id="FormEditdetalle_dev_ivas">
 
@@ -46,7 +47,7 @@
 
                     <div class="form-group">
                         <label for="id">No es Responsable</label>
-                        
+
                         {!! Form::select('ressi',[ '1'=>'Si', '0' =>'No'],null,['class'=> 'form-control','name'=>'resno','id'=>'resno'] )!!}
                     </div>
 
@@ -54,7 +55,7 @@
                         <label for="id">No aplica el Responsable</label>
                         {!! Form::select('ressi',[ '1'=>'Si', '0' =>'No'],null,['class'=> 'form-control','name'=>'resna','id'=>'resna'] )!!}
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -64,7 +65,7 @@
                 </div>
                 <div class="panel-body">
 
-                    
+
                     <div class="form-group">
                         <label for="id">Si Auditor</label>
                         {!! Form::select('audsi',[ '1'=>'Si', '0' =>'No'],null,['class'=> 'form-control','name'=>'audsi','id'=>'audsi'] )!!}
@@ -72,7 +73,7 @@
 
                     <div class="form-group">
                         <label for="id">No Auditor</label>
-                        
+
                         {!! Form::select('ressi',[ '1'=>'Si', '0' =>'No'],null,['class'=> 'form-control','name'=>'audno','id'=>'audno'] )!!}
                     </div>
 
@@ -82,7 +83,7 @@
                     </div>
 
 
-                    
+
                 </div>
             </div>
             @elseif (Auth::user()->perfil_usuario == 2)
@@ -99,7 +100,7 @@
 
                     <div class="form-group">
                         <label for="id">No es Responsable</label>
-                        
+
                         {!! Form::select('ressi',[ '1'=>'Si', '0' =>'No'],null,['class'=> 'form-control','name'=>'resno','id'=>'resno'] )!!}
                     </div>
 
@@ -107,7 +108,7 @@
                         <label for="id">No aplica el Responsable</label>
                         {!! Form::select('ressi',[ '1'=>'Si', '0' =>'No'],null,['class'=> 'form-control','name'=>'resna','id'=>'resna'] )!!}
                     </div>
-                    
+
                 </div>
             </div>
             @else
@@ -118,7 +119,7 @@
                 </div>
                 <div class="panel-body">
 
-                    
+
                     <div class="form-group">
                         <label for="id">Si Auditor</label>
                         {!! Form::select('audsi',[ '1'=>'Si', '0' =>'No'],null,['class'=> 'form-control','name'=>'audsi','id'=>'audsi'] )!!}
@@ -126,7 +127,7 @@
 
                     <div class="form-group">
                         <label for="id">No Auditor</label>
-                        
+
                         {!! Form::select('ressi',[ '1'=>'Si', '0' =>'No'],null,['class'=> 'form-control','name'=>'audno','id'=>'audno'] )!!}
                     </div>
 
@@ -136,23 +137,23 @@
                     </div>
 
 
-                    
+
                 </div>
             </div>
 
 
 
             @endif
-            
-
-            
 
 
-            
-            
-            
 
-            
+
+
+
+
+
+
+
 
 
             <center><button type="submit" class="btn btn-primary" >Actualizar</button>

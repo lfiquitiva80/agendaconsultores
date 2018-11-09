@@ -93,12 +93,12 @@ class detalle_imp_icaController extends Controller
      */
     public function update(Request $request, detalle_imp_ica $id)
     {
-           //dd($request->all());  
+           //dd($request->all());
 
          $detalle_imp_ica = detalle_imp_ica::findOrFail($request->id);
          $detalle_imp_ica->update($request->all());
 
-      Alert::success('', 'El detalle_imp_ica ha sido editado con exito !')->persistent('Close');
+      //Alert::success('', 'El detalle_imp_ica ha sido editado con exito !')->persistent('Close');
       //return redirect()->route('detalle_imp_ica.index');
       return back();
     }

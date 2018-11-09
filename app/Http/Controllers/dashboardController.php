@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\citas;
+use Illuminate\Support\Facades\DB;
 
 class dashboardController extends Controller
 {
@@ -13,31 +15,71 @@ class dashboardController extends Controller
      */
     public function index()
     {
+      $total=citas::all()->count();
+      $cumplio=citas::where('estado_citas','1')->count();
+      $nocumplio=citas::where('estado_citas','2')->count();
+      $pendiente=citas::where('estado_citas','3')->count();
+
+      $Enero = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '01')->where('estado_citas','1')->count();
+      $Enero2 = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '01')->where('estado_citas','!=','1')->count();
+
+      $Febrero = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '02')->where('estado_citas','1')->count();
+      $Febrero2 = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '02')->where('estado_citas','!=','1')->count();
+
+      $Marzo = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '03')->where('estado_citas','1')->count();
+      $Marzo2 = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '03')->where('estado_citas','!=','1')->count();
+
+      $Abril = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '04')->where('estado_citas','1')->count();
+      $Abril2 = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '04')->where('estado_citas','!=','1')->count();
+
+      $Mayo = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '05')->where('estado_citas','1')->count();
+      $Mayo2 = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '05')->where('estado_citas','!=','1')->count();
+      $Junio = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '06')->where('estado_citas','1')->count();
+      $Junio2 = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '06')->where('estado_citas','!=','1')->count();
+
+      $Julio = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '07')->where('estado_citas','1')->count();
+      $Julio2 = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '07')->where('estado_citas','!=','1')->count();
+
+      $Agosto = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '08')->where('estado_citas','1')->count();
+      $Agosto2 = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '08')->where('estado_citas','!=','1')->count();
+
+      $Septiembre = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '09')->where('estado_citas','1')->count();
+      $Septiembre2 = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '09')->where('estado_citas','!=','1')->count();
+
+      $Octubre = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '10')->where('estado_citas','1')->count();
+      $Octubre2 = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '10')->where('estado_citas','!=','1')->count();
+
+      $Noviembre = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '11')->where('estado_citas','1')->count();
+      $Noviembre2 = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '11')->where('estado_citas','!=','1')->count();
+
+      $Diciembre = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '11')->where('estado_citas','1')->count();
+      $Diciembre2 = DB::table('citas')->whereYear('fecha_citas', '2018')->whereMonth('fecha_citas', '11')->where('estado_citas','!=','1')->count();
+
         $chartjs = app()->chartjs
         ->name('lineChartTest')
         ->type('line')
         ->size(['width' => 400, 'height' => 200])
-        ->labels(['January', 'February', 'March', 'April', 'May', 'June', 'July'])
+        ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
         ->datasets([
             [
-                "label" => "My First dataset",
-                'backgroundColor' => "rgba(38, 185, 154, 0.31)",
+                "label" => "Cumplio",
+                'backgroundColor' => "rgba(0, 0, 255, 0.3)",
                 'borderColor' => "rgba(38, 185, 154, 0.7)",
                 "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
                 "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
                 "pointHoverBackgroundColor" => "#fff",
                 "pointHoverBorderColor" => "rgba(220,220,220,1)",
-                'data' => [65, 59, 80, 81, 56, 55, 40],
+                'data' => [$Enero, $Febrero, $Marzo, $Abril, $Mayo, $Junio, $Julio,$Agosto,$Septiembre,$Octubre,$Noviembre,$Diciembre],
             ],
             [
-                "label" => "My Second dataset",
-                'backgroundColor' => "rgba(38, 185, 154, 0.31)",
+                "label" => "No Cumplio y Pendiente",
+                'backgroundColor' => "rgba(0, 255, 0, 0.3)",
                 'borderColor' => "rgba(38, 185, 154, 0.7)",
                 "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
                 "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
                 "pointHoverBackgroundColor" => "#fff",
                 "pointHoverBorderColor" => "rgba(220,220,220,1)",
-                'data' => [12, 33, 44, 44, 55, 23, 40],
+                'data' => [$Enero2, $Febrero2, $Marzo2, $Abril2, $Mayo2, $Junio2, $Julio2,$Agosto2,$Septiembre2,$Octubre2,$Noviembre2,$Diciembre2],
             ]
         ])
         ->options([]);
@@ -46,17 +88,22 @@ class dashboardController extends Controller
          ->name('barChartTest')
          ->type('bar')
          ->size(['width' => 400, 'height' => 200])
-         ->labels(['Label x', 'Label y'])
+         ->labels(['Cumplio', 'NoCumplio', 'Pendiente'])
          ->datasets([
              [
-                 "label" => "My First dataset",
-                 'backgroundColor' => ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
-                 'data' => [69, 59]
+                 "label" => "Cumplio",
+                 'backgroundColor' => ['#008080'],
+                 'data' => [$cumplio]
              ],
              [
-                 "label" => "My First dataset",
-                 'backgroundColor' => ['rgba(255, 99, 132, 0.3)', 'rgba(54, 162, 235, 0.3)'],
-                 'data' => [65, 12]
+                 "label" => "No Cumplio",
+                 'backgroundColor' => ['#ff0000'],
+                 'data' => [$nocumplio]
+             ],
+             [
+                 "label" => "Pendiente",
+                 'backgroundColor' => ['#ff8000'],
+                 'data' => [$pendiente]
              ]
          ])
          ->options([]);
@@ -65,12 +112,12 @@ class dashboardController extends Controller
         ->name('pieChartTest')
         ->type('pie')
         ->size(['width' => 400, 'height' => 200])
-        ->labels(['Label x', 'Label y'])
+        ->labels(['Cumplio', 'No_cumplio', 'Pendiente'])
         ->datasets([
             [
-                'backgroundColor' => ['#FF6384', '#36A2EB'],
-                'hoverBackgroundColor' => ['#FF6384', '#36A2EB'],
-                'data' => [69, 59]
+                'backgroundColor' => ['#008080', '#ff0000', '#ff8000'],
+                'hoverBackgroundColor' => ['#008080', '#ff0000', '#ff8000'],
+                'data' => [$cumplio, $nocumplio, $pendiente]
             ]
         ])
         ->options([]);
@@ -79,12 +126,12 @@ class dashboardController extends Controller
         ->name('pieChartTest')
         ->type('pie')
         ->size(['width' => 400, 'height' => 200])
-        ->labels(['Label x', 'Label y'])
+        ->labels(['Cumplio', 'No_cumplio', 'Pendiente'])
         ->datasets([
             [
-                'backgroundColor' => ['#FF6384', '#36A2EB'],
-                'hoverBackgroundColor' => ['#FF6384', '#36A2EB'],
-                'data' => [69, 59]
+                'backgroundColor' => ['#FF6384', '#36A2EB', '#36eb5d'],
+                'hoverBackgroundColor' => ['#FF6384', '#36A2EB', '#36eb5d'],
+                'data' => [$cumplio, $nocumplio, $pendiente]
             ]
         ])
         ->options([]);
@@ -92,7 +139,7 @@ class dashboardController extends Controller
 
 
 
-        return view('dashboard', compact('chartjs','chartjs2','chartjs3','chartjs4'));
+        return view('dashboard', compact('chartjs','chartjs2','chartjs3','chartjs4','total','cumplio','nocumplio','pendiente'));
     }
 
     /**

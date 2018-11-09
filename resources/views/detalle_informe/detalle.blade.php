@@ -14,6 +14,7 @@
 
 
   <div class="panel-body">
+    <a href="{{ URL::previous() }}" class="btn btn-warning "><i class="fa fa-hand-o-left" aria-hidden="true"></i> Regresar</a><p>
 
 <div class="container">
 {!! Form::open(['route' => 'detalle_informe.index', 'method'=>'GET', 'Class'=>'navbar-form navbar-right']) !!}
@@ -24,7 +25,7 @@
   <button type="submit" class="btn btn-default">Submit</button>
 {!! Form::close() !!}
 <div class="panel panel-default">
-<h4><b><center>DETALLE DEVOLUCION IVA</h4></b></center>
+<h4><b><center>DETALLE INFORME</h4></b></center>
 <a class="btn btn-info" data-toggle="modal" href='#crear_detalle_informe'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear detalle_informe</a>
 
   @include('detalle_informe.create')
@@ -39,11 +40,11 @@
 <table class="table table-hover" >
   <thead>
 
-  
+
         <tr>
       <th colspan="4"></th>
       <th>Responsable&nbsp;&nbsp;&nbsp;&nbsp;Auditor</th>
-     
+
 
     </tr>
 
@@ -54,8 +55,8 @@
       <th>descripcion</th>
       <th>Si&nbsp;&nbsp;&nbsp;&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;Na&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Si&nbsp;&nbsp;&nbsp;&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;Na
       </th>
-      
-            
+
+
 
 
 
@@ -68,7 +69,7 @@
     <tr>
 
 
-      
+
 
      <td class="id">{{$row->id}}</td>
       <td>{{$row->cns_detalle}}</td>
@@ -77,7 +78,7 @@
 
       <td  NOWRAP>
 
-           
+
       {!! Form::open(['route' => ['detalle_informe.update', $row->id],'method'=>'PATCH']) !!}
       <input type="hidden" id="id"  name="id" value="{{$row->id}}">
 
@@ -86,31 +87,31 @@
 
       {!! Form::checkbox('ressi',  1, $row->ressi, []) !!}
       &nbsp;
-      &nbsp; 
-      {!! Form::checkbox('resno',  1, $row->resno, []) !!} 
+      &nbsp;
+      {!! Form::checkbox('resno',  1, $row->resno, []) !!}
       &nbsp;
       &nbsp;
       &nbsp;
-      {!! Form::checkbox('resna',  1, $row->resna, []) !!} 
+      {!! Form::checkbox('resna',  1, $row->resna, []) !!}
       &nbsp;
       &nbsp;
       &nbsp;
 
-      {!! Form::checkbox('audsi',  1, $row->audsi, []) !!} 
+      {!! Form::checkbox('audsi',  1, $row->audsi, []) !!}
       &nbsp;
       &nbsp;
       &nbsp;
-      {!! Form::checkbox('audno',  1, $row->audno, []) !!} 
+      {!! Form::checkbox('audno',  1, $row->audno, []) !!}
       &nbsp;
       &nbsp;
       &nbsp;
-      {!! Form::checkbox('audna',  1, $row->audna, []) !!} 
+      {!! Form::checkbox('audna',  1, $row->audna, []) !!}
 
        @elseif (Auth::user()->perfil_usuario == 2)
 
        {!! Form::checkbox('ressi',  1, $row->ressi, []) !!}
         &nbsp;
-      &nbsp; 
+      &nbsp;
       {!! Form::checkbox('resno',  1, $row->resno, []) !!}
        &nbsp;
       &nbsp;
@@ -134,7 +135,7 @@
       {!! Form::checkbox('ressi',  1, $row->ressi, ['disabled']) !!}
        &nbsp;
       &nbsp;
-      
+
       {!! Form::checkbox('resno',  1, $row->resno, ['disabled']) !!}
        &nbsp;
       &nbsp;
@@ -157,17 +158,17 @@
       &nbsp;
       &nbsp;
 
-      @endif 
+      @endif
 
-      
+
           <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Actualizar</button>
-        
+
        {!! Form::close() !!}
 
       </td>
 
 
-  
+
 
                   <!-- <td><a   data-toggle="modal" data-target="#editar_detalle_informe" data-id="{{$row->id}}"
             data-cns_detalle="{{$row->cns_detalle}}"
@@ -183,7 +184,7 @@
 
             <td>@include('detalle_informe.destroy')</td>
  -->
-                     
+
     </tr>
   </tbody>
 
@@ -201,14 +202,14 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-   
+
    $('#actualizardetalle').click(function(event) {
-     
+
      alert('buena hora');
 
    });
 
- }); 
+ });
 
 </script>
 

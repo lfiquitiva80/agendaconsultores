@@ -1,3 +1,4 @@
+
 <div class="modal fade" id="editar_usuario">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -35,33 +36,33 @@
           </div>
           <div class="form-group">
             <label for="id">Contraseña </label>
-            <input  type="password" class="form-control" name="password" placeholder="Contraseña">
+            <input  type="password" class="form-control" name="password" placeholder="Contraseña" required>
           </div>
 
           <div class="form-group">
             <label for="id">Perfil de Usuario</label>
 
-            {!! Form::select('perfil_usuario', $perfil,null, ['class' => 'form-control','name'=>'perfil_usuario','id'=>'perfil_usuario' ]) !!}             
+            {!! Form::select('perfil_usuario', $perfil,null, ['class' => 'form-control','name'=>'perfil_usuario','id'=>'perfil_usuario' ]) !!}
 
           </div>
           <div class="form-group">
             <label for="id">Cargo del Usuario  <code>Tecla Control + clic derecho para Seleccionar</code></label>
 
-            {!! Form::select('cargo', $cargo,null, ['class' => 'form-control','name'=>'cargo[]','id'=>'cargo', 'multiple' => 'multiple' ]) !!}             
+            {!! Form::select('cargo', $cargo,null, ['class' => 'form-control','name'=>'cargo[]','id'=>'cargo', 'multiple' => 'multiple' ]) !!}
 
           </div>
 
           <div class="form-group">
             <label for="id">Horas</label>
 
-            {!! Form::text('horas', null, ['class' => 'form-control','name'=>'horas','id'=>'horas']) !!}             
+            {!! Form::text('horas', null, ['class' => 'form-control','name'=>'horas','id'=>'horas']) !!}
 
           </div>
 
           <div class="form-group">
             <label for="id">Valor</label>
 
-            {!! Form::text('valor', null, ['class' => 'form-control','name'=>'valor','id'=>'valor']) !!}             
+            {!! Form::text('valor', null, ['class' => 'form-control','name'=>'valor','id'=>'valor']) !!}
 
           </div>
           <div class="form-group">
@@ -69,11 +70,27 @@
             {!! Form::select('activo',[ ''=>'SELECCIONE','1'=>'Activo', '0' =>'Inactivo'],null,['class'=> 'form-control','id' => 'activo','name'=>'activo'] )!!}
           </div>
 
+          <div class="form-group">
+            <label for="id">habilitar_empresas</label>
+            {!! Form::select('habilitar_empresas',[ ''=>'SELECCIONE','1'=>'Habilitado', '0' =>'No habilitado'],null,['class'=> 'form-control','id' => 'habilitar_empresas','name'=>'habilitar_empresas'] )!!}
+          </div>
 
-          <center><button type="submit" class="btn btn-primary" >Enviar</button>
-            <button type="button" class="btn btn-default "data-dismiss="modal" >Close</button></center><p>
+          <!-- <div class="form-group">
+            <label for="id">Clientes <code>Tecla Control + clic derecho para Seleccionar</code></label>
+
+            {!! Form::select('habilitar_empresas', $clientes,null, ['class' => 'form-control','name'=>'habilitar_empresas[]','id'=>'habilitar_empresas', 'multiple' => 'multiple']) !!}
+
+
+          </div> -->
+
+
+
+          <center><button type="submit" class="btn btn-primary" >Actualizar</button>
+            <button type="button" class="btn btn-default "data-dismiss="modal" >Cerrar</button></center><p>
 
             </form>
+
+
 
 
           </div>

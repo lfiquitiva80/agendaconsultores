@@ -93,12 +93,12 @@ class detalle_informeController extends Controller
      */
     public function update(Request $request, detalle_informe $id)
     {
-           //dd($request->all());  
+           //dd($request->all());
 
          $detalle_informe = detalle_informe::findOrFail($request->id);
          $detalle_informe->update($request->all());
 
-      Alert::success('', 'El detalle_informe ha sido editado con exito !')->persistent('Close');
+      //Alert::success('', 'El detalle_informe ha sido editado con exito !')->persistent('Close');
       //return redirect()->route('detalle_informe.index');
       return back();
     }

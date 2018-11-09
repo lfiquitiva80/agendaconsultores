@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\cargo;
 use App\perfil;
+use App\clientes;
 use Alert;
 use Carbon\Carbon;
 
@@ -29,10 +30,11 @@ class usuarioController extends Controller
 
         $perfil = perfil::pluck('descripcion_perfil','id');
         $cargo = cargo::pluck('descripcion_cargo','id');
-      
+        $clientes = clientes::orderBy('nombre_cliente','asc')->pluck('nombre_cliente', 'id');
 
-       
-         return view('usuario.index',compact('usuario','perfil','cargo'));
+
+
+         return view('usuario.index',compact('usuario','perfil','cargo','clientes'));
 
 
     }
@@ -55,7 +57,7 @@ class usuarioController extends Controller
      */
     public function store(Request $request)
     {
-          
+
           //dd($request->all());
           $json = json_encode($request->input('cargo'), true);
 
@@ -64,7 +66,7 @@ class usuarioController extends Controller
             'username' => 'sometimes|required|max:255|unique:users',
             'email'    => 'required|email|max:255|unique:users',
             //'password' => 'required|min:6|confirmed',
-            
+
         ]);
 
 
@@ -78,7 +80,7 @@ class usuarioController extends Controller
     }
     else
     {
-        
+
         $ruta='img/default.jpg';
     }
 
@@ -93,8 +95,8 @@ class usuarioController extends Controller
              'horas' => $request['horas'],
              'avatar' => $ruta,
             ];
-            
-        
+
+
         $createuser=User::create($input);
         //dd($createuser);
         Alert::success('', 'el usuario ha sido registrado con exito !')->persistent('Close');
@@ -134,8 +136,8 @@ class usuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-         
-            $usuarioupdate=DB::table('users')->where('id',"=",$request->id)->first();    
+
+            $usuarioupdate=DB::table('users')->where('id',"=",$request->id)->first();
             //dd($usuarioupdate);
                 if ($request->hasFile('avatar')) {
 
@@ -147,12 +149,13 @@ class usuarioController extends Controller
     }
     else
     {
-        
+
         $ruta=$usuarioupdate->avatar;
     }
 
 
          $json = json_encode($request->input('cargo'), true);
+
           $input = [
             'name'     => $request['name'],
             'email'    => $request['email'],
@@ -164,11 +167,12 @@ class usuarioController extends Controller
              'valor' => $request['valor'],
              'horas' => $request['horas'],
              'avatar' => $ruta,
+             'habilitar_empresas' => $request['habilitar_empresas'],
             ];
 
-           // dd($request->all());
+           //dd($request->all());
 
-               
+
         $updates=DB::table('users')->where('id',"=",$request['id'])->update($input);
          //dd($updates);
       Alert::success('', 'el usuario ha sido editado con exito !')->persistent('Close');
@@ -190,14 +194,14 @@ class usuarioController extends Controller
     }
 
 
-    public function export() 
+    public function export()
     {
         return \Excel::download(new UsersExport, 'Usuarios.xlsx');
     }
 
     public function profile(Request $request)
     {
-        
+
         $usuario=DB::table('users')->where('id',"=",$request->id)->first();
 
 
@@ -211,7 +215,7 @@ class usuarioController extends Controller
     }
     else
     {
-        
+
         $ruta=$usuario->avatar;
     }
 

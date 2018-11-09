@@ -1,7 +1,7 @@
 $('#editar_clientes').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')	
+  var id = button.data('id')
   var nit = button.data('nit')
   var nombre_cliente = button.data('nombre_cliente')
   var direccion_cliente = button.data('direccion_cliente')
@@ -54,6 +54,8 @@ $('#editar_clientes').on('show.bs.modal', function (event) {
 
 
 $('#editar_usuario').on('show.bs.modal', function (event) {
+
+
   var button = $(event.relatedTarget)
   var id = button.data('id')
   var name = button.data('name')
@@ -66,7 +68,8 @@ $('#editar_usuario').on('show.bs.modal', function (event) {
   var valor = button.data('valor')
   var horas = button.data('horas')
   var avatar = button.data('avatar')
-  
+  var habilitar_empresas = button.data('habilitar_empresas')
+
 
 // Extract info from data-* attributes
 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -83,6 +86,7 @@ modal.find('.modal-body #activo').val(activo);
 modal.find('.modal-body #valor').val(valor);
 modal.find('.modal-body #horas').val(horas);
 modal.find('.modal-body #avatar').attr('src', avatar);
+modal.find('.modal-body #habilitar_empresas').val(habilitar_empresas);
 })
 
 
@@ -99,7 +103,7 @@ $('#editar_empresa').on('show.bs.modal', function (event) {
   var ciudad = button.data('ciudad')
   var celular = button.data('celular')
    var contacto = button.data('contacto')
-  
+
 
 // Extract info from data-* attributes
 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -335,7 +339,7 @@ $('#editarchecklist').on('show.bs.modal', function (event) {
   var filtro_plantilla = button.data('filtro_plantilla')
   var tabla_encabezado = button.data('tabla_encabezado')
   var tabla_detalle = button.data('tabla_detalle')
-  
+
 
 // Extract info from data-* attributes
 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -357,7 +361,7 @@ $('#crear_compromisos_cliente').on('show.bs.modal', function (event) {
   var id = button.data('id')
 
    $(event.currentTarget).find('#valorempresa').html(id);
- 
+
 
 // Extract info from data-* attributes
 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -579,7 +583,7 @@ modal.find('.modal-body #compromiso_citas').val(compromiso_citas);
 $('#editar_encabezado_dev_iva').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var auditor = button.data('auditor')
@@ -593,7 +597,8 @@ $('#editar_encabezado_dev_iva').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria_encabezado_dev_iva = new Date(button.data('fechaauditoriaencabezadodeviva')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -613,6 +618,7 @@ $('#editar_encabezado_dev_iva').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria_encabezado_dev_iva').val(fecha_auditoria_encabezado_dev_iva)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 
@@ -620,7 +626,7 @@ $('#editar_encabezado_dev_iva').on('show.bs.modal', function (event) {
 $('#editar_encabezado_dev_iva2').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var auditor = button.data('auditor')
@@ -634,7 +640,8 @@ $('#editar_encabezado_dev_iva2').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria_encabezado_dev_iva = new Date(button.data('fechaauditoriaencabezadodeviva')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -654,12 +661,13 @@ $('#editar_encabezado_dev_iva2').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria_encabezado_dev_iva').val(fecha_auditoria_encabezado_dev_iva)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 $('#editar_encabezado_dev_iva3').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var auditor = button.data('auditor')
@@ -673,9 +681,7 @@ $('#editar_encabezado_dev_iva3').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria_encabezado_dev_iva = new Date(button.data('fechaauditoriaencabezadodeviva')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
-
-
+  var mes_archivo = button.data('mes_archivo')
 
   var modal = $(this)
 
@@ -693,12 +699,13 @@ $('#editar_encabezado_dev_iva3').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria_encabezado_dev_iva').val(fecha_auditoria_encabezado_dev_iva)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 $('#editar_encabezado_imp_ica1').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -712,7 +719,8 @@ $('#editar_encabezado_imp_ica1').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fecha_auditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -732,12 +740,13 @@ $('#editar_encabezado_imp_ica1').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 $('#editar_encabezado_imp_ica22').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -751,7 +760,8 @@ $('#editar_encabezado_imp_ica22').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -771,12 +781,13 @@ $('#editar_encabezado_imp_ica22').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 $('#editar_encabezado_imp_ica3').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -790,7 +801,8 @@ $('#editar_encabezado_imp_ica3').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -810,12 +822,13 @@ $('#editar_encabezado_imp_ica3').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 $('#editar_encabezado_imp_iva1').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -829,7 +842,8 @@ $('#editar_encabezado_imp_iva1').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fecha_auditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -849,12 +863,13 @@ $('#editar_encabezado_imp_iva1').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 $('#editar_encabezado_imp_iva22').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -868,7 +883,8 @@ $('#editar_encabezado_imp_iva22').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -888,12 +904,13 @@ $('#editar_encabezado_imp_iva22').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 $('#editar_encabezado_imp_iva3').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -907,7 +924,8 @@ $('#editar_encabezado_imp_iva3').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -927,13 +945,14 @@ $('#editar_encabezado_imp_iva3').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 
 $('#editar_encabezado_imp_renta1').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -947,7 +966,8 @@ $('#editar_encabezado_imp_renta1').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fecha_auditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -967,12 +987,13 @@ $('#editar_encabezado_imp_renta1').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 $('#editar_encabezado_imp_renta22').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -986,7 +1007,8 @@ $('#editar_encabezado_imp_renta22').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -1006,12 +1028,13 @@ $('#editar_encabezado_imp_renta22').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 $('#editar_encabezado_imp_renta3').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -1025,7 +1048,8 @@ $('#editar_encabezado_imp_renta3').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -1045,13 +1069,14 @@ $('#editar_encabezado_imp_renta3').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 
 $('#editar_encabezado_imp_reteica1').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -1065,7 +1090,8 @@ $('#editar_encabezado_imp_reteica1').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fecha_auditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -1085,12 +1111,13 @@ $('#editar_encabezado_imp_reteica1').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 $('#editar_encabezado_imp_reteica22').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -1104,7 +1131,8 @@ $('#editar_encabezado_imp_reteica22').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -1124,12 +1152,13 @@ $('#editar_encabezado_imp_reteica22').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 $('#editar_encabezado_imp_reteica3').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -1143,7 +1172,8 @@ $('#editar_encabezado_imp_reteica3').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -1163,13 +1193,14 @@ $('#editar_encabezado_imp_reteica3').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 
 $('#editar_encabezado_imp_retencion1').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -1183,7 +1214,8 @@ $('#editar_encabezado_imp_retencion1').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fecha_auditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -1203,12 +1235,13 @@ $('#editar_encabezado_imp_retencion1').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 $('#editar_encabezado_imp_retencion22').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -1222,7 +1255,8 @@ $('#editar_encabezado_imp_retencion22').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -1242,12 +1276,13 @@ $('#editar_encabezado_imp_retencion22').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 $('#editar_encabezado_imp_retencion3').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -1261,7 +1296,8 @@ $('#editar_encabezado_imp_retencion3').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -1281,13 +1317,14 @@ $('#editar_encabezado_imp_retencion3').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 
 $('#editar_encabezado_informe1').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -1301,7 +1338,8 @@ $('#editar_encabezado_informe1').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fecha_auditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -1321,12 +1359,13 @@ $('#editar_encabezado_informe1').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 $('#editar_encabezado_informe22').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -1340,7 +1379,8 @@ $('#editar_encabezado_informe22').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -1360,12 +1400,13 @@ $('#editar_encabezado_informe22').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 $('#editar_encabezado_informe3').on('show.bs.modal', function (event) {
 
   var button = $(event.relatedTarget) // Button triggered the modal
-  var id = button.data('id')  
+  var id = button.data('id')
   var responsable = button.data('responsable')
   var cliente = button.data('cliente')
   var audito = button.data('audito')
@@ -1379,7 +1420,8 @@ $('#editar_encabezado_informe3').on('show.bs.modal', function (event) {
   var ubicacion_archivos = button.data('ubicacionarchivos')
   var fecha_auditoria = new Date(button.data('fechaauditoria')).toISOString().slice(0, 10)
   var fecha_elaboracion = new Date(button.data('fechaelaboracion')).toISOString().slice(0, 10)
- 
+  var mes_archivo = button.data('mes_archivo')
+
 
 
 
@@ -1399,6 +1441,7 @@ $('#editar_encabezado_informe3').on('show.bs.modal', function (event) {
   modal.find('.modal-body #ubicacion_archivos').val(ubicacion_archivos)
   modal.find('.modal-body #fecha_auditoria').val(fecha_auditoria)
   modal.find('.modal-body #fecha_elaboracion').val(fecha_elaboracion)
+  modal.find('.modal-body #mes').val(mes_archivo)
 })
 
 $(document).ready(function() {
@@ -1476,7 +1519,7 @@ $(document).ready(function() {
         }
       },
 
-      
+
       estado_citas: {
         validators: {
           notEmpty: {
@@ -1976,7 +2019,7 @@ $(document).ready(function() {
 
         }
       },
-      
+
       gran_contribuyente_cliente:{
         validators:{
           notEmpty:{
@@ -2115,7 +2158,7 @@ $(document).ready(function() {
 
 
         }
-      },      
+      },
 
 
 
@@ -2179,7 +2222,7 @@ $(document).ready(function() {
 
         }
       },
-      
+
       gran_contribuyente_cliente:{
         validators:{
           notEmpty:{
@@ -2318,7 +2361,7 @@ $(document).ready(function() {
 
 
         }
-      },      
+      },
 
 
 
@@ -2489,7 +2532,7 @@ $(document).ready(function () {
                     }
                 }
             }
-          
+
         }
     })
     })
@@ -2532,7 +2575,7 @@ $(document).ready(function () {
                     }
                 }
             }
-          
+
         }
     })
     })
@@ -2575,7 +2618,7 @@ $(document).ready(function () {
                     }
                 }
             }
-          
+
         }
     })
     })
@@ -2631,7 +2674,7 @@ $(document).ready(function () {
                     }
                 }
             }
-          
+
         }//termina
     })
     })
@@ -2714,7 +2757,7 @@ $(document).ready(function () {
             }
 
 
-          
+
         }//termina
     })
     })
@@ -2794,7 +2837,7 @@ $(document).ready(function () {
             }
 
 
-          
+
         }//termina
     })
     })
@@ -2832,7 +2875,7 @@ $(document).ready(function () {
             }
 
 
-          
+
         }//termina
     })
     })
@@ -2870,7 +2913,7 @@ $(document).ready(function () {
             }
 
 
-          
+
         }//termina
     })
     })
@@ -2899,7 +2942,7 @@ $(document).ready(function () {
                     }
                 }
             },
-           
+
             direccion: {
                 validators: {
                     notEmpty: {
@@ -2942,10 +2985,10 @@ $(document).ready(function () {
                     }
                 }
             }
-            
 
 
-          
+
+
         }//termina
     })
     })
@@ -3023,10 +3066,10 @@ $(document).ready(function () {
                     }
                 }
             }
-            
 
 
-          
+
+
         }//termina
     })
     })
@@ -3064,7 +3107,7 @@ $(document).ready(function () {
             }
 
 
-          
+
         }//termina
     })
     })
@@ -3072,15 +3115,9 @@ $(document).ready(function () {
 
 
 $(document).ready(function() {
-  
-  $('#sider').click(function(event) {
-    
-   $('#siderbody').removeClass('sidebar-collapse'); 
+   $('#sider').click(function(event) {
+   $('#siderbody').removeClass('sidebar-collapse');
    $('#siderbody').addClass('sidebar-open');
-   $('#treerevision').addClass('menu-open'); 
-
+   $('#treerevision').addClass('menu-open');
   });
-
-  
 });
-

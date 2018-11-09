@@ -11,7 +11,12 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
         @include('sweet::alert')
 
+        <style>
 
+        .ui-front{z-index:0 !important; }
+        .ui-selectmenu-open {z-index:9999 !important;}
+
+        </style>
 
   <div class="panel-body">
 
@@ -73,8 +78,8 @@
           <td>{{$row->valor}}</td>
           <td>{{$row->horas}}</td>
           <td>@if ($row->activo==1)
-    
-              <span class="badge bg-light-blue">Si</span>     
+
+              <span class="badge bg-light-blue">Si</span>
               @else
               <span class="badge bg-red">No</span>
               @endif</td>
@@ -82,6 +87,7 @@
 
           <td><a    data-toggle="modal" data-target="#editar_usuario"   data-name="{{$row->name}}"   data-perfil_usuario ="{{$row->perfil_usuario}}" data-email="{{$row->email}}"  data-id="{{$row->id}}" data-type="{{$row->type}}"data-password="{{$row->password}}" data-cargo="{{$row->cargo}}" data-activo="{{$row->activo}}" data-valor="{{$row->valor}}" data-horas="{{$row->horas}}"
           data-avatar="{{$row->avatar}}"
+          data-habilitar_empresas="{{$row->habilitar_empresas}}"
            class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"> Edición</i></a></td> <td>@include('usuario.destroy')</td>
 
     </tr>

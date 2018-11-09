@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
 
-                
+
 
 <form class="" action="{{route('encabezado_dev_iva.update', 'id' )}}"   method="post" id="FormEditCargos" enctype = 'multipart/form-data'>
 
@@ -18,19 +18,19 @@
 
               <div class="form-group">
                     <label for="id">Responsable</label>
-                    {!! Form::select('responsable', $usuarios, Auth::user()->id, ['class' => 'form-control', 'placeholder' => 'Seleccione el Consultor... ','name'=>'responsable','id'=>'responsable', 'required']) !!} 
+                    {!! Form::select('responsable', $usuarios, Auth::user()->id, ['class' => 'form-control', 'placeholder' => 'Seleccione el Consultor... ','name'=>'responsable','id'=>'responsable', 'required']) !!}
 
                 </div>
 
                 <div class="form-group">
                     <label for="id">Empresa</label>
-                    {!! Form::select('cliente', $clientes, null, ['class' => 'form-control', 'placeholder' => 'Seleccione la Empresa... ','name'=>'cliente','id'=>'cliente', 'required']) !!} 
+                    {!! Form::select('cliente', $clientes, null, ['class' => 'form-control', 'placeholder' => 'Seleccione la Empresa... ','name'=>'cliente','id'=>'cliente', 'required']) !!}
 
                 </div>
 
                 <div class="form-group">
                     <label for="id">Auditor</label>
-                    {!! Form::select('auditor', $auditor, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el Auditor... ','name'=>'auditor','id'=>'auditor', 'required']) !!} 
+                    {!! Form::select('auditor', $auditor, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el Auditor... ','name'=>'auditor','id'=>'auditor', 'required']) !!}
 
                 </div>
 
@@ -54,17 +54,17 @@
 
     <div class="form-group">
                     <label for="id">Ubicación de Archivos <code>Puede subir más de un archivo</code></label>
-                                   
-                     <input type="file" class="form-control" id="ubicacion_archivos[]" name="ubicacion_archivos[]" multiple="">   
+
+                     <input type="file" class="form-control" id="ubicacion_archivos[]" name="ubicacion_archivos[]" multiple="">
 
                 </div>
 
-       
+
                 <div class="form-group">
                     <label for="id">Mes <code>Se guardara el archivo en el mes de: </code></label>
 
                     <?php $dt= \Carbon\Carbon::now();   ?>
-                    {!! Form::select('mes', $meses,($dt->month)-1, ['class' => 'form-control', 'placeholder' => 'Seleccione el Mes... ','name'=>'mes']) !!}
+                    {!! Form::select('mes', $meses,null, ['class' => 'form-control', 'placeholder' => 'Seleccione el Mes... ','name'=>'mes','id'=>'mes']) !!}
 
 
                 </div>
@@ -104,8 +104,11 @@
 
                 </div>
 
+                @if(Auth::user()->perfil_usuario != 1)
 
+                @else
     <center><button type="submit" class="btn btn-primary" >Actualizar</button>
+                @endif
     <button type="button" class="btn btn-default "data-dismiss="modal" >Cerrar</button></center><p>
 
 </form>
@@ -117,5 +120,3 @@
 
 </div>
 </div>
-
-

@@ -3325,6 +3325,7 @@ input[type="range"] {
 select[multiple],
 select[size] {
   height: auto;
+  color: #216a94;
 }
 
 input[type="file"]:focus,
@@ -3645,6 +3646,7 @@ select[multiple].input-lg,
 .input-group-lg > select[multiple].input-group-addon,
 .input-group-lg > .input-group-btn > select[multiple].btn {
   height: auto;
+
 }
 
 .form-group-lg .form-control {
@@ -6732,6 +6734,7 @@ button.list-group-item-info.active:focus {
   color: #8a6d3b;
   background-color: #fcf8e3;
 }
+
 
 a.list-group-item-warning,
 button.list-group-item-warning {
@@ -23681,4 +23684,3 @@ button.toast-close-button {
     width: 25em;
   }
 }
-

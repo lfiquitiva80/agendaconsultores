@@ -4,10 +4,10 @@
 
 ## Señor(a) **{{$auditor}}**, se envia la siguiente información enviada por el Consultor(a) ** {{$responsable}}**, para la correspondiente auditoria.
 
-  
+
   - Auditoria para : ** {{$checklist}} **
   - Cliente : **{{$cliente}}**
-  - Observaciones : **{{$Observaciones}}**
+  - Observaciones : **{{$Observacion}}**
   - Fecha de Elaboración : **{{$fecha_elaboracion}}**
   - Id : **{{$id}}**
 

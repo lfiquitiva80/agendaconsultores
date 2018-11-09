@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
 
-                
+                <input type="hidden" name="" id="logeado6" value="{{Auth::user()->perfil_usuario}}">
 
 <form class="" action="{{route('encabezado_imp_reteica.update', 'id' )}}"   method="post" id="FormEditCargos" enctype = 'multipart/form-data'>
 
@@ -18,64 +18,64 @@
 
               <div class="form-group">
                     <label for="id">Responsable</label>
-                    {!! Form::select('responsable', $usuarios, Auth::user()->id, ['class' => 'form-control', 'placeholder' => 'Seleccione el Consultor... ','name'=>'responsable','id'=>'responsable', 'required']) !!} 
+                    {!! Form::select('responsable', $usuarios, Auth::user()->id, ['class' => 'form-control audiconsultor6', 'placeholder' => 'Seleccione el Consultor... ','name'=>'responsable','id'=>'responsable', 'required']) !!}
 
                 </div>
 
                 <div class="form-group">
                     <label for="id">Empresa</label>
-                    {!! Form::select('cliente', $clientes, null, ['class' => 'form-control', 'placeholder' => 'Seleccione la Empresa... ','name'=>'cliente','id'=>'cliente', 'required']) !!} 
+                    {!! Form::select('cliente', $clientes, null, ['class' => 'form-control audiconsultor6', 'placeholder' => 'Seleccione la Empresa... ','name'=>'cliente','id'=>'cliente', 'required']) !!}
 
                 </div>
 
                 <div class="form-group">
                     <label for="id">Auditor</label>
-                    {!! Form::select('audito', $auditor, null, ['class' => 'form-control', 'placeholder' => 'Seleccione el Auditor... ','name'=>'audito','id'=>'audito', 'required']) !!} 
+                    {!! Form::select('audito', $auditor, null, ['class' => 'form-control audiconsultor6', 'placeholder' => 'Seleccione el Auditor... ','name'=>'audito','id'=>'audito', 'required']) !!}
 
                 </div>
 
                 <div class="form-group">
                     <label for="id">bim</label>
-                    {!! Form::number('bim_auditado', null,['class' => 'form-control', 'placeholder' => 'Digite el BIM','name'=>'bim_auditado','id'=>'bim_auditado', 'required']) !!}
+                    {!! Form::number('bim_auditado', null,['class' => 'form-control audiconsultor6', 'placeholder' => 'Digite el BIM','name'=>'bim_auditado','id'=>'bim_auditado', 'required']) !!}
 
                 </div>
 
                 <div class="form-group">
                     <label for="id">Fecha de Vencimiento</label>
-                    {!! Form::date('fecha_vencimiento', null,['class' => 'form-control', 'placeholder' => 'fecha_vencimiento','name'=>'fecha_vencimiento','id'=>'fecha_vencimiento', 'required']) !!}
+                    {!! Form::date('fecha_vencimiento', null,['class' => 'form-control audiconsultor6', 'placeholder' => 'fecha_vencimiento','name'=>'fecha_vencimiento','id'=>'fecha_vencimiento', 'required']) !!}
 
                 </div>
 
                 <div class="form-group">
                     <label for="id">Fecha de Entrega</label>
-                    {!! Form::date('fecha_entrega', null,['class' => 'form-control', 'placeholder' => 'fecha_entrega','name'=>'fecha_entrega','id'=>'fecha_entrega', 'required']) !!}
+                    {!! Form::date('fecha_entrega', null,['class' => 'form-control audiconsultor6', 'placeholder' => 'fecha_entrega','name'=>'fecha_entrega','id'=>'fecha_entrega', 'required']) !!}
 
                 </div>
 
      <div class="form-group">
                     <label for="id">Ubicación de Archivos <code>Puede subir más de un archivo</code></label>
-                                   
-                     <input type="file" class="form-control" id="ubicacion_archivos[]" name="ubicacion_archivos[]" multiple="">   
+
+                     <input type="file" class="form-control" id="ubicacion_archivos[]" name="ubicacion_archivos[]" multiple="">
 
                 </div>
 
-                 
+
                 <div class="form-group">
                     <label for="id">Mes <code>Se guardara el archivo en el mes de: </code></label>
 
                     <?php $dt= \Carbon\Carbon::now();   ?>
-                    {!! Form::select('mes', $meses,($dt->month)-1, ['class' => 'form-control', 'placeholder' => 'Seleccione el Mes... ','name'=>'mes']) !!}
+                    {!! Form::select('mes', $meses,null, ['class' => 'form-control audiconsultor6', 'placeholder' => 'Seleccione el Mes... ','name'=>'mes','id'=>'mes']) !!}
 
 
                 </div>
 
                 <div class="form-group">
                     <label for="id">Observaciones</label>
-                    {!! Form::textarea('Observaciones', null, ['class' => 'form-control', 'placeholder' => 'Observaciones','name'=>'Observaciones','id'=>'Observaciones', 'required']) !!}
+                    {!! Form::textarea('Observaciones', null, ['class' => 'form-control audiconsultor6', 'placeholder' => 'Observaciones','name'=>'Observaciones','id'=>'Observaciones', 'required']) !!}
 
                 </div>
 
-                
+
 
                 <div class="form-group">
                     <label for="id">Enviar Auditoria</label>
@@ -84,17 +84,17 @@
 
 
                 <div class="form-group">
-                    
+
                        @if(Auth::user()->perfil_usuario == 1)
                        <label for="id">Cierre Auditoria</label>
                     {!! Form::select('cierre_auditoria',[ '0'=>'No', '1' =>'Si'],null,['class'=> 'form-control','name'=>'cierre_auditoria','id'=>'cierre_auditoria'] )!!}
-                    
+
                     @elseif(Auth::user()->perfil_usuario == 3)
                        <label for="id">Cierre Auditoria</label>
                     {!! Form::select('cierre_auditoria',[ '0'=>'No', '1' =>'Si'],null,['class'=> 'form-control','name'=>'cierre_auditoria','id'=>'cierre_auditoria'] )!!}
                     @else
-                    {!! Form::hidden('cierre_auditoria', 0, []) !!}    
-                                           
+                    {!! Form::hidden('cierre_auditoria', 0, []) !!}
+
                     @endif
                 </div>
 
@@ -103,7 +103,7 @@
                     {!! Form::textarea('observaciones_auditoria', null, ['class' => 'form-control', 'placeholder' => 'observaciones_auditoria','name'=>'observaciones_auditoria','id'=>'observaciones_auditoria', 'required']) !!}
                 </div>
 
-               
+
 
                 <div class="form-group">
 <label for="id">Fecha Auditoria</label>
@@ -117,7 +117,7 @@
 
                 </div>
 
-           
+
 
 
     <center><button type="submit" class="btn btn-primary" >Actualizar</button>
@@ -131,7 +131,22 @@
   </div>
 </div>
 
-</div>
-</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+
+  var log6= $('#logeado6').val();
 
 
+  if (log6 == 3) {
+
+    $('.audiconsultor6').attr('readonly', 'readonly');
+
+  } else {
+
+  }
+  });
+
+</script>
+
+</div>
+</div>

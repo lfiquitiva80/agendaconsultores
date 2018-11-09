@@ -42,9 +42,9 @@
 
             <li><a href="{{ url('adminitradordearchivos') }}"><i class="fa fa-folder-open-o" aria-hidden="true"></i> <span> Administrador de Archivos </span></a></li>
 
-            
 
-<!-- 
+
+<!--
             <div class="dropdown">
               <button class="btn btn-primary dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <i class="fa fa-check-square-o" aria-hidden="true"></i> <span> Checklist</span></a></li>
@@ -87,7 +87,7 @@
             <li><a href="{{ route('cargo.index') }}"><i class="fa fa-id-badge" aria-hidden="true"></i> <span> Cargos</span></a></li>
             <li><a href="{{ route('actividad.index') }}"><i class="fa fa-globe" aria-hidden="true"></i> <span> Actividad</span></a></li>
             <li><a href="{{ route('compromisos.index') }}"><i class="fa fa-commenting-o" aria-hidden="true"></i> <span> Compromisos</span></a></li>
-            
+
             <li><a href="{{ route('estado_cita.index') }}"><i class="fa fa-hourglass-start" aria-hidden="true"></i> <span> Estado Cita</span></a></li>
             <li><a href="{{ route('lugar.index') }}"><i class="fa fa-map-marker" aria-hidden="true"></i> <span> Lugar</span></a></li>
             <li role="separator" class="divider"></li>
@@ -100,7 +100,7 @@
 
 
 
-    
+
 
           <li class="treeview">
                 <a href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> <span>Checklist</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -132,7 +132,7 @@
             <li><a href="{{ route('cargo.index') }}"><i class="fa fa-id-badge" aria-hidden="true"></i> <span> Cargos</span></a></li>
             <li><a href="{{ route('actividad.index') }}"><i class="fa fa-globe" aria-hidden="true"></i> <span> Actividad</span></a></li>
             <li><a href="{{ route('compromisos.index') }}"><i class="fa fa-commenting-o" aria-hidden="true"></i> <span> Compromisos</span></a></li>
-            
+
             <li><a href="{{ route('estado_cita.index') }}"><i class="fa fa-hourglass-start" aria-hidden="true"></i> <span> Estado Cita</span></a></li>
             <li><a href="{{ route('lugar.index') }}"><i class="fa fa-map-marker" aria-hidden="true"></i> <span> Lugar</span></a></li>
             <li><a href="{{ route('empresa.index') }}"><i class="fa fa-industry" aria-hidden="true"></i> <span> Empresa</span></a></li>
@@ -140,7 +140,7 @@
             <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> <span> Calendario Tributario</span></a></li>
                 </ul>
             </li>
-
+            <li><a href="{{ route('panel.index') }}"><i class="fa fa-file-excel-o" aria-hidden="true"></i> <span> Reportes</span></a></li>
             <li><a href="/log-viewer"><i class="fa fa-sun-o" aria-hidden="true"></i> <span> Logs de Sistema</span></a></li>
 
             @else
@@ -168,7 +168,7 @@
             </li>
 
 
-            
+
 
 
 
@@ -176,7 +176,7 @@
             @endif
 
 
-            
+
 
 
         </ul><!-- /.sidebar-menu -->

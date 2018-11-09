@@ -14,17 +14,19 @@
 
 
   <div class="panel-body">
-
+<a href="{{ URL::previous() }}" class="btn btn-warning "><i class="fa fa-hand-o-left" aria-hidden="true"></i> Regresar</a><p>
 <div class="container">
 {!! Form::open(['route' => 'detalle_dev_iva.index', 'method'=>'GET', 'Class'=>'navbar-form navbar-right']) !!}
 <!--<form class="navbar-form navbar-right" role="search">-->
   <div class="form-group">
+
     <input type="text" class="form-control" placeholder="Search" name="nombre" id="nombre">
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 {!! Form::close() !!}
 <div class="panel panel-default">
 <h4><b><center>DETALLE DEVOLUCION IVA</h4></b></center>
+
 <a class="btn btn-info" data-toggle="modal" href='#crear_detalle_dev_iva'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear detalle_dev_iva</a>
 
   @include('detalle_dev_iva.create')
@@ -42,7 +44,7 @@
     <tr>
       <th colspan="4"></th>
       <th>Responsable&nbsp;&nbsp;&nbsp;&nbsp;Auditor</th>
-     
+
 
     </tr>
 
@@ -53,8 +55,8 @@
       <th>descripcion</th>
       <th>Si&nbsp;&nbsp;&nbsp;&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;Na&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Si&nbsp;&nbsp;&nbsp;&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;Na
       </th>
-      
-            
+
+
 
 
 
@@ -63,22 +65,22 @@
   </thead>
   <tbody>
 
-   
+
 
   @foreach($detalle_dev_iva as $row)
-    <tr class="id">
+    <tr>
 
 
-       
+
 
       <td>{{$row->id}}</td>
       <td>{{$row->cns_detalle}}</td>
       <td>{{$row->codigo}}</td>
       <td>{{$row->descripcion}}</td>
-      
+
       <td  NOWRAP>
 
-           
+
       {!! Form::open(['route' => ['detalle_dev_iva.update', $row->id],'method'=>'PATCH']) !!}
       <input type="hidden" id="id"  name="id" value="{{$row->id}}">
 
@@ -87,31 +89,31 @@
 
       {!! Form::checkbox('ressi',  1, $row->ressi, []) !!}
       &nbsp;
-      &nbsp; 
-      {!! Form::checkbox('resno',  1, $row->resno, []) !!} 
+      &nbsp;
+      {!! Form::checkbox('resno',  1, $row->resno, []) !!}
       &nbsp;
       &nbsp;
       &nbsp;
-      {!! Form::checkbox('resna',  1, $row->resna, []) !!} 
+      {!! Form::checkbox('resna',  1, $row->resna, []) !!}
       &nbsp;
       &nbsp;
       &nbsp;
 
-      {!! Form::checkbox('audsi',  1, $row->audsi, []) !!} 
+      {!! Form::checkbox('audsi',  1, $row->audsi, []) !!}
       &nbsp;
       &nbsp;
       &nbsp;
-      {!! Form::checkbox('audno',  1, $row->audno, []) !!} 
+      {!! Form::checkbox('audno',  1, $row->audno, []) !!}
       &nbsp;
       &nbsp;
       &nbsp;
-      {!! Form::checkbox('audna',  1, $row->audna, []) !!} 
+      {!! Form::checkbox('audna',  1, $row->audna, []) !!}
 
        @elseif (Auth::user()->perfil_usuario == 2)
 
        {!! Form::checkbox('ressi',  1, $row->ressi, []) !!}
         &nbsp;
-      &nbsp; 
+      &nbsp;
       {!! Form::checkbox('resno',  1, $row->resno, []) !!}
        &nbsp;
       &nbsp;
@@ -132,10 +134,11 @@
 
       @else
 
+
       {!! Form::checkbox('ressi',  1, $row->ressi, ['disabled']) !!}
        &nbsp;
       &nbsp;
-      
+
       {!! Form::checkbox('resno',  1, $row->resno, ['disabled']) !!}
        &nbsp;
       &nbsp;
@@ -158,38 +161,19 @@
       &nbsp;
       &nbsp;
 
-      @endif 
+      @endif
 
-      
+
           <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Actualizar</button>
-        
+
        {!! Form::close() !!}
+
 
       </td>
 
-      
-
-  
-
-       
-
-         <!--  <td><a   data-toggle="modal" data-target="#editar_detalle_dev_iva" data-id="{{$row->id}}"
-            data-cns_detalle="{{$row->cns_detalle}}"
-            data-codigo="{{$row->codigo}}"
-            data-descripcion="{{$row->descripcion}}"
-            data-ressi="{{$row->ressi}}"
-            data-resno="{{$row->resno}}"
-            data-resna="{{$row->resna}}"
-            data-audsi="{{$row->audsi}}"
-            data-audno="{{$row->audno}}"
-            data-audna="{{$row->audna}}"
-            class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-
-            <td>@include('detalle_dev_iva.destroy')</td> -->
-          
     </tr>
   </tbody>
- 
+
 
   @endforeach
 
@@ -201,23 +185,11 @@
 
 </div>
 
+
 </div>
 </div>
 
-<script type="text/javascript">
-
-$(document).ready(function() {
 
 
-
-var x = document.getElementsByName("check");
-
-$.each(x, function(index, val) {
-   console.log(val);
-});
-
-
-});
-</script>
 
 @endsection

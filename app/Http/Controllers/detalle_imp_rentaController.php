@@ -94,12 +94,12 @@ class detalle_imp_rentaController extends Controller
      */
     public function update(Request $request, detalle_imp_renta $id)
     {
-           //dd($request->all());  
+           //dd($request->all());
 
          $detalle_imp_renta = detalle_imp_renta::findOrFail($request->id);
          $detalle_imp_renta->update($request->all());
 
-      Alert::success('', 'El detalle_imp_renta ha sido editado con exito !')->persistent('Close');
+      //Alert::success('', 'El detalle_imp_renta ha sido editado con exito !')->persistent('Close');
       //return redirect()->route('detalle_imp_renta.index');
       return back();
     }

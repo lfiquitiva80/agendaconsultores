@@ -93,12 +93,12 @@ class detalle_imp_reteicaController extends Controller
      */
     public function update(Request $request, detalle_imp_reteica $id)
     {
-           //dd($request->all());  
+           //dd($request->all());
 
          $detalle_imp_reteica = detalle_imp_reteica::findOrFail($request->id);
          $detalle_imp_reteica->update($request->all());
 
-      Alert::success('', 'El detalle_imp_reteica ha sido editado con exito !')->persistent('Close');
+    //  Alert::success('', 'El detalle_imp_reteica ha sido editado con exito !')->persistent('Close');
       //return redirect()->route('detalle_imp_reteica.index');
       return back();
     }
@@ -113,7 +113,7 @@ class detalle_imp_reteicaController extends Controller
     {
         $detalle_imp_reteica = detalle_imp_reteica::find($id);
         $detalle_imp_reteica->delete();
-        \Alert::success('', 'El detalle_imp_reteica ha sido sido borrado de forma exita!')->persistent('Close');
+      //  \Alert::success('', 'El detalle_imp_reteica ha sido sido borrado de forma exita!')->persistent('Close');
         return redirect()->route('detalle_imp_reteica.index');
     }
 }

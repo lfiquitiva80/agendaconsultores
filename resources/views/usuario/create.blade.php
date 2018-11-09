@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label for="id">Perfil de Usuario</label>
 
-                    {!! Form::select('perfil_usuario', $perfil,null, ['class' => 'form-control','name'=>'perfil_usuario' ]) !!}             
+                    {!! Form::select('perfil_usuario', $perfil,null, ['class' => 'form-control','name'=>'perfil_usuario' ]) !!}
 
                 </div>
 
@@ -49,21 +49,21 @@
                 <div class="form-group">
                     <label for="id">Cargo del Usuario  <code>Tecla Control + clic derecho para Seleccionar</code></label>
 
-                    {!! Form::select('cargo', $cargo,null, ['class' => 'form-control','name'=>'cargo[]','id'=>'cargo', 'multiple' => 'multiple' ]) !!}             
+                    {!! Form::select('cargo', $cargo,null, ['class' => 'form-control','name'=>'cargo[]','id'=>'cargo', 'multiple' => 'multiple' ]) !!}
 
                 </div>
 
                 <div class="form-group">
                     <label for="id">Horas</label>
 
-            {!! Form::text('horas', null, ['class' => 'form-control','name'=>'horas']) !!}             
+            {!! Form::text('horas', null, ['class' => 'form-control','name'=>'horas']) !!}
 
                 </div>
 
                  <div class="form-group">
                     <label for="id">Valor</label>
 
-            {!! Form::text('valor', null, ['class' => 'form-control','name'=>'valor']) !!}             
+            {!! Form::text('valor', null, ['class' => 'form-control','name'=>'valor']) !!}
 
                 </div>
 
@@ -72,6 +72,7 @@
                     <label for="id">Activo</label>
                     {!! Form::select('activo',[ '1'=>'Activo', '0' =>'Inactivo'],null,['class'=> 'form-control','id' => 'activo','name'=>'activo'] )!!}
                 </div>
+
 
                 <center><button type="submit" class="btn btn-primary" >Guardar</button>
                     <button type="reset" class="btn btn-danger">Borrar</button></center><p>

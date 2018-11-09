@@ -45,7 +45,8 @@
 		</tr>
 		<tr>
 			<td style=" height:20.1pt; text-align:left; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">FECHA:</span></strong></span></td>
-			<td colspan="3" style="border-bottom: 1px solid; height:20.1pt; text-align:left; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;">{{$citas->fecha_citas}}<strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></strong></span></td>
+			<td colspan="3" style="border-bottom: 1px solid; height:20.1pt; text-align:left; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><input type="datetime-local" value="<?php $date = new DateTime();
+    echo $date->format('Y-m-d\TH:i'); ?>" ><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></strong></span></td>
 			<td style=" height:20.1pt; vertical-align:middle; text-transform:uppercase; white-space:nowrap">&nbsp;</td>
 			<td style=" height:20.1pt; vertical-align:middle; text-transform:uppercase; white-space:nowrap">&nbsp;</td>
 			<td style=" height:20.1pt; vertical-align:middle; text-transform:uppercase; white-space:nowrap">&nbsp;</td>
@@ -119,7 +120,7 @@
 		</tr>
 		<tr >
 			<td colspan="5" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:normal; width:324pt"><span style="font-size:11pt; text-transform:uppercase;">
-				<?php 
+				<?php
 
 				$actividad = json_decode($citas->actividad_citas);
 
@@ -127,24 +128,24 @@
 
 					$result = App\actividad::find($actividad[0]);
 					echo $result->descripcion_actividad."<br>";
-					
+
 				} catch (Exception $e) {
 					 echo "";
-					
+
 				}
-					
-					
 
-			
 
-				 ?>	
+
+
+
+				 ?>
 
 				<strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></strong></span></td>
 			<td colspan="4" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; "><span style="font-size:11pt; text-transform:uppercase;"><input type="text" size="60"><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></span></td>
 		</tr>
 		<tr>
 			<td colspan="5" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:normal; width:324pt"><span style="font-size:11pt; text-transform:uppercase;">
-				<?php 
+				<?php
 
 				$actividad = json_decode($citas->actividad_citas);
 
@@ -152,22 +153,22 @@
 
 					$result = App\actividad::find($actividad[1]);
 					echo $result->descripcion_actividad."<br>";
-					
+
 				} catch (Exception $e) {
 					 echo "";
-					
-				}
-					
-					
 
-			
+				}
+
+
+
+
 
 				 ?><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></strong></span></td>
 			<td colspan="4" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><input type="text" size="60"><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></span></td>
 		</tr>
 		<tr>
 			<td colspan="5" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:normal; width:324pt"><span style="font-size:11pt; text-transform:uppercase;">
-				<?php 
+				<?php
 
 				$actividad = json_decode($citas->actividad_citas);
 
@@ -175,21 +176,21 @@
 
 					$result = App\actividad::find($actividad[2]);
 					echo $result->descripcion_actividad."<br>";
-					
+
 				} catch (Exception $e) {
 					 echo "";
-					
-				}
-					
-					
 
-			
+				}
+
+
+
+
 
 				 ?><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></strong></span></td>
 			<td colspan="4" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><input type="text" size="60"><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></span></td>
 		</tr>
 		<tr>
-			<td colspan="5" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:normal; width:324pt"><span style="font-size:11pt; text-transform:uppercase;"><?php 
+			<td colspan="5" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:normal; width:324pt"><span style="font-size:11pt; text-transform:uppercase;"><?php
 
 				$actividad = json_decode($citas->actividad_citas);
 
@@ -197,21 +198,21 @@
 
 					$result = App\actividad::find($actividad[3]);
 					echo $result->descripcion_actividad."<br>";
-					
+
 				} catch (Exception $e) {
 					 echo "";
-					
-				}
-					
-					
 
-			
+				}
+
+
+
+
 
 				 ?><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></strong></span></td>
 			<td colspan="4" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><input type="text" size="60"><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></span></td>
 		</tr>
 		<tr>
-			<td colspan="5" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:normal; width:324pt"><span style="font-size:11pt; text-transform:uppercase;"><?php 
+			<td colspan="5" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:normal; width:324pt"><span style="font-size:11pt; text-transform:uppercase;"><?php
 
 				$actividad = json_decode($citas->actividad_citas);
 
@@ -219,22 +220,22 @@
 
 					$result = App\actividad::find($actividad[4]);
 					echo $result->descripcion_actividad."<br>";
-					
+
 				} catch (Exception $e) {
 					 echo "";
-					
-				}
-					
-					
 
-			
+				}
+
+
+
+
 
 				 ?><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></strong></span></td>
 			<td colspan="4" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><input type="text" size="60"><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></span></td>
 		</tr>
 		<tr>
 			<td colspan="5" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:normal; width:324pt"><span style="font-size:11pt; text-transform:uppercase;">
-				<?php 
+				<?php
 
 				$actividad = json_decode($citas->actividad_citas);
 
@@ -242,22 +243,22 @@
 
 					$result = App\actividad::find($actividad[5]);
 					echo $result->descripcion_actividad."<br>";
-					
+
 				} catch (Exception $e) {
 					 echo "";
-					
-				}
-					
-					
 
-			
+				}
+
+
+
+
 
 				 ?><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></strong></span></td>
 			<td colspan="4" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><input type="text" size="60"><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></span></td>
 		</tr>
 		<tr>
 			<td colspan="5" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:normal; width:324pt"><span style="font-size:11pt; text-transform:uppercase;">
-				<?php 
+				<?php
 
 				$actividad = json_decode($citas->actividad_citas);
 
@@ -265,22 +266,22 @@
 
 					$result = App\actividad::find($actividad[6]);
 					echo $result->descripcion_actividad."<br>";
-					
+
 				} catch (Exception $e) {
 					 echo "";
-					
-				}
-					
-					
 
-			
+				}
+
+
+
+
 
 				 ?><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></strong></span></td>
 			<td colspan="4" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><input type="text" size="60"><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></span></td>
 		</tr>
 		<tr>
 			<td colspan="5" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:normal; width:324pt"><span style="font-size:11pt; text-transform:uppercase;">
-				<?php 
+				<?php
 
 				$actividad = json_decode($citas->actividad_citas);
 
@@ -288,22 +289,22 @@
 
 					$result = App\actividad::find($actividad[7]);
 					echo $result->descripcion_actividad."<br>";
-					
+
 				} catch (Exception $e) {
 					 echo "";
-					
-				}
-					
-					
 
-			
+				}
+
+
+
+
 
 				 ?><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></strong></span></td>
 			<td colspan="4" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><input type="text" size="60"><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></span></td>
 		</tr>
 		<tr>
 			<td colspan="5" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:normal; width:324pt"><span style="font-size:11pt; text-transform:uppercase;">
-				<?php 
+				<?php
 
 				$actividad = json_decode($citas->actividad_citas);
 
@@ -311,22 +312,22 @@
 
 					$result = App\actividad::find($actividad[8]);
 					echo $result->descripcion_actividad."<br>";
-					
+
 				} catch (Exception $e) {
 					 echo "";
-					
-				}
-					
-					
 
-			
+				}
+
+
+
+
 
 				 ?><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></strong></span></td>
 			<td colspan="4" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><input type="text" size="60"><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></span></td>
 		</tr>
 		<tr>
 			<td colspan="5" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:normal; width:324pt"><span style="font-size:11pt; text-transform:uppercase;">
-				<?php 
+				<?php
 
 				$actividad = json_decode($citas->actividad_citas);
 
@@ -334,22 +335,22 @@
 
 					$result = App\actividad::find($actividad[9]);
 					echo $result->descripcion_actividad."<br>";
-					
+
 				} catch (Exception $e) {
 					 echo "";
-					
-				}
-					
-					
 
-			
+				}
+
+
+
+
 
 				 ?><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></strong></span></td>
 			<td colspan="4" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><input type="text" size="60"><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></span></td>
 		</tr>
 		<tr>
 			<td colspan="5" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:normal; width:324pt"><span style="font-size:11pt; text-transform:uppercase;">
-				<?php 
+				<?php
 
 				$actividad = json_decode($citas->actividad_citas);
 
@@ -357,15 +358,15 @@
 
 					$result = App\actividad::find($actividad[10]);
 					echo $result->descripcion_actividad."<br>";
-					
+
 				} catch (Exception $e) {
 					 echo "";
-					
-				}
-					
-					
 
-			
+				}
+
+
+
+
 
 				 ?><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></strong></span></td>
 			<td colspan="4" style="border: 1px solid; height:15.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><input type="text" size="60"><span style="font-family:&quot;Comic Sans MS&quot;,cursive">&nbsp;</span></span></td>
@@ -482,7 +483,7 @@
 		<tr>
 			<td colspan="5" style="background-color:#dce6f1; height:18.0pt; text-align:left; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">FECHA:</span><input type="date" name=""></strong></span></td>
 			<td colspan="4" style="background-color:#dce6f1; height:18.0pt; text-align:left; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">HORA:</span><input type="time" name=""></strong></span></td>
-		</tr>	
+		</tr>
 		<tr>
 			<td colspan="9" style="background-color:#dce6f1; height:18.0pt; text-align:left; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive">ACTIVIDADES A REALIZAR:</span></strong></span></td>
 		</tr>
@@ -550,7 +551,7 @@
 			<td style=" height:15.0pt; vertical-align:middle; text-transform:uppercase; white-space:nowrap">&nbsp;</td>
 			<td style=" height:15.0pt; vertical-align:middle; text-transform:uppercase; white-space:nowrap">&nbsp;</td>
 		</tr>
-	
+
 
 		<tr>
 			<td colspan="4" style="height:18.0pt; text-align:center; vertical-align:middle; text-transform:uppercase; white-space:nowrap"><span style="font-size:11pt; text-transform:uppercase;"><span style="color:black"><strong><span style="font-family:&quot;Comic Sans MS&quot;,cursive"><?php $consultor = App\User::find($citas->usuario_citas); echo $consultor->name; ?></span></strong></span></span></td>
